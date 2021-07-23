@@ -5,7 +5,7 @@ module.exports = {
     name: "ubdict",
     aliases: ['define'],
     cooldown: 2,
-    description: "gets word defenition off urban dictionary",
+    description: "gets word definition off urban dictionary",
     execute(client, message, args, Discord, economy, util){
         if(!args[1]) return message.reply("Add what you want to define from UD!")
         
