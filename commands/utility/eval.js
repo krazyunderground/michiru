@@ -3,7 +3,7 @@ const fetch = require("node-fetch")
 
 module.exports = {
     name: "eval",
-    description: "allows the user to buy a new pick",
+    description: "evaluates code sent by a dev",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.author.id !== "576470929874616330") return message.reply("You can't use this!")

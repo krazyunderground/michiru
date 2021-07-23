@@ -3,7 +3,7 @@ const { MessageMenu, MessageMenuOption } = require(`discord-buttons`)
 
 module.exports = {
     name: "help",
-    description: "shows the balance of the user",
+    description: "shows help menus",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         // if(!args[1]) return message.reply("Add which page you want to view between 1-4!\n1. Basic commands\n2. Economy commands\n3. Music commands\n4. Admin/Developer")
@@ -13,36 +13,44 @@ module.exports = {
             const basic = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
                 .setTitle("Command List: Basic")
                 .addFields(
-                    { name: `**${prefix} help**`, value: `Shows a list of all the commands.` },
-                    { name: `**${prefix} ping**`, value: `View latencies of the bot` },
-                    { name: `**${prefix} google**`, value: `Googles whatever\`s specified` },
-                    { name: `**${prefix} ubdict**`, value: `Gets a defenition from the Urban Dictionary` },
-                    { name: `**${prefix} meme**`, value: `Adds a caption to the attached image` },
-                    { name: `**${prefix} colour**`, value: `Change your prefered embed colour in each guild` }
+                    { name: `**${prefix}help**`, value: `Shows a list of all the commands.` },
+                    { name: `**${prefix}ping**`, value: `View latencies of the bot` },
+                    { name: `**${prefix}google**`, value: `Googles whatever\`s specified` },
+                    { name: `**${prefix}ubdict**`, value: `Gets a defenition from the Urban Dictionary` },
+                    { name: `**${prefix}meme**`, value: `Adds a caption to the attached image` },
+                    { name: `**${prefix}colour**`, value: `Change your prefered embed colour in each guild` }
                 )
 
             const eco = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
                 .setTitle(`Command list: Economy`)
                 .addFields(
-                    { name: `**${prefix} balance**`, value: `Shows your current balance` },
-                    { name: `**${prefix} mine**`, value: `Allows you to get more quartz` },
-                    { name: `**${prefix} shop**`, value: `Shows the prices and item name of each pickaxe` }
+                    { name: `**${prefix}balance**`, value: `Shows your current balance` },
+                    { name: `**${prefix}mine**`, value: `Allows you to get more quartz` },
+                    { name: `**${prefix}shop**`, value: `Shows the prices and item name of each pickaxe` }
                 );
 
             const music = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
                 .setTitle(`Command list: Music (\`${prefix} music\`)`)
                 .addFields(
-                    { name: `**${prefix} music play**`, value: `Searches for a youtube video or plays provided video URL` },
-                    { name: `**${prefix} music skip**`, value: `Skips 1 song in the queue` },
-                    { name: `**${prefix} music stop**`, value: `The bot leaves the VC` },
+                    { name: `**${prefix}music play**`, value: `Searches for a youtube video or plays provided video URL` },
+                    { name: `**${prefix}music skip**`, value: `Skips 1 song in the queue` },
+                    { name: `**${prefix}music stop**`, value: `The bot leaves the VC` },
                 )
 
             const admin = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
                 .setTitle(`Command list: Admin/Developer`)
                 .addFields(
-                    { name: `**${prefix} prefix**`, value: `Changes prefix of the bot for the server` },
-                    { name: `**${prefix} eval (DEV ONLY)**`, value: `Run/evaluate code before implimenting it into the real bot` }
+                    { name: `**${prefix}prefix**`, value: `Changes prefix of the bot for the server` },
+                    { name: `**${prefix}eval (DEV ONLY)**`, value: `Run/evaluate code before implimenting it into the real bot` }
                 )
+
+            const cc = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            .setTitle(`Command list: Admin/Developer`)
+            .addFields(
+                { name: `**${prefix}cc-create**`, value: `Allows an admin to create a custom command` },
+                { name: `**${prefix}cc-delete**`, value: `Allows an admin to remove a custom command` },
+                { name: `**${prefix}cc-list**`, value: `Shows list of custom commands for that server` }
+            )
 
 
         // message.channel.send(embed)
@@ -71,6 +79,12 @@ module.exports = {
             .setDescription("Display Admin/Dev Commands")
             .setDefault()
             .setEmoji("👑")
+        let option5 = new MessageMenuOption()
+            .setLabel("Custom Commands")
+            .setValue("Option 5")
+            .setDescription("Display CC Commands")
+            .setDefault()
+            .setEmoji("🖌️")
         let selection = new MessageMenu()
             .setID("Selection")
             .setMaxValues(1)
@@ -80,8 +94,9 @@ module.exports = {
             .addOption(option2)
             .addOption(option3)
             .addOption(option4)
+            .addOption(option5)
         let embed2 = new Discord.MessageEmbed()
-        .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`)).setTitle("Please select help page you`d like to visit")
+        .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`)).setTitle("Please select help page you'd like to visit")
 
         let menumsg = await message.channel.send(embed2, selection)
 
@@ -98,6 +113,9 @@ module.exports = {
                 break;
                 case "Option 4": 
                     menu.reply.send(admin, true)
+                break;
+                case "Option 5": 
+                    menu.reply.send(cc, true)
                 break;
             }
         }

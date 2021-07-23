@@ -2,7 +2,7 @@ module.exports = {
     name: "list",
     aliases: ['cc-list', 'custom-commands'],
     cooldown: 2,
-    description: "shows the balance of the user",
+    description: "list the custom commands",
     execute(client, message, args, Discord, economy, util){
         var cclist = util.get(`${message.guild.id}.commands`)
         const embed = new Discord.MessageEmbed()
