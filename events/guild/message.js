@@ -20,7 +20,21 @@ module.exports = async (Discord, client, message) => {
 
     const cmd = await client.commands.get(command) || client.commands.find(a => a.aliases && a.aliases.includes(command))
 
+    if(util.has(`${message.guild.id}.commands`)){
+        if((util.has(`${message.guild.id}.commands.${command}`))) {
+            var cc = util.get(`${message.guild.id}.commands.${command}.response`)
+            message.channel.send(cc)
+            return
+        }
+    }    
+    
     if(!cmd) return
+
+    // {commands:{
+    //     test:
+    //         response: ""
+    //     }
+    // }
 
     if(!cooldowns.has(cmd.name)){
         cooldowns.set(cmd.name, new Discord.Collection())

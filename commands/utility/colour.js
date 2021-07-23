@@ -4,7 +4,7 @@ module.exports = {
     name: "colour",
     aliases: ['color', 'setcolour', 'setcolor'],
     cooldown: 0,
-    description: "allows the user to buy a new pick",
+    description: "allows the user to set a new colour for their embeds",
     async execute(client, message, args, Discord, economy, util){
 
         var re = /[0-9A-Fa-f]{6}/g

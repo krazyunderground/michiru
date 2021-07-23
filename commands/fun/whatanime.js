@@ -7,7 +7,7 @@ module.exports = {
     name: "whatanime",
     aliases: ['anime', 'wa'],
     cooldown: 2,
-    description: "shows the balance of the user",
+    description: "user can upload an image and check what anime its from",
     async execute(client, message, args, Discord, economy, util){
         var Attachment = (message.attachments).array()
         

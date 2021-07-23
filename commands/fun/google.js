@@ -5,7 +5,7 @@ module.exports = {
     name: "google",
     aliases: ['search', 'find', 'g'],
     cooldown: 2,
-    description: "shows the balance of the user",
+    description: "gets highest google link",
     execute(client, message, args, Discord, economy, util){
         if(!args[1]) return message.reply("Add what you want to search on google!")
         fetch(

@@ -59,7 +59,7 @@ module.exports = {
             .setThumbnail(pick[1])
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
             .setTitle(`${message.member.user.username}'s Mining Expedition!`)
-            .setDescription(`\n**__<:mininggems:854075484869230652> ${message.member.user.username} has gained \`${amount}\` black quartz! <:mininggems2:854075538938003470>__**\nCurrent pickaxe: \`${pickaxe}\`\nNew total: \`${economy.get(`${message.author.id}.quartz`)}\`\n\nNow that you have more quartz, you can buy things in the \`!m shop\`! \nFor more information use \`!m help\`!`)
+            .setDescription(`\n**__<:mininggems:854075484869230652> ${message.member.user.username} has gained \`${amount}\` black quartz! <:mininggems2:854075538938003470>__**\nCurrent pickaxe: \`${pickaxe}\`\nNew total: \`${economy.get(`${message.author.id}.quartz`)}\`\n\nNow that you have more quartz, you can buy thingss in the \`!m shop\`! \nFor more detail use \`!m help\`!`)
             .setTimestamp()
             .setFooter("⛏️", client.user.displayAvatarURL())
             .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
