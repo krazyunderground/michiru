@@ -24,6 +24,7 @@ module.exports = {
 
         const imageEmbed = new Discord
             .MessageEmbed()
+            .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
             .setTitle(`Google image search`, `${image_results[chosen_image].url}`)
             .setImage(`${image_results[chosen_image].url}`)
             .setTimestamp()
