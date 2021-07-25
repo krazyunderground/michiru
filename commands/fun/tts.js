@@ -4,9 +4,9 @@ const { Readable } = require('stream');
 
 module.exports = {
   name: "tts",
-  description: "talks for a user in vc",
+  description: "talks for a user in a VC",
   cooldown: 0,
-  category: "basic",
+  category: "music",
   use: "!m tts",
   settings: {
     baseAudio: 1

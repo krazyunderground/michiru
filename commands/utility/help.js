@@ -32,7 +32,7 @@ module.exports = {
             //     );
 
             const music = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
-                .setTitle(`Command list: Music (\`${prefix} music\`)`)
+                .setTitle(`Command list: VC`)
             //     .addFields(
             //         { name: `**${prefix}music play**`, value: `Searches for a youtube video or plays provided video URL` },
             //         { name: `**${prefix}music skip**`, value: `Skips 1 song in the queue` },
@@ -47,7 +47,7 @@ module.exports = {
             //     )
 
             const cc = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
-            .setTitle(`Command list: Admin/Developer`)
+            .setTitle(`Command list: Custom Commands`)
             // .addFields(
             //     { name: `**${prefix}cc-create**`, value: `Allows an admin to create a custom command` },
             //     { name: `**${prefix}cc-delete**`, value: `Allows an admin to remove a custom command` },
@@ -112,9 +112,9 @@ module.exports = {
             .setDefault()
             .setEmoji("💰")
         let option3 = new MessageMenuOption()
-            .setLabel("Music Commands")
+            .setLabel("VC Commands")
             .setValue("Option 3")
-            .setDescription("Display Music Commands")
+            .setDescription("Display VC Commands")
             .setDefault()
             .setEmoji("🎵")
         let option4 = new MessageMenuOption()
