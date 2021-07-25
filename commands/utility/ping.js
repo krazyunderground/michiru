@@ -3,6 +3,8 @@ const Discord = require("discord.js")
 module.exports = {
     name: "ping",
     description: "shows latencies of the bot",
+    category: "basic",
+    use: "!m ping",
     cooldown: 0,
     execute(client, message, args, Discord, economy, util){
 

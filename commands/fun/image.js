@@ -11,6 +11,9 @@ const google = new scraper({
 module.exports = {
     name: 'image',
     aliases: ['im'],
+    category: "basic",
+    use: "!m image",
+    description: "gets image of google images using the query provided",
     async execute(client, message, args, Discord, economy, util) {
         const image_query = args.slice(1).join(" ")
         if (!image_query) 

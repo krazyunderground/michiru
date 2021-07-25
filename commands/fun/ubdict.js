@@ -4,8 +4,10 @@ const fetch = require("node-fetch")
 module.exports = {
     name: "ubdict",
     aliases: ['define'],
+    category: "basic",
+    use: "!m ubdict",
     cooldown: 2,
-    description: "gets word defenition off urban dictionary",
+    description: "gets word defenition using urban dictionary",
     execute(client, message, args, Discord, economy, util){
         if(!args[1]) return message.reply("Add what you want to define from UD!")
         

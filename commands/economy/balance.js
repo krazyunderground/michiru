@@ -2,6 +2,8 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "balance",
+    category: "eco",
+    use: "!m bal",
     description: "shows the balance of the user",
     aliases: ['b', 'bal'],
     cooldown: 2,

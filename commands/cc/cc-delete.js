@@ -1,6 +1,8 @@
 module.exports = {
     name: "cc-delete",
     aliases: ['cc-delete', 'cc-remove'],
+    category: "cc",
+    use: "!m cc-delete",
     cooldown: 2,
     description: "delete a custom command",
     execute(client, message, args, Discord, economy, util){

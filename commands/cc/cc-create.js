@@ -1,8 +1,10 @@
 module.exports = {
     name: "cc-create",
     aliases: ['cc'],
+    category: "cc",
+    use: "!m cc-create",
     cooldown: 2,
-    description: "create custom command",
+    description: "create a custom command",
     execute(client, message, args, Discord, economy, util){
         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("you can't use this command!")
         if(!args[1]) return message.channel.send(`Please specify a name for the command`)

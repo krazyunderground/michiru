@@ -3,6 +3,8 @@ const Discord = require("discord.js")
 module.exports = {
     name: "colour",
     aliases: ['color', 'setcolour', 'setcolor'],
+    category: "basic",
+    use: "!m colour",
     cooldown: 0,
     description: "allows the user to set a new colour for their embeds",
     async execute(client, message, args, Discord, economy, util){

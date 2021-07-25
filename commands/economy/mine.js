@@ -2,6 +2,8 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "mine",
+    category: "eco",
+    use: "!m mine",
     aliases: ['work', 'm', 'w'],
     cooldown: 5,
     description: "allows the user to get more quartz",

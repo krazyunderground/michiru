@@ -6,6 +6,8 @@ module.exports = {
   name: "tts",
   description: "talks for a user in vc",
   cooldown: 0,
+  category: "basic",
+  use: "!m tts",
   settings: {
     baseAudio: 1
   },

@@ -3,6 +3,8 @@ const Discord = require("discord.js")
 module.exports = {
     name: "prefix",
     aliases: ['setprefix'],
+    category: "admin",
+    use: "!m prefix",
     description: "allows the user to choose a new guild prefix",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){

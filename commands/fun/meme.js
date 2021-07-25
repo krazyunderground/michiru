@@ -5,8 +5,10 @@ const { Image } = require("canvas")
 module.exports = {
     name: "meme",
     aliases: ['caption', 'makememe', 'mememaker'],
+    category: "basic",
+    use: "!m meme",
     cooldown: 5,
-    description: "makes a meme out of the params sent",
+    description: "makes a meme using an image uploaded to discord",
     async execute(client, message, args, Discord, economy, util){
         
         var Attachment = (message.attachments).array()

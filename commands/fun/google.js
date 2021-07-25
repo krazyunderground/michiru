@@ -4,8 +4,10 @@ const fetch = require("node-fetch")
 module.exports = {
     name: "google",
     aliases: ['search', 'find', 'g'],
+    category: "basic",
+    use: "!m google",
     cooldown: 2,
-    description: "gets highest google link",
+    description: "searches google using the query provided",
     execute(client, message, args, Discord, economy, util){
         if(!args[1]) return message.reply("Add what you want to search on google!")
         fetch(

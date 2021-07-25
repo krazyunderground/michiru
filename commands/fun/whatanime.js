@@ -7,7 +7,9 @@ module.exports = {
     name: "whatanime",
     aliases: ['anime', 'wa'],
     cooldown: 2,
-    description: "user can upload an image and check what anime its from",
+    description: "uses trace.moe to find the anime of an image provided",
+    category: "basic",
+    use: "!m whatanime",
     async execute(client, message, args, Discord, economy, util){
         var Attachment = (message.attachments).array()
         

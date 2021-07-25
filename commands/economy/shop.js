@@ -3,6 +3,8 @@ const Discord = require("discord.js")
 module.exports = {
     name: "shop",
     aliases: ['s'],
+    category: "eco",
+    use: "!m shop",
     cooldown: 2,
     description: "allows the user to buy a new pick",
     execute(client, message, args, Discord, economy, util){

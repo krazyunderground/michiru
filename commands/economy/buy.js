@@ -2,6 +2,8 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "buy",
+    category: "eco",
+    use: "!m buy",
     description: "allows the user to buy a new pick",
     cooldown: 2,
     async execute(client, message, args, Discord, economy, util){
