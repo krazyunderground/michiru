@@ -4,7 +4,7 @@ module.exports = (Discord, client, guild) => {
         .setThumbnail("https://i.imgur.com/BeerOcA.jpg")
         .setImage("https://thumbs.gfycat.com/ThinEnchantingCusimanse-max-1mb.gif")
         .setTitle("Hello!")
-        .setDescription(`Hi! I'm Michiru, a discord bot made by Krazyunderground#0001 (for the bot jam, but whatever). Thanks for inviting me!\n\nIf you have any questions or want to report a bug, Krazy's DMs are ~~usually~~ open!\n\n||Quick disclaimer, all of the bot's commands use the **british** spelling for certain words!||`)
+        .setDescription(`Hi! I'm Michiru, A discord bot made by Krazyunderground#0001, Thanks for inviting me!\n\nIf you have any questions or want to report a bug, Krazy's DMs are ~~usually~~ open!\n\nTo get started, use \`!m help\``)
         .setFooter("👋")
         .setTimestamp()
     channel.send(inviteEmbed)
