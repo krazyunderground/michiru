@@ -55,6 +55,10 @@ module.exports = async (Discord, client, member) => {
 
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
 
+            const i = ctx.getImageData(0, 0, 1, 1).data
+            const rgb = i[0] + i[1] + i[2]
+            console.log(rgb)
+            
             ctx.strokeStyle = '#000000'
             ctx.lineWidth = 5
             ctx.strokeRect(0, 0, canvas.width, canvas.height)
@@ -62,7 +66,11 @@ module.exports = async (Discord, client, member) => {
             ctx.textAlign = 'center'
 
             ctx.font = '36px sans-serif'
-            ctx.fillStyle = '000000'
+            var filler
+            if(rgb <= 382.5){filler = "#FFFFFF"}
+            if(rgb >= 382.5){filler = "#000000"}
+            ctx.fillStyle = filler
+            
             ctx.fillText(`Welcome to the server!`, canvas.width / 2, canvas.height / 8 - 25, 600)
 
             ctx.font = '48px sans-serif'
