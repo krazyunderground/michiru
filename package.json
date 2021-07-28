@@ -20,6 +20,7 @@
     "ffmpeg-static": "^4.4.0",
     "google-tts-api": "^2.0.2",
     "images-scraper": "^6.3.0",
+    "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
     "opusscript": "^0.0.8",
     "quick.db": "^7.1.3",

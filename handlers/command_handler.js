@@ -1,18 +1,16 @@
 const fs = require(`fs`)
 
 module.exports = (client, Discord) => {
-    const commandFolders = fs.readdirSync('./commands');
+    const commandFolders = fs.readdirSync('./commands')
 
     for (const folder of commandFolders) {
-        const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+        const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'))
         for (const file of commandFiles) {
             
-            const command = require(`../commands/${folder}/${file}`);
+            const command = require(`../commands/${folder}/${file}`)
             if(command.name){
-                client.commands.set(command.name, command);
-                console.log(`+-${file}-(${command.name})-[✔️]`)
+                client.commands.set(command.name, command)
             } else {
-                console.log(`+-${file}-[ERR]`)
                 continue
             }
         }

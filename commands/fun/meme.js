@@ -12,10 +12,10 @@ module.exports = {
     async execute(client, message, args, Discord, economy, util){
         
         var Attachment = (message.attachments).array()
-        var Input = args.slice(1).join(" ")
+        var Input = args.slice(2).join(" ")
         
         var meme = new Discord.MessageAttachment(
-            await makeMeme(Attachment[0].url , Input, message),
+            await makeMeme(Attachment[0].url, args[1], Input, message),
             'Michiru-meme.png'
         ) 
         
@@ -25,7 +25,7 @@ module.exports = {
         
     }
 }
-const makeMeme = async (url, input, message) => {
+const makeMeme = async (url, size, input, message) => {
     if(!url){
         message.channel.send("Provide an image and text!\n**Upload the image as an attachment!**")
         return undefined
@@ -34,7 +34,7 @@ const makeMeme = async (url, input, message) => {
     const canvas = canv.createCanvas(200, 200);
     const ctx = canvas.getContext("2d");
   
-    const fontSetting = "bold 40px Impact";
+    const fontSetting = `bold ${size}px Impact`;
     ctx.font = fontSetting;
   
     const text = ctx.measureText(input);

@@ -6,7 +6,7 @@ module.exports = async (Discord, client, member) => {
     if(member.guild.id === "848707853350862858"){
         let uid = member.id
         let receive = ''
-        var banner = 'https://cdn.discordapp.com/attachments/853961222520045598/869206134551089172/welcome-image.jpg'// invisible image ( you can change the link if you want )
+        var banner = 'https://cdn.discordapp.com/attachments/853961222520045598/869738739214188565/welcome-image.png'
         let statut = ''
 
         await fetch(`https://discord.com/api/v8/users/${uid}`, {
@@ -71,18 +71,18 @@ module.exports = async (Discord, client, member) => {
             if(rgb >= 382.5){filler = "#000000"}
             ctx.fillStyle = filler
             
-            ctx.fillText(`Welcome to the server!`, canvas.width / 2, canvas.height / 8 - 25, 600)
+            ctx.fillText(`Welcome to the server!`, canvas.width / 2, canvas.height / 8 - 15, 600)
 
             ctx.font = '48px sans-serif'
             ctx.fillText(
                 `${member.displayName}!`,
                 canvas.width / 2,
-                canvas.height / 8 + 48 - 25,
+                canvas.height / 8 + 48 - 15,
                 600
             )
 
             left = (canvas.width - 300) / 2
-            top = (canvas.height - 300) / 2 + 25
+            top = (canvas.height - 300) / 2 + 35
 
             ctx.beginPath()
             ctx.arc(left + 150, top + 150, 150, 0, Math.PI * 2, true)
