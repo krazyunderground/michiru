@@ -19,7 +19,7 @@ module.exports = {
             .addField('Joined at:', `${joinServer}`, true)
             .addField('Created at:', `${joinDiscord}`, true)
             .addField('Status:', user.presence.status, true)
-            .addField('Roles:', member.roles.cache.map(r => `${r}`).join(' | '), true)
+            .addField('Roles:', member.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | "), true)
             .setFooter(`ID: ${user.id}`)
             .setTimestamp();
     
