@@ -30,7 +30,7 @@ module.exports = {
                     .setTimestamp()
                     .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
 
-                message.channel.send(udEmbed)
+                message.channel.send({embeds: [udEmbed]})
             });
     }
 }

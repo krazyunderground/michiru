@@ -28,7 +28,7 @@ module.exports = {
                         .setTitle("Are you sure this is the colour you want")
                         .setDescription("**Message Y / N**")
                         .setColor(args[1])
-                    message.channel.send(colourEmbed)
+                    message.channel.send({embeds: [colourEmbed]})
                     var collectedMessages = await message.channel.awaitMessages(filter, {time: 5000, max: 1, errors: ['time']});
                 } catch (e) {return message.reply("Looks like you took too long to reply!");};
                 

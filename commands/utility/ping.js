@@ -15,7 +15,7 @@ module.exports = {
             .setTimestamp()
             .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
         
-        message.channel.send(pingEmbed)
+        message.channel.send({embeds: [pingEmbed]})
 
     }
 }

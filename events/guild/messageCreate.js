@@ -58,7 +58,7 @@ module.exports = async (Discord, client, message) => {
                 .setThumbnail("https://static.wikia.nocookie.net/aceattorney/images/4/4d/Objection%21_%28SoJ%29.png/revision/latest/scale-to-width-down/275?cb=20210615182924")
                 .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
 
-            return message.channel.send(embed)
+            return message.channel.send({embeds: [embed]})
         }
     }
 

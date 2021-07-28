@@ -23,7 +23,7 @@ module.exports = {
             .setFooter(`ID: ${user.id}`)
             .setTimestamp();
     
-        message.channel.send({ embed: embed });
+        message.channel.send({ embeds: [embed] });
         return;
     }
 }

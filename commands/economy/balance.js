@@ -28,7 +28,7 @@ module.exports = {
             .setFooter("💸", client.user.displayAvatarURL())
             .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
 
-        message.channel.send(balEmbed)
+        message.channel.send({embeds: [balEmbed]})
 
     }
 }

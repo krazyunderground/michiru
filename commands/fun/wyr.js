@@ -1,4 +1,4 @@
-const  { MessageMenuOption, MessageMenu } = require('discord-buttons');
+const  { MessageMenuOption, MessageMenu } = require('discord.js');
 const axios = require('axios')
 
 module.exports = {
@@ -9,6 +9,8 @@ module.exports = {
     cooldown: 2,
     description: "searches google using the query provided",
     async execute(client, message, args, Discord, economy, util){
+
+        return message.reply("Currently being upgraded to v13!, Sorry for the inconvinience!")
 
         const msg = await message.channel.send("Loading! :gear:")
         const body = await axios.get('https://api.tovade.xyz/v1/fun/wyr')

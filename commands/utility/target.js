@@ -13,6 +13,6 @@ module.exports = {
             .setTitle("Lets get to 100 guilds!")
             .setDescription(`currently at ${number} out of 100`)
             .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
-        message.channel.send(embed)
+        message.channel.send({embeds: [embed]})
     }
 }

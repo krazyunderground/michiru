@@ -9,7 +9,7 @@ module.exports = {
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
 
-        if(message.member.hasPermission('ADMINISTRATOR') || message.member.id === "576470929874616330"){
+        if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
 
             if(!args[1]) return message.channel.send("Add what you want to change the prefix to!")
 

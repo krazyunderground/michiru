@@ -44,7 +44,7 @@ module.exports = {
                     {name: "From:", value: `\`${new Date(result.docs[0].from * 1000).toISOString().substr(11, 8)}\``, inline: true},
                     {name: "To:", value: `\`${new Date(result.docs[0].to * 1000).toISOString().substr(11, 8)}\``, inline: true}
                 )
-            message.channel.send(result.docs[0].at, embed)
+            message.channel.send(result.docs[0].at, {embeds: [embed]})
         });
     }
 }

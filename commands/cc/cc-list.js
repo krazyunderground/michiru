@@ -19,6 +19,6 @@ module.exports = {
 
         if(names.length == 0) return message.channel.send("This server has no commands!")
         embed.setDescription(names.join("\n"))
-        message.channel.send(embed)
+        message.channel.send({embeds: [embed]})
     }
 }

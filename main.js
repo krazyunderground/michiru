@@ -1,9 +1,6 @@
 const Discord = require("discord.js")
 require('dotenv').config()
-const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"], shards: 'auto'})
-
-const disbut = require('discord-buttons')
-disbut(client);
+const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"], shards: 'auto',  intents: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384],})
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()

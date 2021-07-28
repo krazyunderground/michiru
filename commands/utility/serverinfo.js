@@ -33,6 +33,6 @@ module.exports = {
             Boost Count: ${guild.premiumSubscriptionCount}
         `);
 
-        message.channel.send(embed)
+        message.channel.send({embeds: [embed]})
     },
 };

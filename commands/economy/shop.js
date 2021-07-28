@@ -18,6 +18,6 @@ module.exports = {
             .addField("God Pickaxe", "<:godpick:856588141497679899> Extra 200% when mining \nCost: `4600` \nID: `god`")
             .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
 
-        message.channel.send(shopEmbed)
+        message.channel.send({embeds: [shopEmbed]})
     }
 }

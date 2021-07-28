@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { MessageMenu, MessageMenuOption } = require(`discord-buttons`)
+const { MessageSelectMenu, MessageActionRow } = require(`discord.js`)
 
 module.exports = {
     name: "help",
@@ -99,79 +99,73 @@ module.exports = {
             cc.addField(`**${command.use}**`, command.description)
         })
 
-        let option1 = new MessageMenuOption()
-            .setLabel("Basic Commands")
-            .setValue("Option 1")
-            .setDescription("Display Basic Commands")
-            .setDefault()
-            .setEmoji("🌐")
-        let option2 = new MessageMenuOption()
-            .setLabel("Economy Commands")
-            .setValue("Option 2")
-            .setDescription("Display Economy Commands")
-            .setDefault()
-            .setEmoji("💰")
-        let option3 = new MessageMenuOption()
-            .setLabel("VC Commands")
-            .setValue("Option 3")
-            .setDescription("Display VC Commands")
-            .setDefault()
-            .setEmoji("🎵")
-        let option4 = new MessageMenuOption()
-            .setLabel("Admin/Dev Commands")
-            .setValue("Option 4")
-            .setDescription("Display Admin/Dev Commands")
-            .setDefault()
-            .setEmoji("👑")
-        let option5 = new MessageMenuOption()
-            .setLabel("Custom Commands")
-            .setValue("Option 5")
-            .setDescription("Display CC Commands")
-            .setDefault()
-            .setEmoji("🖌️")
-        let selection = new MessageMenu()
-            .setID("Selection")
-            .setMaxValues(1)
-            .setMinValues(1)
-            .setPlaceholder("Click here to choose help page")
-            .addOption(option1)
-            .addOption(option2)
-            .addOption(option3)
-            .addOption(option4)
-            .addOption(option5)
+        let option1 = {
+            label: "Basic Commands",
+            value: "Option 1",
+            description: "Display Basic Commands",
+            emoji: "🌐"
+        }
+        let option2 = {
+            label: "Economy Commands",
+            value: "Option 2",
+            description: "Display Economy Commands",
+            emoji: "💰"
+        }
+        let option3 = {
+            label: "Music Commands",
+            value: "Option 3",
+            description: "Display Music Commands",
+            emoji: "🎵"
+        }
+        let option4 = {
+            label: "Admin/Dev Commands",
+            value: "Option 4",
+            description: "Display Admin/Dev Commands",
+            emoji: "👑"
+        }
+        let option5 = {
+            label: "Custom Commands",
+            value: "Option 5",
+            description: "Display CC Commands",
+            emoji: "🖌️"
+        }
+        let row = new MessageActionRow().addComponents(
+            new MessageSelectMenu()
+                .setCustomId("Selection")
+                .setMaxValues(1)
+                .addOptions([option1, option2, option3, option4, option5])
+        )
         let embed2 = new Discord.MessageEmbed()
         .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`)).setTitle("Please select help page you'd like to visit")
 
-        let menumsg = await message.channel.send(embed2, selection)
+        let menumsg = await message.channel.send({content: "**NOTE: Due to the v13 upgrade, if any of the commands dont work, __PLEASE__ report them to Krazyunderground#0001**", embeds: [embed2], components: [row]})
 
         function menuselection(menu) {
             switch(menu.values[0]) {
                 case "Option 1": 
-                    menu.reply.send(basic, true)
+                    menu.reply({embeds: [basic], ephemeral: true})
                 break;
                 case "Option 2": 
-                    menu.reply.send(eco, true)
+                    menu.reply({embeds: [eco], ephemeral: true})
                 break;
                 case "Option 3": 
-                    menu.reply.send(music, true)
+                    menu.reply({embeds: [music], ephemeral: true})
                 break;
                 case "Option 4": 
-                    menu.reply.send(admin, true)
+                    menu.reply({embeds: [admin], ephemeral: true})
                 break;
                 case "Option 5": 
-                    menu.reply.send(cc, true)
+                    menu.reply({embeds: [cc], ephemeral: true})
                 break;
             }
         }
 
-        client.on("clickMenu", (menu) => {
+        var collector = menumsg.createMessageComponentCollector({time: 60000})
+        collector.on("collect", (menu) => {
             if(menu.message.id == menumsg.id) {
-                if(menu.clicker.user.id == message.author.id) menuselection(menu)
+                if(menu.member.id == message.author.id) menuselection(menu)
                 else menu.reply.send(":x: Only the message author can interact with the menu", true)
             }
         })
     }
 }
-    
-
-
