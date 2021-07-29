@@ -1,6 +1,7 @@
 const Canvas = require('canvas')
 const fetch = require('node-fetch')
 const { Image } = require('canvas')
+const fs = require("fs")
 
 module.exports = async (Discord, client, member) => {
     if(member.guild.id === "848707853350862858"){
@@ -96,13 +97,20 @@ module.exports = async (Discord, client, member) => {
 
             ctx.drawImage(avatar, left, top, 300, 300)
 
-            const attachment = new Discord.MessageAttachment(
-                canvas.toBuffer(),
-                'weclome-image.png'
-            )
+            path = `./assets/${member.id}-${member.guild.name}.png`
 
-            message = channel.send(`Welcome to the server, ${member}`, attachment)
+            // await fs.writeFileSync(
+            //     path, canvas.toBuffer('image/png')
+            // )
+
+            message = await channel.send({content: `Welcome to the server, ${member}`, files: [{attachment: /*`./assets/${member.id}-${member.guild.name}.png`*/canvas.toBuffer(), name: `welcome-image.png`}]})
+            //channel.send()
             console.log(avatar.width, avatar.height)
+            // fs.unlinkSync(`./assets/${member.id}-${member.guild.name}.png`, (err) => {
+            //     if (err) throw err;
+            //     console.log('asset was deleted');
+            // })
         }, 1000)
+        
     }
 }

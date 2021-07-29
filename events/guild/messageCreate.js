@@ -2,6 +2,7 @@ const db = require('quick.db')
 const economy = new db.table('economy')
 const util = new db.table('util')
 
+const meant = require('meant')
 const fs = require('fs')
 
 const cooldowns = new Map()
@@ -27,8 +28,12 @@ module.exports = async (Discord, client, message) => {
             return
         }
     }    
+
+    const commands = new Array()
+
+    client.commands.forEach(command => { commands.push(command.name) })
     
-    if(!cmd) return
+    if(!cmd) return message.channel.send(`No command found. Did you mean \`${meant(command, commands)}\`?`)
 
     // {commands:{
     //     test:
@@ -63,6 +68,8 @@ module.exports = async (Discord, client, message) => {
     }
 
     time_stamps.set(message.author.id, current_time)
+
+    if(cmd.category === "music") return message.channel.send("VC commands unavailible due to V13, try again in a few days time!")
 
     if(cmd) cmd.execute(client, message, args, Discord, economy, util)
 }
