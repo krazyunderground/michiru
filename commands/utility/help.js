@@ -9,10 +9,10 @@ module.exports = {
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         // if(!args[1]) return message.reply("Add which page you want to view between 1-4!\n1. Basic commands\n2. Economy commands\n3. Music commands\n4. Admin/Developer")
-        const embed = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`));
+        const embed = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`));
         let prefix = util.get(`${message.guild.id}.prefix`)
 
-            const basic = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            const basic = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle("Command List: Basic")
             //     .addFields(
             //         { name: `**${prefix}help**`, value: `Shows a list of all the commands.` },
@@ -23,7 +23,7 @@ module.exports = {
             //         { name: `**${prefix}colour**`, value: `Change your prefered embed colour in each guild` }
             //     )
 
-            const eco = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            const eco = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle(`Command list: Economy`)
             //     .addFields(
             //         { name: `**${prefix}balance**`, value: `Shows your current balance` },
@@ -31,7 +31,7 @@ module.exports = {
             //         { name: `**${prefix}shop**`, value: `Shows the prices and item name of each pickaxe` }
             //     );
 
-            const music = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            const music = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle(`Command list: VC`)
             //     .addFields(
             //         { name: `**${prefix}music play**`, value: `Searches for a youtube video or plays provided video URL` },
@@ -39,14 +39,14 @@ module.exports = {
             //         { name: `**${prefix}music stop**`, value: `The bot leaves the VC` },
             //     )
 
-            const admin = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            const admin = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle(`Command list: Admin/Developer`)
             //     .addFields(
             //         { name: `**${prefix}prefix**`, value: `Changes prefix of the bot for the server` },
             //         { name: `**${prefix}eval (DEV ONLY)**`, value: `Run/evaluate code before implimenting it into the real bot` }
             //     )
 
-            const cc = new Discord.MessageEmbed().setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            const cc = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
             .setTitle(`Command list: Custom Commands`)
             // .addFields(
             //     { name: `**${prefix}cc-create**`, value: `Allows an admin to create a custom command` },
@@ -164,7 +164,7 @@ module.exports = {
         collector.on("collect", (menu) => {
             if(menu.message.id == menumsg.id) {
                 if(menu.member.id == message.author.id) menuselection(menu)
-                else menu.reply.send(":x: Only the message author can interact with the menu", true)
+                else menu.reply(":x: Only the message author can interact with the menu", true)
             }
         })
     }

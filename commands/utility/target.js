@@ -12,7 +12,7 @@ module.exports = {
         var embed = new Discord.MessageEmbed()
             .setTitle("Lets get to 100 guilds!")
             .setDescription(`currently at ${number} out of 100`)
-            .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            .setColor(util.get(`${message.author.id}.colour`))
         message.channel.send({embeds: [embed]})
     }
 }

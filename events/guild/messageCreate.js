@@ -61,7 +61,7 @@ module.exports = async (Discord, client, message) => {
                 .setTitle(responses[Math.floor(Math.random() * responses.length)])
                 .setDescription(`Please wait \`${time_left.toFixed(1)}\` more seconds before using \`${cmd.name}\` again!`)
                 .setThumbnail("https://static.wikia.nocookie.net/aceattorney/images/4/4d/Objection%21_%28SoJ%29.png/revision/latest/scale-to-width-down/275?cb=20210615182924")
-                .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+                .setColor(util.get(`${message.author.id}.colour`))
 
             return message.channel.send({embeds: [embed]})
         }

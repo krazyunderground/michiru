@@ -8,7 +8,7 @@ module.exports = {
     execute(client, message, args, Discord, economy, util){
         var cclist = util.get(`${message.guild.id}.commands`)
         const embed = new Discord.MessageEmbed()
-        .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+        .setColor(util.get(`${message.author.id}.colour`))
         .setTitle(`${message.guild.name}'s custom commands!`)
 
         var names = []

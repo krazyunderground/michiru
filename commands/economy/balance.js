@@ -26,7 +26,7 @@ module.exports = {
             .setDescription(`\n**__<:mininggems:854075484869230652> ${member.user.username} has \`${bal}\` black quartz! <:mininggems2:854075538938003470>__**\n\nYou can earn more by using \`!m mine\`, for more detail use \`!m help\`!`)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
-            .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            .setColor(util.get(`${message.author.id}.colour`))
 
         message.channel.send({embeds: [balEmbed]})
 

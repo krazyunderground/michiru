@@ -64,7 +64,7 @@ module.exports = {
             .setDescription(`\n**__<:mininggems:854075484869230652> ${message.member.user.username} has gained \`${amount}\` black quartz! <:mininggems2:854075538938003470>__**\nCurrent pickaxe: \`${pickaxe}\`\nNew total: \`${economy.get(`${message.author.id}.quartz`)}\`\n\nNow that you have more quartz, you can buy thingss in the \`!m shop\`! \nFor more detail use \`!m help\`!`)
             .setTimestamp()
             .setFooter("⛏️", client.user.displayAvatarURL())
-            .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            .setColor(util.get(`${message.author.id}.colour`))
 
         message.channel.send({embeds: [balEmbed]})
     }

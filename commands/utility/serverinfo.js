@@ -10,7 +10,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle(message.guild.name)
         .setThumbnail(message.guild.iconURL())
-        .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+        .setColor(util.get(`${message.author.id}.colour`))
         .addField('Genaral Info', `
             ID: ${guild.id},
             Name: ${guild.name},

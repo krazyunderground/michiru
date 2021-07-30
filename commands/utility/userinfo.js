@@ -14,7 +14,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL)
             .setDescription(`${user}`)
-            .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            .setColor(util.get(`${message.author.id}.colour`))
             .setThumbnail(user.displayAvatarURL())
             .addField('Joined at:', `${joinServer}`, true)
             .addField('Created at:', `${joinDiscord}`, true)

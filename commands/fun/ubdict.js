@@ -28,7 +28,7 @@ module.exports = {
                     .addField("Example:", result.list[0].example.replace(/\[/g, '').replace(/\]/g, ''))
                     .setFooter('defid: ' + result.list[0].defid)
                     .setTimestamp()
-                    .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+                    .setColor(util.get(`${message.author.id}.colour`))
 
                 message.channel.send({embeds: [udEmbed]})
             });

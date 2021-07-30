@@ -13,7 +13,7 @@ module.exports = {
             .setDescription(`🏓 Latency is ${message.createdTimestamp - Date.now()}ms \n⌛ API Latency is ${Math.round(client.ws.ping)}ms\n💎 Shard ID: ${message.guild.shardID}\n🆙 Uptime: ${process.uptime().toFixed(2)}`)
             .setFooter("Pong!", client.user.displayAvatarURL())
             .setTimestamp()
-            .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`))
+            .setColor(util.get(`${message.author.id}.colour`))
         
         message.channel.send({embeds: [pingEmbed]})
 
