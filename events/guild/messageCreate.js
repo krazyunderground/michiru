@@ -13,10 +13,13 @@ module.exports = async (Discord, client, message) => {
     client.checks.get('util').execute(Discord, client, message, economy, util)
 
     let prefix = util.get(`${message.guild.id}.prefix`)
+    const args = message.content.slice(prefix.length).split(/ +/)
+
+    if(message.mentions.users.first() === client.user && !args[1]) return message.channel.send(`Hello! This server's prefix is \`${prefix}\`!`)
 
     if(!message.content.toLowerCase().startsWith(prefix) || message.author === client.user) return
 
-    const args = message.content.slice(prefix.length).split(/ +/)
+
     const command = args[0].toLowerCase()
 
     const cmd = await client.commands.get(command) || client.commands.find(a => a.aliases && a.aliases.includes(command))

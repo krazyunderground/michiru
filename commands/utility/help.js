@@ -14,48 +14,18 @@ module.exports = {
 
             const basic = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle("Command List: Basic")
-            //     .addFields(
-            //         { name: `**${prefix}help**`, value: `Shows a list of all the commands.` },
-            //         { name: `**${prefix}ping**`, value: `View latencies of the bot` },
-            //         { name: `**${prefix}google**`, value: `Googles whatever\`s specified` },
-            //         { name: `**${prefix}ubdict**`, value: `Gets a defenition from the Urban Dictionary` },
-            //         { name: `**${prefix}meme**`, value: `Adds a caption to the attached image` },
-            //         { name: `**${prefix}colour**`, value: `Change your prefered embed colour in each guild` }
-            //     )
 
             const eco = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle(`Command list: Economy`)
-            //     .addFields(
-            //         { name: `**${prefix}balance**`, value: `Shows your current balance` },
-            //         { name: `**${prefix}mine**`, value: `Allows you to get more quartz` },
-            //         { name: `**${prefix}shop**`, value: `Shows the prices and item name of each pickaxe` }
-            //     );
 
             const music = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle(`Command list: VC`)
-            //     .addFields(
-            //         { name: `**${prefix}music play**`, value: `Searches for a youtube video or plays provided video URL` },
-            //         { name: `**${prefix}music skip**`, value: `Skips 1 song in the queue` },
-            //         { name: `**${prefix}music stop**`, value: `The bot leaves the VC` },
-            //     )
 
             const admin = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
                 .setTitle(`Command list: Admin/Developer`)
-            //     .addFields(
-            //         { name: `**${prefix}prefix**`, value: `Changes prefix of the bot for the server` },
-            //         { name: `**${prefix}eval (DEV ONLY)**`, value: `Run/evaluate code before implimenting it into the real bot` }
-            //     )
 
             const cc = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
             .setTitle(`Command list: Custom Commands`)
-            // .addFields(
-            //     { name: `**${prefix}cc-create**`, value: `Allows an admin to create a custom command` },
-            //     { name: `**${prefix}cc-delete**`, value: `Allows an admin to remove a custom command` },
-            //     { name: `**${prefix}cc-list**`, value: `Shows list of custom commands for that server` }
-            // )
-
-
-        // message.channel.send(embed)
 
         var basiccommand = new Array()
         var ecocommand = new Array()
@@ -136,7 +106,7 @@ module.exports = {
                 .addOptions([option1, option2, option3, option4, option5])
         )
         let embed2 = new Discord.MessageEmbed()
-        .setColor(util.get(`${message.guild.id}.${message.author.id}.colour`)).setTitle("Please select help page you'd like to visit")
+        .setColor(util.get(`${message.author.id}.colour`)).setTitle("Please select help page you'd like to visit")
 
         let menumsg = await message.channel.send({content: "**NOTE: Due to the v13 upgrade, if any of the commands dont work, __PLEASE__ report them to Krazyunderground#0001**", embeds: [embed2], components: [row]})
 

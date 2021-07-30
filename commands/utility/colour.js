@@ -8,8 +8,10 @@ module.exports = {
     cooldown: 0,
     description: "allows the user to set a new colour for their embeds",
     async execute(client, message, args, Discord, economy, util){
-
-        if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("868656454054342677")) return message.channel.send("This is a booster only feature! To access such features, boost here: discord.gg/t9yebSe7jg\n(or you can try to barter with Krazy)")
+        // 854061604258054214
+        if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("854061604258054214")){
+            if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("868656454054342677")) return message.channel.send("This is a booster only feature! To access such features, boost here: discord.gg/t9yebSe7jg\n(or you can try to barter with Krazy)")
+        }
 
         var re = /[0-9A-Fa-f]{6}/g
         // if(re.test(args[1])) {
