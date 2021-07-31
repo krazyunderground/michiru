@@ -36,7 +36,11 @@ module.exports = async (Discord, client, message) => {
 
     client.commands.forEach(command => { commands.push(command.name) })
     
-    if(!cmd) return message.channel.send(`No command found. Did you mean \`${meant(command, commands)}\`?`)
+    if(!cmd) { 
+        if((meant(command, commands)).length) return message.channel.send(`No command found. Did you mean \`${meant(command, commands)}\`?`) 
+        return message.channel.send(`No command found.`)
+        
+    }
 
     // {commands:{
     //     test:

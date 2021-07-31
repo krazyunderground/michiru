@@ -33,6 +33,6 @@ module.exports = {
             .setTimestamp()
         message
             .channel
-            .send(imageEmbed)
+            .send({embeds: [imageEmbed]})
     }
 }
