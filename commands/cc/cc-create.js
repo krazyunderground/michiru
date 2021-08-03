@@ -27,6 +27,3 @@ module.exports = {
         message.channel.send(`Custom command \`${args[1]}\` created!`)
     }
 }
-//its so funny watching you stop, everytime i just think "he doin a big thonk", im gonna make a big thonk meme while  you do this
-//very accurate
-//computational thinking at its finest AKA big brain
