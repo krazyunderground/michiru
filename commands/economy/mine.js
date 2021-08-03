@@ -26,35 +26,6 @@ module.exports = {
 
         const base = randomInt(mini, maxi)
 
-        // if(pick == 1){
-        //     var amount = base
-        // } else if(pick == 2){
-        //     var amount = Math.round(base * 1.1)
-        // } else if(pick == 3){
-        //     var amount = Math.round(base * 1.2)
-        // } else if(pick == 4){
-        //     var amount = Math.round(base * 1.5)
-        // } else if(pick == 5){
-        //     var amount = Math.round(base * 2)
-        // } else if(pick == 6){
-        //     var amount = Math.round(base * 3)
-        // }
-
-        // if(pick == 1){
-        //     var pickaxe = "basic"
-        // } else if(pick == 2){
-        //     var pickaxe = "reinforced"
-        // } else if(pick == 3){
-        //     var pickaxe = "elite"
-        // } else if(pick == 4){
-        //     var pickaxe = "pro"
-        // } else if(pick == 5){
-        //     var pickaxe = "epic"
-        // } else if(pick == 6){
-        //     var pickaxe = "god"
-        // }
-//you smort
-//just making it efficient
         switch(pick){
             case 1:
                 var amount = base

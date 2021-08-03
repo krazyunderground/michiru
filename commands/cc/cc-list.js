@@ -23,7 +23,3 @@ module.exports = {
         message.channel.send({embeds: [embed]})
     }
 };
-//mines green and not slanted.. so
-//huh, fair enough
-//i htink its cause im reading it in my head
-//boom, try that

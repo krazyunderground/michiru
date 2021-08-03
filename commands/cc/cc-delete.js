@@ -20,4 +20,4 @@ module.exports = {
         
         message.channel.send(`Custom command \`${args[1]}\` deleted!`)
     }
-}
+};
