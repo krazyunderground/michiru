@@ -7,7 +7,9 @@ module.exports = {
     use: "!m shop",
     cooldown: 2,
     description: "allows the user to buy a new pick",
-    execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord, economy, util){
+        const userutil = await client.funtions.get("getUtil").execute(message);
+
         const pickaxes = [
             {
                 name: "Reinforced Pickaxe",
@@ -43,7 +45,7 @@ module.exports = {
         const shopEmbed = new Discord.MessageEmbed()
             .setTitle("Shop")
             .setDescription("Use `!m buy [item]` to buy an item!")
-            .setColor(util.get(`${message.author.id}.colour`))
+            .setColor(userutil.colour)
             for (pick of pickaxes) {
                 shopEmbed.addField(`${pick.name}`, `${pick.description} \nCost: ${pick.cost} \nID: ${pick.id}`)
             }

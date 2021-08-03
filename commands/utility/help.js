@@ -8,23 +8,25 @@ module.exports = {
     use: "!m help",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
+        const userutil = await client.functions.get("getUtil").execute(message)
+
         // if(!args[1]) return message.reply("Add which page you want to view between 1-4!\n1. Basic commands\n2. Economy commands\n3. Music commands\n4. Admin/Developer")
-        const embed = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`));
+        const embed = new Discord.MessageEmbed().setColor(userutil.colour);
         let prefix = util.get(`${message.guild.id}.prefix`)
 
-            const basic = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
+            const basic = new Discord.MessageEmbed().setColor(userutil.colour)
                 .setTitle("Command List: Basic")
 
-            const eco = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
+            const eco = new Discord.MessageEmbed().setColor(userutil.colour)
                 .setTitle(`Command list: Economy`)
 
-            const music = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
+            const music = new Discord.MessageEmbed().setColor(userutil.colour)
                 .setTitle(`Command list: VC`)
 
-            const admin = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
+            const admin = new Discord.MessageEmbed().setColor(userutil.colour)
                 .setTitle(`Command list: Admin/Developer`)
 
-            const cc = new Discord.MessageEmbed().setColor(util.get(`${message.author.id}.colour`))
+            const cc = new Discord.MessageEmbed().setColor(userutil.colour)
             .setTitle(`Command list: Custom Commands`)
 
         var basiccommand = new Array()
@@ -106,7 +108,7 @@ module.exports = {
                 .addOptions([option1, option2, option3, option4, option5])
         )
         let embed2 = new Discord.MessageEmbed()
-        .setColor(util.get(`${message.author.id}.colour`)).setTitle("Please select help page you'd like to visit")
+        .setColor(userutil.colour).setTitle("Please select help page you'd like to visit")
 
         let menumsg = await message.channel.send({content: "**NOTE: Due to the v13 upgrade, if any of the commands dont work, __PLEASE__ report them to Krazyunderground#0001**", embeds: [embed2], components: [row]})
 
@@ -134,7 +136,7 @@ module.exports = {
         collector.on("collect", (menu) => {
             if(menu.message.id == menumsg.id) {
                 if(menu.member.id == message.author.id) menuselection(menu)
-                else menu.reply(":x: Only the message author can interact with the menu", true)
+                else menu.reply({content: ":x: Only the message author can interact with the menu", ephemeral: true})
             }
         })
     }

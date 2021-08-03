@@ -5,10 +5,22 @@ const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"],
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
 client.checks = new Discord.Collection()
+client.functions = new Discord.Collection()
 
-const handlers = ['command_handler', 'event_handler', 'check_handler']
+const handlers = ['command_handler', 'event_handler', 'function_handler']
 handlers.forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 })
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGO_SRV, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+}).then(() => {
+    console.log("connected to database");
+}).catch((err) => {
+    console.log(err);
+});
 
-client.login(process.env.DISCORD_TOKEN)
+
+client.login(process.env.LOGIN_TOKEN);

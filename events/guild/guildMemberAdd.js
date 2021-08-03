@@ -113,4 +113,48 @@ module.exports = async (Discord, client, member) => {
         }, 1000)
         
     }
+    //Create userEcon in DB
+    const userEcon = require("../../models/userEcon");
+    try {
+        const econ = await userEcon.findOne({
+          userID: member.id,
+        });
+  
+        if (!econ) {
+          let profile = await userEcon.create({
+            userID: member.id,
+            quartz: 0,
+            pick: 1,
+            pickIMG: "https://cdn.discordapp.com/attachments/853961222520045598/856605265277091840/basic_pick.png"
+          });
+  
+          profile.save();
+          console.log(`${member.id} New econ profile created!`);
+        } else {
+          console.log(`${member.id} already has a econ profile!`);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+      //create userUtil in DB
+      const userUtil = require("../../models/userUtil");
+      try {
+        const util = await userUtil.findOne({
+          userID: member.id,
+        });
+  
+        if (!util) {
+          let profile = await userUtil.create({
+            userID: member.id,
+            color: "#FF9CA9"
+          });
+  
+          profile.save();
+          console.log(`${member.id} New util profile created!`);
+        } else {
+          console.log(`${member.id} already has a util profile!`);
+        }
+      } catch (err) {
+        console.log(err);
+      }
 }
