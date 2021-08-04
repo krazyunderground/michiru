@@ -7,6 +7,8 @@ module.exports = {
     category: "basic",
     use: "!m serverinfo",
     async execute(client, message, args, Discord, economy, util){
+        const userutil = await client.functions.get("getUtil").execute(message)
+        
         let member = message.mentions.members.first() || message.member;
         let user = member.user
         const joinDiscord = user.createdAt
@@ -14,7 +16,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL)
             .setDescription(`${user}`)
-            .setColor(util.get(`${message.author.id}.colour`))
+            .setColor(userutil.colour)
             .setThumbnail(user.displayAvatarURL())
             .addField('Joined at:', `${joinServer}`, true)
             .addField('Created at:', `${joinDiscord}`, true)

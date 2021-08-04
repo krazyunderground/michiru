@@ -22,4 +22,4 @@ mongoose.connect(process.env.MONGO_SRV, {
     console.log(err);
 });
 
-client.login(process.env.LOGIN_TOKEN);
+client.login(process.env.DISCORD_TOKEN);

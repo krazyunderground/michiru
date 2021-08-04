@@ -6,11 +6,13 @@ module.exports = {
     category: "basic",
     use: "!m serverinfo",
     async execute(client, message, args, Discord, economy, util){
+        const userutil = await client.functions.get("getUtil").execute(message)
+        
         const guild = message.guild;
         const embed = new Discord.MessageEmbed()
         .setTitle(message.guild.name)
         .setThumbnail(message.guild.iconURL())
-        .setColor(util.get(`${message.author.id}.colour`))
+        .setColor(userutil.colour)
         .addField('Genaral Info', `
             ID: ${guild.id},
             Name: ${guild.name},

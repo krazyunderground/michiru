@@ -11,6 +11,8 @@ module.exports = {
     category: "basic",
     use: "!m whatanime",
     async execute(client, message, args, Discord, economy, util){
+        const userutil = await client.funtions.get("getUtil").execute(message);
+        
         var Attachment = (message.attachments).array()
         
         if(!Attachment[0]) return message.channel.send("Upload the image in the same message as the command!")
@@ -47,7 +49,7 @@ module.exports = {
                     {name: "To:", value: `\`${new Date(result.result[0].to * 1000).toISOString().substr(11, 8)}\``, inline: true},
                     {name: "Synonyms:", value: `\`${result.result[0].anilist.synonyms.join(", ")}\``, inline: true},
                 )
-            .setColor(util.get(`${message.author.id}.colour`))
+            .setColor(userutil.colour)
             message.channel.send({embeds: [embed]})
         });
     }

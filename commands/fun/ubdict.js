@@ -8,7 +8,9 @@ module.exports = {
     use: "!m ubdict",
     cooldown: 2,
     description: "gets word defenition using urban dictionary",
-    execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord, economy, util){
+        const userutil = await client.funtions.get("getUtil").execute(message);
+
         if(!args[1]) return message.reply("Add what you want to define from UD!")
         
         fetch(
@@ -28,7 +30,7 @@ module.exports = {
                     .addField("Example:", result.list[0].example.replace(/\[/g, '').replace(/\]/g, ''))
                     .setFooter('defid: ' + result.list[0].defid)
                     .setTimestamp()
-                    .setColor(util.get(`${message.author.id}.colour`))
+                    .setColor(userutil.colour)
 
                 message.channel.send({embeds: [udEmbed]})
             });
