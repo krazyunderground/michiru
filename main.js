@@ -11,4 +11,9 @@ handlers.forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 })
 
+<<<<<<< Updated upstream
 client.login(process.env.DISCORD_TOKEN)
+=======
+
+client.login(process.env.DISCORD_TOKEN);
+>>>>>>> Stashed changes
