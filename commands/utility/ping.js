@@ -11,7 +11,7 @@ module.exports = {
 
         const pingEmbed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setDescription(`🏓 Latency is ${message.createdTimestamp - Date.now()}ms \n⌛ API Latency is ${Math.round(client.ws.ping)}ms\n💎 Shard ID: ${message.guild.shardID}\n🆙 Uptime: ${process.uptime().toFixed(2)}`)
+            .setDescription(`🏓 Latency is ${message.createdTimestamp - Date.now()}ms \n⌛ API Latency is ${Math.round(client.ws.ping)}ms\n🆙 Uptime: ${process.uptime().toFixed(2)}`)
             .setFooter("Pong!", client.user.displayAvatarURL())
             .setTimestamp()
             .setColor(userutil.colour)
