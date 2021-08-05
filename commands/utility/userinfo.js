@@ -5,7 +5,7 @@ module.exports = {
     description: 'this show a user\'s info!',
     cooldown: 0,
     category: "basic",
-    use: "!m serverinfo",
+    use: "!m userinfo",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
         
