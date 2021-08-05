@@ -1,5 +1,7 @@
 const userEcon = require('../models/userEcon')
 
+//dude how do i make an empty string. oh
+
 module.exports = {
     name: "getAuthorEcon",
     async execute(message) {
@@ -12,10 +14,12 @@ module.exports = {
             if (!AuthorEcon) {
                 let ap = await userEcon.create({
                     userID: author,
-                    quartz: 200,
+                    coins: 200,
                     pick: 1,
-                    pickIMG:
-                        "https://cdn.discordapp.com/attachments/853961222520045598/856605265277091840/basic_pick.png",
+                    pickIMG:"https://cdn.discordapp.com/attachments/853961222520045598/856605265277091840/basic_pick.png",
+                    inv: "",
+                    oreInv: `iron@0 tungsten@0 gold@0 copper@0 cobalt@0 diamond@0`,
+                    owns: ""
                 });
 
                 ap.save();

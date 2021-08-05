@@ -4,7 +4,8 @@ const { Image } = require('canvas')
 const fs = require("fs")
 
 module.exports = async (Discord, client, member) => {
-    if(member.guild.id === "848707853350862858"){
+    const welcomeChannelProfile = await client.functions.get("checkGuild").execute(member)
+    if(welcomeChannelProfile.welcomeChannel){
         let uid = member.id
         let receive = ''
         var banner = 'https://cdn.discordapp.com/attachments/853961222520045598/869738739214188565/welcome-image.png'
@@ -44,8 +45,7 @@ module.exports = async (Discord, client, member) => {
         })
 
         setTimeout(async () => {
-
-            const channel = await member.guild.channels.cache.find(ch => ch.id === "853961163104976917")
+            const channel = client.channels.cache.get(welcomeChannelProfile.welcomeChannel)
 
             var background = new Image();
             await new Promise(r => background.onload=r, background.src=banner)

@@ -11,7 +11,7 @@ module.exports = {
         const userecon = await client.functions.get("getAuthorEcon").execute(message);
         const userutil = await client.funtions.get("getUtil").execute(message);
 
-        const bal = userecon.quartz
+        const bal = userecon.coins
         const pick = userutil.pick
 
         if(!args[1]) return message.reply("Add what you want to buy!")

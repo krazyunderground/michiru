@@ -52,12 +52,6 @@ module.exports = async (Discord, client, message) => {
     return message.channel.send(`No command found.`);
   }
 
-  // {commands:{
-  //     test:
-  //         response: ""
-  //     }
-  // }
-
   if (!cooldowns.has(cmd.name)) {
     cooldowns.set(cmd.name, new Discord.Collection());
   }
@@ -103,6 +97,12 @@ module.exports = async (Discord, client, message) => {
     return message.channel.send(
       "VC commands unavailible due to V13, try again in a few days time!"
     );
+
+  if(cmd.category === "eco"){
+    if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("854061604258054214")){
+      message.channel.send("Economy overhaul in progress! stay tuned in the support server for when it drops!")
+    }
+  }
 
   if (cmd) cmd.execute(client, message, args, Discord, economy, util);
 
