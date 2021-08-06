@@ -1,6 +1,6 @@
 const guildData = require("../../models/guildData");
 module.exports = async (Discord, client, guild) => {
-    const channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
+    const channel = await guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
     const inviteEmbed = new Discord.MessageEmbed()
         .setThumbnail("https://i.imgur.com/BeerOcA.jpg")
         .setImage("https://thumbs.gfycat.com/ThinEnchantingCusimanse-max-1mb.gif")
