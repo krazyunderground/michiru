@@ -21,7 +21,7 @@ module.exports = {
         const balEmbed = new Discord.MessageEmbed()
             .setAuthor(member.user.tag, member.user.displayAvatarURL())
             .setTitle(`${member.user.username}'s Balance!`)
-            .setDescription(`\n**__:moneybag: ${member.user.username} has \`${memberBal.coins}\` black quartz! :moneybag:__**\n\nYou can earn more by using \`!m mine\`, for more detail use \`!m help\`!`)
+            .setDescription(`\n**__:moneybag: ${member.user.username} has \`${memberBal.coins}\` black coins! :moneybag:__**\n\nYou can earn more by using \`!m mine\`, for more detail use \`!m help\`!`)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
             .setColor(`${util.colour}`)

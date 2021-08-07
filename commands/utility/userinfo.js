@@ -14,13 +14,12 @@ module.exports = {
         const joinDiscord = user.createdAt
         const joinServer = member.joinedAt
         let embed = new Discord.MessageEmbed()
-            .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL)
+            .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL({dynamic: true}))
             .setDescription(`${user}`)
             .setColor(userutil.colour)
-            .setThumbnail(user.displayAvatarURL())
+            .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
             .addField('Joined at:', `${joinServer}`, true)
             .addField('Created at:', `${joinDiscord}`, true)
-            .addField('Status:', user.presence.status, true)
             .addField('Roles:', member.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | "), true)
             .setFooter(`ID: ${user.id}`)
             .setTimestamp();

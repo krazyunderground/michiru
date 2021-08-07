@@ -94,9 +94,11 @@ module.exports = async (Discord, client, message) => {
 
   time_stamps.set(message.author.id, current_time);
 
+  if(cmd.category === "music") return message.channel.send("Voice commands aren't in service currently :(")
+
   if(cmd.category === "eco"){
     if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("854061604258054214")){
-      message.channel.send("Economy overhaul in progress! stay tuned in the support server for when it drops!")
+      return message.channel.send("Economy overhaul in progress! stay tuned in the support server for when it drops!")
     }
   }
 
