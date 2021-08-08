@@ -7,7 +7,7 @@ module.exports = {
     use: "!m oreinv",
     aliases: ['oi','oinv'],
     cooldown: 20,
-    description: "allows the user to get more materials",
+    description: "allows the user to check their inventory of ores",
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
         const userecon = await client.functions.get("getTargetEcon").execute(message);

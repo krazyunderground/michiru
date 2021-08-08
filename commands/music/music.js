@@ -1,6 +1,10 @@
 const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 
+const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
+
+const player = createAudioPlayer()
+
 const queue = new Map();
 
 module.exports = {
@@ -55,7 +59,11 @@ module.exports = {
                 queue_constructor.songs.push(song);
     
                 try {
-                    const connection = await voice_channel.join();
+                    var connection = await joinVoiceChannel({
+                        channelId: voice_channel.id,
+                        guildId: message.guild.id,
+                        adapterCreator: message.guild.voiceAdapterCreator
+                    })
                     queue_constructor.connection = connection;
                     video_player(message.guild, queue_constructor.songs[0]);
                 } catch (err) {
@@ -69,8 +77,8 @@ module.exports = {
             }
         }
 
-        else if(cmd === 'skip') skip_song(message, server_queue);
-        else if(cmd === 'stop') stop_song(message, server_queue);
+        else if(cmd === 'skip') skip_song(message);
+        else if(cmd === 'stop') stop_song(message);
     }
     
 }
@@ -84,25 +92,33 @@ const video_player = async (guild, song) => {
         return;
     }
     const stream = ytdl(song.url, { filter: 'audioonly' });
-    song_queue.connection.play(stream, { seek: 0, volume: 0.5 })
-    .on('finish', () => {
+    var resource = createAudioResource(stream)
+    player.play(resource)
+    song_queue.connection.subscribe(player)
+    player.on(AudioPlayerStatus.Idle, () => {
         song_queue.songs.shift();
         video_player(guild, song_queue.songs[0]);
     });
-    console.log(song)
     await song_queue.text_channel.send(`🎶 Now playing **${song.title}** - ${song.duration.toString()}`)
 }
 
-const skip_song = (message, server_queue) => {
+const skip_song = (message) => {
+    const server_queue = queue.get(message.guild.id);
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
     if(!server_queue){
         return message.channel.send(`There are no songs in queue 😔`);
     }
-    server_queue.connection.dispatcher.end();
+    song_queue.songs.shift();
+    video_player(message.guild, song_queue.songs[0]);
 }
 
-const stop_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+const stop_song = (message) => {
+    const { getVoiceConnection } = require('@discordjs/voice');
+
+    const connection = getVoiceConnection(message.guild.id);
+
+    const server_queue = queue.get(message.guild.id);
+    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!')
     server_queue.songs = [];
-    server_queue.connection.dispatcher.end();
+    connection.destroy()
 }

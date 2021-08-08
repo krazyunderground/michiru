@@ -8,7 +8,7 @@ module.exports = {
     cooldown: 2,
     description: "allows the user to buy a new pick",
     async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.funtions.get("getUtil").execute(message);
+        const userutil = await client.functionss.get("getUtil").execute(message);
 
         const pickaxes = [
             {

@@ -2,19 +2,22 @@ const tts = require('google-tts-api');
 const download = require('download');
 const { Readable } = require('stream');
 
+const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
+
 module.exports = {
   name: "tts",
   description: "talks for a user in a VC",
   cooldown: 0,
   category: "music",
   use: "!m tts",
-  settings: {
-    baseAudio: 1
-  },
   async execute(client, message, argsold, Discord, economy, util) {
     let vc = message.member.voice.channel;
     if (!vc) return message.channel.send('Your\'re not in a vc!');
-    await vc.join()
+    let connection = await joinVoiceChannel({
+      channelId: vc.id,
+      guildId: message.guild.id,
+      adapterCreator: message.guild.voiceAdapterCreator
+  })
 
     if(!argsold[2]) return message.channel.send(`Include the language you want to use! <https://cloud.google.com/speech/docs/languages>\n||note: some of the languages won't work||`)
 
@@ -27,21 +30,19 @@ module.exports = {
       slow: false
     }).map(val => val.url);
 
-    let options = {
-      seek: 0,
-      volume: this.settings.baseAudio
-    };
+    const player = createAudioPlayer()
 
     for (let url of urls){
       await new Promise(async (resolve, reject) => {
-        let audio = Readable.from(await download(url));
+        let audio = createAudioResource(Readable.from(await download(url)))
 
-        const stream = message.guild.me.voice.connection.play(audio, options);
+        connection.subscribe(player)
 
-        stream.on('finish', () => {
-          stream.end();
-          delete audio, stream;
-          vc.leave()
+        const stream = player.play(audio)
+
+        player.on(AudioPlayerStatus.Idle, () => {
+          connection.destroy()
+          delete audio, connection;
           resolve();
         });
       })

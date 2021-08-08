@@ -9,7 +9,7 @@ module.exports = {
     cooldown: 2,
     description: "gets word defenition using urban dictionary",
     async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.funtions.get("getUtil").execute(message);
+        const userutil = await client.functions.get("getUtil").execute(message);
 
         if(!args[1]) return message.reply("Add what you want to define from UD!")
         

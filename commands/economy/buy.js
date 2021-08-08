@@ -9,7 +9,7 @@ module.exports = {
     async execute(client, message, args, Discord, economy){
 
         const userecon = await client.functions.get("getAuthorEcon").execute(message);
-        const userutil = await client.funtions.get("getUtil").execute(message);
+        const userutil = await client.functions.get("getUtil").execute(message);
 
         const bal = userecon.coins
         const pick = userutil.pick

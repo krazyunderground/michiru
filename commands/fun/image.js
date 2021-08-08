@@ -15,7 +15,7 @@ module.exports = {
     use: "!m image",
     description: "gets image of google images using the query provided",
     async execute(client, message, args, Discord, economy, util) {
-        const userutil = await client.funtions.get("getUtil").execute(message);
+        const userutil = await client.functions.get("getUtil").execute(message);
 
         const image_query = args.slice(1).join(" ")
         if (!image_query) 
