@@ -11,7 +11,7 @@ module.exports = {
     category: "basic",
     use: "!m whatanime",
     async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functionss.get("getUtil").execute(message);
+        const userutil = await client.functions.get("getUtil").execute(message);
         
         var Attachment = (message.attachments).array()
         

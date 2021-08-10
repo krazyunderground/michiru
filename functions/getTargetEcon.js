@@ -8,7 +8,7 @@ module.exports = {
             const targetEcon = await userEcon.findOne({
                 userID: target.id,
             });
-
+    
             if (!targetEcon) {
                 let tp = await userEcon.create({
                     userID: target.id,

@@ -1,11 +1,11 @@
 const ms = require('ms')
 module.exports = {
-    name: 'userinfo',
-    aliases: ["whois"],
-    description: 'this show a user\'s info!',
+    name: 'avatar',
+    aliases: ["av"],
+    description: 'display a user\'s avatar!',
     cooldown: 0,
     category: "basic",
-    use: "!m userinfo",
+    use: "!m avatar",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
         
@@ -17,10 +17,7 @@ module.exports = {
             .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL({dynamic: true}))
             .setDescription(`${user}`)
             .setColor(userutil.colour)
-            .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
-            .addField('Joined at:', `${joinServer}`, true)
-            .addField('Created at:', `${joinDiscord}`, true)
-            .addField('Roles:', member.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | "))
+            .setImage(user.displayAvatarURL({dynamic: true, size: 4096}))
             .setFooter(`ID: ${user.id}`)
             .setTimestamp();
     

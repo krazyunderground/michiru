@@ -7,6 +7,9 @@ const player = createAudioPlayer()
 
 const queue = new Map();
 
+//this is a modified version of the codelyon music command to work with v13
+//by Krazyunderground#0001
+
 module.exports = {
     name: 'music',
     category: "music",
@@ -20,8 +23,8 @@ module.exports = {
         const voice_channel = message.member.voice.channel;
         if (!voice_channel) return message.channel.send('You need to be in a channel to execute this command!');
         const permissions = voice_channel.permissionsFor(message.client.user);
-        if (!permissions.has('CONNECT')) return message.channel.send('You dont have the correct permissins');
-        if (!permissions.has('SPEAK')) return message.channel.send('You dont have the correct permissins');
+        if (!permissions.has('CONNECT')) return message.channel.send('I don\'t have the correct permissions!');
+        if (!permissions.has('SPEAK')) return message.channel.send('I don\'t have the correct permissions!');
 
         const server_queue = queue.get(message.guild.id);
 
@@ -87,7 +90,7 @@ const video_player = async (guild, song) => {
     const song_queue = queue.get(guild.id);
 
     if (!song) {
-        song_queue.voice_channel.leave();
+        song_queue.connection.destroy()
         queue.delete(guild.id);
         return;
     }
@@ -96,6 +99,7 @@ const video_player = async (guild, song) => {
     player.play(resource)
     song_queue.connection.subscribe(player)
     player.on(AudioPlayerStatus.Idle, () => {
+        const song_queue = queue.get(guild.id);
         song_queue.songs.shift();
         video_player(guild, song_queue.songs[0]);
     });
@@ -108,8 +112,8 @@ const skip_song = (message) => {
     if(!server_queue){
         return message.channel.send(`There are no songs in queue 😔`);
     }
-    song_queue.songs.shift();
-    video_player(message.guild, song_queue.songs[0]);
+    server_queue.songs.shift();
+    video_player(message.guild, server_queue.songs[0]);
 }
 
 const stop_song = (message) => {
@@ -119,6 +123,7 @@ const stop_song = (message) => {
 
     const server_queue = queue.get(message.guild.id);
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!')
-    server_queue.songs = [];
+    if(server_queue.songs) server_queue.songs = [];
+    delete server_queue
     connection.destroy()
 }

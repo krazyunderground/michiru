@@ -1,19 +1,17 @@
-const db = require("quick.db");
-const economy = new db.table("economy");
-const util = new db.table("util");
-
 const meant = require("meant");
 const fs = require("fs");
+
+const util = null
+const economy = null
 
 const cooldowns = new Map();
 
 module.exports = async (Discord, client, message) => {
+  const guildProfile = await client.functions
+    .get("checkGuild")
+    .execute(message);
 
-  if(message.guild === null) return message.channel.send("This bot cannot be used in a DM!")
-
-  const guildProfile = await client.functions.get("checkGuild").execute(message)
-
-  let prefix = guildProfile.prefix
+  let prefix = guildProfile.prefix;
   const args = message.content.slice(prefix.length).split(/ +/);
 
   if (message.mentions.users.first() === client.user && !args[1])
@@ -26,8 +24,8 @@ module.exports = async (Discord, client, message) => {
     message.author === client.user
   )
     return;
-  const userutil = await client.functions.get("getUtil").execute(message)
-  const userecon = await client.functions.get("getAuthorEcon").execute(message)
+  const userutil = await client.functions.get("getUtil").execute(message);
+  const userecon = await client.functions.get("getAuthorEcon").execute(message);
   const command = args[0].toLowerCase();
 
   const cmd =
@@ -35,10 +33,10 @@ module.exports = async (Discord, client, message) => {
     client.commands.find((a) => a.aliases && a.aliases.includes(command));
 
   if (await client.functions.get("ccCheck").execute(message, args[0])) {
-      var cc = await client.functions.get("ccCheck").execute(message, args[0])
-      var response = cc.output
-      message.channel.send(response);
-      return;
+    var cc = await client.functions.get("ccCheck").execute(message, args[0]);
+    var response = cc.output;
+    message.channel.send(response);
+    return;
   }
 
   const commands = new Array();
@@ -96,12 +94,24 @@ module.exports = async (Discord, client, message) => {
 
   time_stamps.set(message.author.id, current_time);
 
-  if(cmd.category === "eco"){
-    if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("854061604258054214")){
-      return message.channel.send("Economy overhaul in progress! stay tuned in the support server for when it drops!")
+  if (cmd.category === "eco") {
+    if (client.guilds.cache.get("848707853350862858")) {
+      if (
+        !client.guilds.cache
+          .get("848707853350862858")
+          .members.cache.get(message.author.id)
+          .roles.cache.has("854061604258054214")
+      ) {
+        return message.channel.send(
+          "Economy overhaul in progress! stay tuned in the support server for when it drops!"
+        );
+      }
+    } else {
+      return message.channel.send(
+        "Economy overhaul in progress! stay tuned in the support server for when it drops!"
+      );
     }
   }
 
   if (cmd) cmd.execute(client, message, args, Discord, economy, util);
-
 };
