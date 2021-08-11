@@ -9,8 +9,6 @@ module.exports = async (Discord, client, message) => {
     const fetchContent = message.content
     let contExists = true;
     if(!fetchContent) {contExists = false}
-    console.log(fetchContent)
-    //attachment and content
     if (message.attachments.size > 0 && contExists == true) {
         const deleteEmbed = new Discord.MessageEmbed()
         .setAuthor(message.member.user.tag, message.author.displayAvatarURL({dynamic: true}))

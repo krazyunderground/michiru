@@ -7,6 +7,7 @@ const economy = null
 const cooldowns = new Map();
 
 module.exports = async (Discord, client, message) => {
+  if(message === null) return
   const guildProfile = await client.functions
     .get("checkGuild")
     .execute(message);

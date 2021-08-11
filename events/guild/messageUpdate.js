@@ -1,5 +1,5 @@
 module.exports = async (Discord, client, oldMessage, newMessage) => {
-    const gp = await client.functions.get("checkGuild").execute(newMessage)
+    const gp = await client.functions.get("checkGuild").execute(oldMessage)
     if(!gp.logsChannel) return;
 
     const logsChannel = client.channels.cache.get(gp.logsChannel)

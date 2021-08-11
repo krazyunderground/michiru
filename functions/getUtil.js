@@ -3,7 +3,9 @@ const userUtil = require('../models/userUtil')
 module.exports = {
     name: "getUtil",
     async execute(message) {
-    const author = message.author.id;
+    var author
+    if(isNaN(message)) author = message.author.id
+    else author = message
     try {
       const authorUtil = await userUtil.findOne({
         userID: author,

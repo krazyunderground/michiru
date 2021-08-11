@@ -12,7 +12,7 @@ module.exports = {
 
         // if(!args[1]) return message.reply("Add which page you want to view between 1-4!\n1. Basic commands\n2. Economy commands\n3. Music commands\n4. Admin/Developer")
         const embed = new Discord.MessageEmbed().setColor(userutil.colour);
-        let prefix = util.get(`${message.guild.id}.prefix`)
+        let prefix = await client.functions.get("checkGuild").prefix
 
             const basic = new Discord.MessageEmbed().setColor(userutil.colour)
                 .setTitle("Command List: Basic")
@@ -110,7 +110,7 @@ module.exports = {
         let embed2 = new Discord.MessageEmbed()
         .setColor(userutil.colour).setTitle("Please select help page you'd like to visit")
 
-        let menumsg = await message.channel.send({content: "**NOTE: Due to the v13 upgrade, if any of the commands dont work, __PLEASE__ report them to Krazyunderground#0001**", embeds: [embed2], components: [row]})
+        let menumsg = await message.channel.send({content: "**NOTE: To utilize slash commands, re-invite the bot using this link: <https://bit.ly/michiru-botv2> \n(Your data will not be lost!)**", embeds: [embed2], components: [row]})
 
         function menuselection(menu) {
             switch(menu.values[0]) {
