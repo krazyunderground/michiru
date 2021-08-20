@@ -14,6 +14,7 @@ module.exports = {
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
 
             if(!args[1]) return message.channel.send("Add what you want to change the prefix to!")
+            if(args[1].length > 15) return message.channel.send("Prefixes are character limited to 15")
 
             const filter = response => {
                 return "y" === response.content.toLowerCase();
@@ -29,7 +30,7 @@ module.exports = {
                                 },
                                 {
                                   $set: {
-                                    prefix: args[1],
+                                    prefix: args[1].toLowerCase(),
                                   },
                                 })
                             message.reply("Prefix successfully changed!");

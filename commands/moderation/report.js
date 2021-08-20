@@ -23,7 +23,7 @@ module.exports = {
                 let fetchContent = report.content
                 const reportEmbed = new Discord.MessageEmbed()
                 .setTitle("New Report")
-                .setColor("#FF9CA9")
+                .setColor("#FF555C")
                 .setDescription(`${message.author} has reported ${repAuthor} (${authorID})`)
                 .addFields(
                     { name: "**Channel**", value: `<#${reportChannel}>`},

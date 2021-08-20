@@ -11,7 +11,8 @@ module.exports = {
     async execute(client, message, args, Discord, economy, util){
 
         const msg = await message.channel.send("Loading! :gear:")
-        const body = await axios.get('https://api.tovade.xyz/v1/fun/wyr')
+        if(axios.get('https://api.tovade.xyz/v1/fun/wyr')) return msg.edit("Api is currently down!")
+        const body = axios.get('https://api.tovade.xyz/v1/fun/wyr')
         const res = body.data
         let option = {
             label:'Would You Rather!',

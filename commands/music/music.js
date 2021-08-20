@@ -103,7 +103,7 @@ const video_player = async (guild, song) => {
         song_queue.songs.shift();
         video_player(guild, song_queue.songs[0]);
     });
-    await song_queue.text_channel.send(`🎶 Now playing **${song.title}** - ${song.duration.toString()}`)
+    await song_queue.text_channel.send(`🎶 Now playing **${song.title}** - ${song.duration}`)
 }
 
 const skip_song = (message) => {
@@ -117,13 +117,11 @@ const skip_song = (message) => {
 }
 
 const stop_song = (message) => {
-    const { getVoiceConnection } = require('@discordjs/voice');
-
-    const connection = getVoiceConnection(message.guild.id);
-
     const server_queue = queue.get(message.guild.id);
-    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!')
-    if(server_queue.songs) server_queue.songs = [];
-    delete server_queue
-    connection.destroy()
+    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+    if(server_queue){
+        server_queue.songs = []
+    }
+    
+    video_player(message.guild, server_queue.songs[0]);
 }

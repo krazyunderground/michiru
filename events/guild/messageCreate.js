@@ -7,7 +7,8 @@ const economy = null
 const cooldowns = new Map();
 
 module.exports = async (Discord, client, message) => {
-  if(message === null) return
+  if(message.guild === null) return
+  if(!message.guild.me.permissions.has("EMBED_LINKS")) message.channel.send("It appears the bot is missing the embed permission! \n(This is crucial to the bot's functionality, meaning some features wont work)")
   const guildProfile = await client.functions
     .get("checkGuild")
     .execute(message);
@@ -36,7 +37,7 @@ module.exports = async (Discord, client, message) => {
   if (await client.functions.get("ccCheck").execute(message, args[0])) {
     var cc = await client.functions.get("ccCheck").execute(message, args[0]);
     var response = cc.output;
-    message.channel.send(response);
+    if(response) message.channel.send(response);
     return;
   }
 

@@ -38,70 +38,70 @@ module.exports = {
         const alloys = [
             {
                 name: "Light Gold",
-                recipe: "5 iron, 1 gold",
+                recipe: "1000 iron, 200 gold",
                 characteristics: "more malleable than iron but still quite weak",
                 extras: "magnetic",
                 debuffs: "very weak"
             },
             {
                 name: "Tool Steel",
-                recipe: "5 iron, 3 Tungsten",
+                recipe: "1000 iron and 350 tungsten",
                 characteristics: "tough to break even at high temperatures",
                 extras: "heat resistance and hardness",
                 debuffs: "weak"
             },
             {
                 name: "Elgiloy",
-                recipe: "3 iron and  2 cobalt",
+                recipe: "800 iron and 400 cobalt",
                 characteristics: "extremely lightweight but hard to break material",
                 extras: "speed and posion",
                 debuffs: "weak"
             },
             {
                 name: "Ronovel",
-                recipe: "3 gold and 1 cobalt",
+                recipe: "900 gold and 300 cobalt",
                 characteristics: "Extremely tough but heavy material",
                 extras: "hardness and poison",
                 debuffs: "slight slowness"
             },
             {
                 name: "Shakudo",
-                recipe: "1 gold and  1 copper",
+                recipe: "800 gold and  800 copper",
                 characteristics: "Malleable but rough material",
                 extras: "electric",
                 debuffs: "low durability"
             },
             {
                 name: "Copper Matrix",
-                recipe: "3 copper and 2 tungsten",
+                recipe: "1000 copper and 500 tungsten",
                 characteristics: "hard to break even at high temperatures but heavy",
                 extras: "heat resistance and electric",
                 debuffs: "slowness"
             },
             {
                 name: "Stellite",
-                recipe: "3 cobalt 1 tungsten",
+                recipe: "2400 cobalt 800 tungsten",
                 characteristics: "heavy but extremely tough material",
                 extras: "hardness",
                 debuffs: "slowness"
             },
             {
                 name: "Master Cobalt",
-                recipe: "5 cobalt and 2 copper",
+                recipe: "2250 cobalt and 1500copper",
                 characteristics: "well rounded tough material",
                 extras: "electric and poison",
                 debuffs: "none"
             },
             {
                 name: "Dymalloy",
-                recipe: "3 cobalt 2 diamond",
+                recipe: "1500 cobalt and 1000 diamond",
                 characteristics: "very tough material, less weight than pure diamond",
                 extras: "posion and hardness",
                 debuffs: "slight slowness"
             },
             {
                 name: "Vitallium",
-                recipe: "5 diamond and 3 cobalt",
+                recipe: "5000 diamond and 3000 cobalt",
                 characteristics: "unbreakable material with only slight slowness",
                 extras: "unbreaking and poison",
                 debuffs: "slight slowness"
@@ -126,7 +126,7 @@ module.exports = {
             .setFooter("page 1/2")
             for (alloy of aH) {
                 alloyEmbed1.addField(`${alloy.name}`, `${alloy.characteristics} \n\`Cost:\` ${alloy.recipe}\n\`Extras:\` ${alloy.extras}\n\`Debuff:\` ${alloy.debuffs}`)
-            }
+            }bala
             //second half
             const alloyEmbed2 = new Discord.MessageEmbed()
             .setTitle("Alloys")

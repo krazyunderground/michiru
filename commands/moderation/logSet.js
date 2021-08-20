@@ -10,6 +10,7 @@ module.exports = {
     async execute(client, message, args, Discord, economy, util){
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
             if(!message.mentions.channels.first()) return message.channel.send("Please specify a channel for the reports to be logged to!")
+            if(!message.mentions.channels.first().isText()) return message.channel.send("Please specify a *text* channel for the reports to be logged to!")
             client.functions.get("checkGuild").execute(message)
             await guildData.findOneAndUpdate(
                 {

@@ -59,12 +59,12 @@ module.exports = {
             }
         })
 
-        if(iron[1] < ironsub) return message.reply("You don't have enough iron!")
-        if(tung[1] < tungsub) return message.reply("You don't have enough tungsten!")
-        if(gold[1] < goldsub) return message.reply("You don't have enough gold!")
-        if(copp[1] < coppsub) return message.reply("You don't have enough copper!")
-        if(colb[1] < colbsub) return message.reply("You don't have enough cobalt!")
-        if(diam[1] < diamsub) return message.reply("You don't have enough diamonds!")
+        if(parseInt(iron[1]) < ironsub) return message.reply("You don't have enough iron!")
+        if(parseInt(tung[1]) < tungsub) return message.reply("You don't have enough tungsten!")
+        if(parseInt(gold[1]) < goldsub) return message.reply("You don't have enough gold!")
+        if(parseInt(copp[1]) < coppsub) return message.reply("You don't have enough copper!")
+        if(parseInt(colb[1]) < colbsub) return message.reply("You don't have enough cobalt!")
+        if(parseInt(diam[1]) < diamsub) return message.reply("You don't have enough diamonds!")
 
         const ironprice = 10
         const tungprice = 30

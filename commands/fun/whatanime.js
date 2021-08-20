@@ -13,11 +13,11 @@ module.exports = {
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message);
         
-        var Attachment = (message.attachments).array()
+        var Attachment = message.attachments.first()
         
-        if(!Attachment[0]) return message.channel.send("Upload the image in the same message as the command!")
+        if(!Attachment) return message.channel.send("Upload the image in the same message as the command!")
         
-        var url = Attachment[0].url
+        var url = Attachment.url
         
         // let img = new Image();
         // await new Promise(r => img.onload=r, img.src=url)
