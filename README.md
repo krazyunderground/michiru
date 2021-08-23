@@ -8,6 +8,7 @@
     <a href="https://top.gg/servers/848707853350862858"><img src="https://img.shields.io/discord/848707853350862858?color=blueviolet&label=Support%20Server&logo=discord&logoColor=white&style=for-the-badge" alt="Discord server" /></a>
   </p>
 </div>
+
 ## About
 
 Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, and slight moderation bot. The source code is <em>mostly</em> available here to use as a reference if you want to make your own bot.
