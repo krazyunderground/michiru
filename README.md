@@ -15,7 +15,7 @@ Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, an
 
 ## Invite the bot
 
-[Invite](https://bit.ly/michiru-botv2)
+[Invite](https://bit.ly/michiru-botv2)  
 also please make sure to leave a [rating](https://top.gg/servers/848707853350862858)
 
 ## Docs
