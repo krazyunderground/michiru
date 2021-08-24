@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <p>
-    <a href="http://michiru.mooo.com"><img src="https://github.com/krazyunderground/michiru/blob/main/assets/Banner.png" width="556" height="150" alt="Michiru" /></a>
+    <a href="http://michiru.mooo.com"><img src="https://github.com/krazyunderground/michiru/blob/main/assets/Banner.png" width="400" height="150" alt="Michiru" /></a>
   </p>
   <br />
   <p>
