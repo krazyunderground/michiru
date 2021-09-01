@@ -17,7 +17,7 @@ Push notes work as follows,
 - for removed
 + for added
 % for changed
-# for updated
+\# for updated
 example: %help means we changed how something works with the help command.
 
 ## Invite the bot
