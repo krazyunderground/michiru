@@ -14,7 +14,7 @@
 Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, and slight moderation bot. The source code is <em>mostly</em> available here to use as a reference if you want to make your own bot.
 
 Push notes work as follows,
-- for removed
+\- for removed
 + for added
 % for changed
 \# for updated
