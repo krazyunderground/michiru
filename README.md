@@ -15,7 +15,7 @@ Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, an
 
 Push notes work as follows,  
 \- for removed  
-+ for added  
+\+ for added  
 % for changed  
 \# for updated  
 example: %help means we changed how something works with the help command.
