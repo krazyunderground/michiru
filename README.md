@@ -14,10 +14,10 @@
 Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, and slight moderation bot. The source code is <em>mostly</em> available here to use as a reference if you want to make your own bot.
 
 Push notes work as follows,  
-\- for removed
-+ for added
-% for changed
-\# for updated
+\- for removed  
++ for added  
+% for changed  
+\# for updated  
 example: %help means we changed how something works with the help command.
 
 ## Invite the bot
