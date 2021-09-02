@@ -31,7 +31,7 @@ module.exports = async (Discord, client, message) => {
   const command = args[0].toLowerCase();
 
   const cmd =
-    (await client.commands.get(command)) ||
+    (client.commands.get(command)) ||
     client.commands.find((a) => a.aliases && a.aliases.includes(command));
 
   if (await client.functions.get("ccCheck").execute(message, args[0])) {
