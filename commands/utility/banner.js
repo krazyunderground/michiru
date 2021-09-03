@@ -13,7 +13,7 @@ module.exports = {
             uid = message.mentions.users.first().id
         }
         let receive = ''
-        let banner = 'no banner found!' // invisible image ( you can change the link if you want )
+        let banner = 'no banner found!'
 
         let response = fetch(`https://discord.com/api/v8/users/${uid}`, {
             

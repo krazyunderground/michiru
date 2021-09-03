@@ -10,7 +10,6 @@ module.exports = {
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
 
-        // if(!args[1]) return message.reply("Add which page you want to view between 1-4!\n1. Basic commands\n2. Economy commands\n3. Music commands\n4. Admin/Developer")
         const embed = new Discord.MessageEmbed().setColor(userutil.colour);
         let prefix = await client.functions.get("checkGuild").prefix
 

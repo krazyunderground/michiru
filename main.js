@@ -13,6 +13,7 @@ handlers.forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 })
 const mongoose = require('mongoose')
+mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.MONGO_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -24,4 +25,3 @@ mongoose.connect(process.env.MONGO_SRV, {
 });
 
 client.login(process.env.DISCORD_TOKEN);
-

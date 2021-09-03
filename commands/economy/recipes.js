@@ -37,14 +37,14 @@ module.exports = {
         ]
         const alloys = [
             {
-                name: "Light Gold",
+                name: "Magnite",
                 recipe: "1000 iron, 200 gold",
                 characteristics: "more malleable than iron but still quite weak",
                 extras: "magnetic",
                 debuffs: "very weak"
             },
             {
-                name: "Tool Steel",
+                name: "Steel",
                 recipe: "1000 iron and 350 tungsten",
                 characteristics: "tough to break even at high temperatures",
                 extras: "heat resistance and hardness",
@@ -58,25 +58,11 @@ module.exports = {
                 debuffs: "weak"
             },
             {
-                name: "Ronovel",
-                recipe: "900 gold and 300 cobalt",
-                characteristics: "Extremely tough but heavy material",
-                extras: "hardness and poison",
-                debuffs: "slight slowness"
-            },
-            {
                 name: "Shakudo",
                 recipe: "800 gold and  800 copper",
                 characteristics: "Malleable but rough material",
                 extras: "electric",
                 debuffs: "low durability"
-            },
-            {
-                name: "Copper Matrix",
-                recipe: "1000 copper and 500 tungsten",
-                characteristics: "hard to break even at high temperatures but heavy",
-                extras: "heat resistance and electric",
-                debuffs: "slowness"
             },
             {
                 name: "Stellite",
@@ -86,7 +72,7 @@ module.exports = {
                 debuffs: "slowness"
             },
             {
-                name: "Master Cobalt",
+                name: "Codium",
                 recipe: "2250 cobalt and 1500copper",
                 characteristics: "well rounded tough material",
                 extras: "electric and poison",
