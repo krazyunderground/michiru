@@ -1,3 +1,5 @@
+const userEcon = require("../../models/userEcon")
+
 module.exports = {
     name: "craft",
     category: "eco",
@@ -223,7 +225,7 @@ module.exports = {
                       alloy: "elgiloy",
                       cost: 1,
                   },
-                  shakudo: {
+                  shakudosword: {
                       db: "shakudos",
                       alloy: "shakudo",
                       cost: 1,
@@ -252,18 +254,33 @@ module.exports = {
           };
           if(!args[3]) args[3] = ""
           const query =`${args[2]}${args[3]}`
-          if(!args[1]) return console.log(-1)
+          if(!args[1]) return cmessage.channel.send("Include which category of item you want to craft")
           let category;
-          if(args[1] === "armour" || args[1] === "armor") {
+          if(args[1] === "armour") {
               category = "armor"
+          } else {
+              category = args[1]
           }
-          if(!args[2]) return console.log(0)
-          if(!categories[category]) return console.log(1)
-          if(!categories[category][query]) return console.log(2)
+          if(!args[2]) return message.channel.send("Include what you want to craft!")
+          if(!categories[category]) return message.channel.send("That category doesnt exist!")
+          if(!categories[category][query]) return message.channel.send("That item doesnt exist!")
           const request = categories[category][query]
+          console.log(request)
           const alloy = request.alloy
           const cost = request.cost
           message.channel.send(`Purchase: ${args[2]} ${args[3]}, Alloy: ${alloy}, Cost: ${cost}`)
+
+
+          userEcon.findOneAndUpdate(
+            {
+              userID: message.author.id
+            },
+            {
+                $set: {
+                    owns: `${userecon.owns} ${request.db}`
+                }
+            }
+          )
           //take alloy and give item
       },
   };
