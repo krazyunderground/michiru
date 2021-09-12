@@ -83,7 +83,7 @@ module.exports = {
 		} else {
 			alloyInv = userecon.alloyInv.split(" ");
 		}
-		
+		//get inventories
 		const iron = oreInv[0].split("@");
 		const tung = oreInv[1].split("@");
 		const gold = oreInv[2].split("@");
@@ -106,13 +106,13 @@ module.exports = {
 		var coppsub = 0;
 		var colbsub = 0;
 		var diamsub = 0;
-
+		//make sure they request an item
 		if (!args[1])return message.channel.send("please enter an item to craft. '!m recipes to view the recipe book'");
-
+		//set the request
 		const request = args[1].toLowerCase();
 		let amount;
 		if(!args[2]) {amount = 1} else {amount = parseInt(args[2]);}
-		
+		//verify item exists
 		if (!alloys.some(e => e.name === request)) return message.channel.send("this item does not exist! '!m recipes to view the recipe book'");
 		console.log(amount)
 		var newmagn = 0
@@ -123,7 +123,7 @@ module.exports = {
 		var newcodi = 0
 		var newdyma = 0
 		var newvita = 0
-
+		//set price and amount after give
 		switch (request) {
 			case "magnite":
 				ironsub = 1000 * amount;
@@ -166,7 +166,7 @@ module.exports = {
 				newvita = parseInt(vitallium[1]) + amount
 				break;
 		}
-
+		//verify they can afford the item
 		if (iron[1] < ironsub) return message.reply("You don't have enough iron!");
 
 		if (tung[1] < tungsub) return message.reply("You don't have enough tungsten!");
@@ -178,7 +178,7 @@ module.exports = {
 		if (colb[1] < colbsub) return message.reply("You don't have enough cobalt!");
 
 		if (diam[1] < diamsub) return message.reply("You don't have enough diamonds!");
-
+		//set new ore inventory from switch case prices
 		var newiron = parseInt(iron[1]) - ironsub
         var newtung = parseInt(tung[1]) - tungsub
         var newgold = parseInt(gold[1]) - goldsub
@@ -188,7 +188,7 @@ module.exports = {
 
 		const neworeInv = `iron@${newiron} tungsten@${newtung} gold@${newgold} copper@${newcopp} cobalt@${newcolb} diamond@${newdiam}`
 		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} codium@${newcodi} dymalloy@${newdyma} vitallium@${newvita}`
-
+		//update econ
 		await userEcon.findOneAndUpdate(
             {
                 userID: message.author.id
