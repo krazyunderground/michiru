@@ -7,13 +7,13 @@ module.exports = {
     cooldown: 0,
     description: "if the user has a banner, it will display it here",
     async execute(client, message, args, Discord, economy, util){
-
+        let resultMessage = await message.channel.send("Trying to find users banner")
         let uid = message.member.id
         if(message.mentions.users.first()){
             uid = message.mentions.users.first().id
         }
         let receive = ''
-        let banner = 'no banner found!'
+        let banner = 'I couldn\'t find this users banner'
 
         let response = fetch(`https://discord.com/api/v8/users/${uid}`, {
             
@@ -21,7 +21,6 @@ module.exports = {
             headers: {
                 Authorization: `Bot ${client.token}`
             }
-        
         }).then(a => {
             if(a.status !== 404) {
                 a.json().then(data => {
@@ -51,6 +50,7 @@ module.exports = {
         })
         
         setTimeout(() => {
+            resultMessage.delete();
             message.channel.send(banner)
         }, 1000)
     }

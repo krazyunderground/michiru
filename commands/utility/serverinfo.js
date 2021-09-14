@@ -9,6 +9,10 @@ module.exports = {
         const userutil = await client.functions.get("getUtil").execute(message)
         
         const guild = message.guild;
+
+        const memberCount = guild.members.cache.filter(member => !member.user.bot).size;
+        const botCount = guild.members.cache.filter(member => member.user.bot).size
+
         const embed = new Discord.MessageEmbed()
         .setTitle(message.guild.name)
         .setThumbnail(message.guild.iconURL({dynamic: true}))
@@ -24,7 +28,8 @@ module.exports = {
             }, Animated: ${
                 guild.emojis.cache.filter((e) => e.animated).size
             }) 
-            Members: ${guild.members.cache.size}
+            Members: ${memberCount}
+            Bots: ${botCount}
         `)
         .addField("Additional Information", `
             Created: ${guild.createdAt}
