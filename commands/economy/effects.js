@@ -11,12 +11,12 @@ module.exports = {
       {
         name: "Malleable",
         effect: "resistance to break abilities",
-        alloys: "light gold, shakudo",
+        alloys: "magnite, shakudo",
       },
       {
         name: "Hardness",
         effect: "harder to break and higher durability",
-        alloys: "tool steel, elgiloy, ronovel, dymalloy",
+        alloys: "steel, elgiloy, dymalloy",
       },
       {
         name: "Lightweight",
@@ -24,29 +24,24 @@ module.exports = {
         alloys: "elgiloy",
       },
       {
-        name: "Heavyweight",
-        effect: "higher damage but increases chance for attack to be dodged",
-        alloys: "copper matrix",
-      },
-      {
         name: "Heat Resistance",
         effect: "resistant to fire and heat",
-        alloys: "tool steel",
+        alloys: "steel",
       },
       {
         name: "Magnetic",
         effect: "attracts more loot",
-        alloys: "light gold",
+        alloys: "magnite",
       },
       {
         name: "Poison",
         effect: "does extra damage",
-        alloys: "elgiloy, ronovel, stellite, master cobalt, vitallium",
+        alloys: "elgiloy, stellite, codium, vitallium",
       },
       {
         name: "Electric",
         effect: "does extra damage",
-        alloys: "shakudo, copper matrix, master cobalt, dymalloy",
+        alloys: "shakudo, copper matrix, codium, dymalloy",
       },
     ];
     const effectsEmbed = new Discord.MessageEmbed()

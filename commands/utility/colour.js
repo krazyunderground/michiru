@@ -33,6 +33,4 @@ module.exports = {
             message.reply("Use a valid hex code! ||E.G:`FF9CA9`||")
         }
     }
-}//i wanted to do this one ;-;
-//you can do
-//dont let me stop you
+}

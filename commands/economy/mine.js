@@ -24,26 +24,26 @@ module.exports = {
                 var ores = [["iron", 900, 40, 60],["tungsten", 750, 20, 30],["gold", 300, 5, 10],["copper", 100, 3, 7],["cobalt", 50, 1, 4],["diamond", 5, 0, 1]] // ID, chance/1000, min quant, max quant
                 var pickaxe = "iron"
             break
-            // case 2:
-            //     var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
-            //     var pickaxe = "tungsten"
-            // break
-            // case 3:
-            //     var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
-            //     var pickaxe = "gold"
-            // break
-            // case 4:
-            //     var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
-            //     var pickaxe = "copper"
-            // break
-            // case 5:
-            //     var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
-            //     var pickaxe = "cobalt"
-            // break
-            // case 6:
-            //     var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
-            //     var pickaxe = "diamond"
-            // break
+            case 2:
+                var ores = [["iron", 500, 20, 30],["tungsten", 800, 30, 50],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var pickaxe = "tungsten"
+            break
+            case 3:
+                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var pickaxe = "gold"
+            break
+            case 4:
+                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var pickaxe = "copper"
+            break
+            case 5:
+                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var pickaxe = "cobalt"
+            break
+            case 6:
+                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var pickaxe = "diamond"
+            break
         }
 
         //algorithm decides how much of what based on the parameters

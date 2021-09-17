@@ -22,7 +22,7 @@ module.exports = async (client, Discord) => {
             console.log('Started refreshing application (/) commands!');
 
             await rest.put(
-                Routes.applicationCommands("856298112346488842"),
+                Routes.applicationCommands(process.env.ID),
                 { body: commands },
             );
 

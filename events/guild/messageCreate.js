@@ -31,7 +31,7 @@ module.exports = async (Discord, client, message) => {
   const command = args[0].toLowerCase();
 
   const cmd =
-    (client.commands.get(command)) ||
+    (await client.commands.get(command)) ||
     client.commands.find((a) => a.aliases && a.aliases.includes(command));
 
   if (await client.functions.get("ccCheck").execute(message, args[0])) {
@@ -96,22 +96,24 @@ module.exports = async (Discord, client, message) => {
 
   time_stamps.set(message.author.id, current_time);
 
-  if (cmd.category === "eco") {
-    if (client.guilds.cache.get("848707853350862858")) {
-      if (
-        !client.guilds.cache
-          .get("848707853350862858")
-          .members.cache.get(message.author.id)
-          .roles.cache.has("854061604258054214")
-      ) {
+  if(message.guild.id !== "859775203328262144"){
+    if (cmd.category === "eco") {
+      if (client.guilds.cache.get("848707853350862858")) {
+        if (
+          !client.guilds.cache
+            .get("848707853350862858")
+            .members.cache.get(message.author.id)
+            .roles.cache.has("854061604258054214")
+        ) {
+          return message.channel.send(
+            "Economy overhaul in progress! stay tuned in the support server for when it drops!"
+          );
+        }
+      } else {
         return message.channel.send(
           "Economy overhaul in progress! stay tuned in the support server for when it drops!"
         );
       }
-    } else {
-      return message.channel.send(
-        "Economy overhaul in progress! stay tuned in the support server for when it drops!"
-      );
     }
   }
 

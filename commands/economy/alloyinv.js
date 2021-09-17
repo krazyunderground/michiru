@@ -17,7 +17,7 @@ module.exports = {
     var alloyInv;
 
     if (userecon.alloyInv === "" || !userecon.alloyInv) {
-      alloyInv =`LG@0 TS@0 Elgiloy@0 Ronovel@0 Shakudo@0 CM@0 Stellite@0 MC@0 Dymalloy@0 Vitallium@0`.split(" ");
+      alloyInv =`magnite@0 steel@0 elgiloy@0 shakudo@0 stellite@0 codium@0 dymalloy@0 vitallium@0`;
     } else {
       alloyInv = userecon.alloyInv.split(" ");
     }

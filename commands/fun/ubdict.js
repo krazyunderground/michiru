@@ -21,7 +21,7 @@ module.exports = {
                             "x-rapidapi-key": "a9fb0095e3msh7092e19dd0034e9p1261a5jsnb924703f4137",
                         },
                     })
-                .then(response => response.json()) // or .text(), or .blob(), etc
+                .then(response => response.json())
                 .then(result => {
                     const udEmbed = new Discord.MessageEmbed()
                         .setTitle(result.list[0].word + `:`)

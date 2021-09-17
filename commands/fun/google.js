@@ -16,7 +16,7 @@ module.exports = {
                 method: "GET"
             }
         )
-        .then(response => response.json()) // or .text(), or .blob(), etc
+        .then(response => response.json())
         .then(result => {
             message.channel.send(`**${result.items[0].title}:** ${result.items[0].link}`)
         });

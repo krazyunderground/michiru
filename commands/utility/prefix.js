@@ -21,50 +21,24 @@ module.exports = {
             };
             
             message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.prefix}\`\nNew: \`${args[1]}\`\n\n**Y** to continue`, { fetchReply: true })
-                .then(() => {
-                    message.channel.awaitMessages({ filter, max: 1, time: 30000, errors: ['time'] })
-                        .then(async collected => {
-                            await guildData.findOneAndUpdate(
-                                {
-                                  guildID: message.guild.id,
-                                },
-                                {
-                                  $set: {
-                                    prefix: args[1].toLowerCase(),
-                                  },
-                                })
-                            message.reply("Prefix successfully changed!");
+            .then(() => {
+                message.channel.awaitMessages({ filter, max: 1, time: 30000, errors: ['time'] })
+                .then(async collected => {
+                    await guildData.findOneAndUpdate(
+                        {
+                            guildID: message.guild.id,
+                        },
+                        {
+                            $set: {
+                            prefix: args[1].toLowerCase(),
+                            },
                         })
-                        .catch(collected => {
-                            message.reply('Action canceled!');
-                        });
+                    message.reply("Prefix successfully changed!");
+                })
+                .catch(collected => {
+                    message.reply('Action canceled!');
                 });
-
-/*             var filter = m => m.author.id == message.author.id;
-                            
-            try {
-                message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.profile}\`\nNew: \`${args[1]}\`\n\n**message Y or N**`)
-                var collectedMessages = await message.channel.awaitMessages(filter, {time: 5000, max: 1, errors: ['time']});
-            } catch (e) {return message.reply("Looks like you took too long to reply!");};
-
-            var response = collectedMessages.first().content.toLowerCase()
-
-            if(response == "y"){
-                console.log("message collected")
-                await guildData.findOneAndUpdate(
-                    {
-                      guildID: message.guild.id,
-                    },
-                    {
-                      $set: {
-                        prefix: args[1],
-                      },
-                    })
-                message.channel.send("Prefix successfully changed!")
-            } else {
-                message.channel.send('Action canceled!');
-            } */
-
+            });         
         } else return message.reply("You need admin perms to run that command!")
     }
 }
