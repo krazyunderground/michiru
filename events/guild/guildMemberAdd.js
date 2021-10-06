@@ -4,6 +4,7 @@ const { Image } = require('canvas')
 const fs = require("fs")
 
 module.exports = async (Discord, client, member) => {
+    if(member.guild.id === "848707853350862858") member.roles.add("853961098691739658")
     const welcomeChannelProfile = await client.functions.get("checkGuild").execute(member)
     if(welcomeChannelProfile.welcomeChannel){
         let uid = member.id
