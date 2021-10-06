@@ -1,6 +1,7 @@
 const ms = require('ms')
 module.exports = {
     name: 'avatar',
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/avatar.js",
     aliases: ["av"],
     description: 'display a user\'s avatar!',
     cooldown: 0,

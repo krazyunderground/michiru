@@ -1,9 +1,8 @@
 const Discord = require("discord.js")
 const userEcon = require("../../models/userEcon")
-//this is garbage as fuck lmaoo jk
-//bruh
 module.exports = {
     name: "mine",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/mine.js",
     category: "eco",
     use: "!m mine",
     aliases: ['work', 'm', 'w'],

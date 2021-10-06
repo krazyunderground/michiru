@@ -2,6 +2,7 @@ const { MessageSelectMenu, MessageActionRow, MessageButton } = require(`discord.
 module.exports = {
     name: "recipes",
     category: "eco",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/recipes.js",
     use: "!m recipes",
     aliases: ['recipe', 'rec', 'recipebook'],
     cooldown: 2,

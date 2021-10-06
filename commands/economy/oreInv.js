@@ -3,6 +3,7 @@ const userEcon = require("../../models/userEcon")
 
 module.exports = {
     name: "oreinv",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/oreInv.js",
     category: "eco",
     use: "!m oreinv",
     aliases: ['oi','oinv'],

@@ -2,6 +2,7 @@ const userEcon = require("../../models/userEcon");
 
 module.exports = {
 	name: "smelt",
+	gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/smelt.js",
 	category: "eco",
 	use: "!m smelt",
 	cooldown: 1,

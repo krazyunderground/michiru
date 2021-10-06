@@ -3,6 +3,7 @@ const guildData = require("../../models/guildData")
 
 module.exports = {
     name: "welcomeset",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/setWelcome.js",
     aliases: ['wset'],
     category: "admin",
     use: "!m welcomeset",

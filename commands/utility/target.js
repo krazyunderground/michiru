@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "target",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/target.js",
     aliases: ['goal'],
     use: "!m target",
     category: "basic",

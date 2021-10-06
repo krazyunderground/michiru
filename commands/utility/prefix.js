@@ -3,6 +3,7 @@ const guildData = require('../../models/guildData')
 
 module.exports = {
     name: "prefix",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/prefix.js",
     aliases: ['setprefix'],
     category: "admin",
     use: "!m prefix",

@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "shop",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/sell.js",
     aliases: ['s'],
     category: "eco",
     use: "!m shop",

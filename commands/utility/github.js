@@ -2,11 +2,11 @@ const Discord = require("discord.js")
 const { MessageSelectMenu, MessageActionRow } = require(`discord.js`)
 
 module.exports = {
-    name: "help",
-    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/help.js",
-    description: "shows help menus",
+    name: "git",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/git.js",
+    description: "allows faster access to the source code for each command",
     category: "basic",
-    use: "!m help",
+    use: "!m git",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
@@ -15,19 +15,19 @@ module.exports = {
         let prefix = await client.functions.get("checkGuild").prefix
 
             const basic = new Discord.MessageEmbed().setColor(userutil.colour)
-                .setTitle("Command List: Basic")
+                .setTitle("Git List: Basic")
 
             const eco = new Discord.MessageEmbed().setColor(userutil.colour)
-                .setTitle(`Command list: Economy`)
+                .setTitle(`Git list: Economy`)
 
             const music = new Discord.MessageEmbed().setColor(userutil.colour)
-                .setTitle(`Command list: VC`)
+                .setTitle(`Git list: VC`)
 
             const admin = new Discord.MessageEmbed().setColor(userutil.colour)
-                .setTitle(`Command list: Admin/Developer`)
+                .setTitle(`Git list: Admin/Developer`)
 
             const cc = new Discord.MessageEmbed().setColor(userutil.colour)
-            .setTitle(`Command list: Custom Commands`)
+            .setTitle(`Git list: Custom Commands`)
 
         var basiccommand = new Array()
         var ecocommand = new Array()
@@ -56,24 +56,19 @@ module.exports = {
         })
 
         basiccommand.forEach(command => {
-            if(!command.use) return
-            basic.addField(`**${command.use}**`, command.description)
+            basic.addField(`**${command.name}**`, `[${command.use} (click here)](${command.gitlink})`)
         })
         ecocommand.forEach(command => {
-            if(!command.use) return
-            eco.addField(`**${command.use}**`, command.description)
+            eco.addField(`**${command.name}**`, `[${command.use} (click here)](${command.gitlink})`)
         })
         musiccommand.forEach(command => {
-            if(!command.use) return
-            music.addField(`**${command.use}**`, command.description)
+            music.addField(`**${command.name}**`, `[${command.use} (click here)](${command.gitlink})`)
         })
         admincommand.forEach(command => {
-            if(!command.use) return
-            admin.addField(`**${command.use}**`, command.description)
+            admin.addField(`**${command.name}**`, `[${command.use} (click here)](${command.gitlink})`)
         })
         cccommand.forEach(command => {
-            if(!command.use) return
-            cc.addField(`**${command.use}**`, command.description)
+            cc.addField(`**${command.name}**`, `[${command.use} (click here)](${command.gitlink})`)
         })
 
         let option1 = {

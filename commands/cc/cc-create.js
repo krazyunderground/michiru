@@ -2,6 +2,7 @@ const customCommands = require('../../models/customCommands')
 
 module.exports = {
     name: "cc-create",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/cc/cc-create.js",
     aliases: ['cc'],
     category: "cc",
     use: "!m cc-create",

@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const userUtil = require('../../models/userUtil')
 module.exports = {
     name: "colour",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/colour.js",
     aliases: ['color', 'setcolour', 'setcolor'],
     category: "basic",
     use: "!m colour",

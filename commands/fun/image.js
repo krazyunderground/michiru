@@ -10,6 +10,7 @@ const google = new scraper({
 
 module.exports = {
     name: 'image',
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/image.js",
     aliases: ['im'],
     category: "basic",
     use: "!m image",

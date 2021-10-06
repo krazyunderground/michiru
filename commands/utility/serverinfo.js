@@ -1,5 +1,6 @@
 module.exports = {
     name: 'serverinfo',
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/serverinfo.js",
     aliases: ["si"],
     description: 'this show the server info!',
     cooldown: 0,

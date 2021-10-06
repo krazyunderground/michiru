@@ -3,6 +3,7 @@ const fetch = require("node-fetch")
 
 module.exports = {
     name: "ubdict",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/ubdict.js",
     aliases: ['define'],
     category: "basic",
     use: "!m ubdict",

@@ -12,6 +12,7 @@ const queue = new Map();
 
 module.exports = {
     name: 'music',
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/music/music.js",
     category: "music",
     use: "!m music [play, stop, skip]",
     cooldown: 0,

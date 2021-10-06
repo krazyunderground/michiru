@@ -1,5 +1,6 @@
 module.exports = {
   name: "effects",
+  gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/effects.js",
   category: "eco",
   use: "!m effects",
   aliases: ["elist"],

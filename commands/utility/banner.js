@@ -2,6 +2,7 @@ const fetch = require('node-fetch')
 
 module.exports = {
     name: "banner",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/banner.js",
     category: "basic",
     use: "!m banner",
     cooldown: 0,

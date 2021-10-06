@@ -1,6 +1,7 @@
 const owoify = require("owoify-js").default
 module.exports = {
     name: 'owoify',
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/owoify.js",
     aliases: ["owo"],
     description: 'owoifies text',
     cooldown: 0,

@@ -5,6 +5,7 @@ const { Image } = require("canvas")
 
 module.exports = {
     name: "whatanime",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/whatanime.js",
     aliases: ['anime', 'wa'],
     cooldown: 2,
     description: "uses trace.moe to find the anime of an image provided",

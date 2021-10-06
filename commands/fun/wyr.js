@@ -3,6 +3,7 @@ const axios = require('axios')
 
 module.exports = {
     name: "wyr",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/wyr.js",
     aliases: ['would-you-rather'],
     category: "basic",
     use: "!m wyr",

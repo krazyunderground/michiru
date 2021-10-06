@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "ping",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/ping.js",
     description: "shows latencies of the bot",
     category: "basic",
     use: "!m ping",

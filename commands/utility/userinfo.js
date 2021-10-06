@@ -1,6 +1,7 @@
 const ms = require('ms')
 module.exports = {
     name: 'userinfo',
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/userinfo.js",
     aliases: ["whois"],
     description: 'this show a user\'s info!',
     cooldown: 0,

@@ -3,6 +3,7 @@ const userEcon = require("../../models/userEcon");
 
 module.exports = {
   name: "alloyinv",
+  gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/alloyinv.js",
   category: "eco",
   use: "!m alloyinv",
   description: "shows the alloy inventory of the user",

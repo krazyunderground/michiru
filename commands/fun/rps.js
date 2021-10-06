@@ -1,5 +1,6 @@
 module.exports = {
     name: "rps",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/rps.js",
     category: "basic",
     use: "!m rps",
     cooldown: 5,

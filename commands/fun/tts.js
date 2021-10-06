@@ -6,6 +6,7 @@ const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerSta
 
 module.exports = {
   name: "tts",
+  gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/tts.js",
   description: "talks for a user in a VC",
   cooldown: 0,
   category: "music",

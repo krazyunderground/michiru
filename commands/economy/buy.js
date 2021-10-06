@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const userEcon = require("../../models/userEcon");
 module.exports = {
   name: "buy",
+  gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/buy.js",
   category: "eco",
   use: "!m buy",
   description: "allows the user to buy a new pick",

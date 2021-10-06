@@ -3,6 +3,7 @@ const userEcon = require("../../models/userEcon")
 
 module.exports = {
     name: "sellore",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/sell.js",
     category: "eco",
     use: "!m sellore iron@140",
     aliases: ['so','os','oresell'],

@@ -2,6 +2,7 @@ const customCommands = require('../../models/customCommands')
 
 module.exports = {
     name: "cc-delete",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/cc/cc-delete.js",
     aliases: ['cc-delete', 'cc-remove'],
     category: "cc",
     use: "!m cc-delete",

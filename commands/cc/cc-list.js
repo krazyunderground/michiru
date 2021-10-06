@@ -2,6 +2,7 @@ const customCommands = require('../../models/customCommands')
 
 module.exports = {
     name: "list",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/cc/cc-list.js",
     aliases: ['cc-list', 'custom-commands'],
     category: "cc",
     use: "!m cc-list",

@@ -2,6 +2,7 @@ const userEcon = require("../../models/userEcon")
 
 module.exports = {
     name: "craft",
+    gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/craft.js",
     category: "eco",
     use: "!m craft",
     cooldown: 1,

@@ -3,6 +3,7 @@ const fetch = require("node-fetch")
 
 module.exports = {
     name: "google",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/google.js",
     aliases: ['search', 'find', 'g'],
     category: "basic",
     use: "!m google",
