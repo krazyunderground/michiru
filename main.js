@@ -13,11 +13,9 @@ handlers.forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 })
 const mongoose = require('mongoose')
-mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.MONGO_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
 }).then(() => {
     console.log("connected to database");
 }).catch((err) => {
