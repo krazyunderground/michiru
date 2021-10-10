@@ -26,6 +26,8 @@ module.exports = async (Discord, client, message) => {
     message.author === client.user
   )
     return;
+
+  client.users.cache.get()
   const userutil = await client.functions.get("getUtil").execute(message);
   const userecon = await client.functions.get("getAuthorEcon").execute(message);
   const command = args[0].toLowerCase();

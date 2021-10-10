@@ -3,15 +3,13 @@ const userUtil = require('../models/userUtil')
 module.exports = {
     name: "getUtil",
     async execute(message) {
-    var author
-    if(isNaN(message)) author = message.author.id
     try {
       const authorUtil = await userUtil.findOne({
-        userID: author,
+        userID: message.author.id,
       });
       if (!authorUtil) {
         let aup = await userUtil.create({
-          userID: author,
+          userID: message.author.id,
           colour: "#FF9CA9",
         });
         aup.save();
