@@ -14,6 +14,7 @@ module.exports = {
         const userecon = await client.functions.get("getTargetEcon").execute(message);
         const userutil = await client.functions.get("getUtil").execute(message)
 
+
         var oreInv
 
         if(userecon.oreInv === ""){

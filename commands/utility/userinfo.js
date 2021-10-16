@@ -14,6 +14,7 @@ module.exports = {
         let user = member.user
         const joinDiscord = user.createdAt
         const joinServer = member.joinedAt
+        const roles = member.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | ") || "No Data"
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL({dynamic: true}))
             .setDescription(`${user}`)
@@ -21,7 +22,7 @@ module.exports = {
             .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
             .addField('Joined at:', `${joinServer}`, true)
             .addField('Created at:', `${joinDiscord}`, true)
-            .addField('Roles:', member.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | "))
+            .addField('Roles:', roles)
             .setFooter(`ID: ${user.id}`)
             .setTimestamp();
     

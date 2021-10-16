@@ -1,10 +1,9 @@
 const Canvas = require('canvas')
 const fetch = require('node-fetch')
 const { Image } = require('canvas')
-const fs = require("fs")
+const {Captcha} = require("captcha-canvas")
 
 module.exports = async (Discord, client, member) => {
-    if(member.guild.id === "848707853350862858") member.roles.add("853961098691739658")
     const welcomeChannelProfile = await client.functions.get("checkGuild").execute(member)
     if(welcomeChannelProfile.welcomeChannel){
         let uid = member.id
@@ -158,4 +157,44 @@ module.exports = async (Discord, client, member) => {
       } catch (err) {
         console.log(err);
       }
+      
+      const gp = await client.functions.get("checkGuild").execute(member)
+        if(!gp.captchaRole) return 
+
+        const captcha = new Captcha()
+        captcha.async = true
+        captcha.addDecoy()
+        captcha.drawTrace()
+        captcha.drawCaptcha()
+        
+        const captchaAttachment = new Discord.MessageAttachment(await captcha.png, "captcha.png")
+
+        const responsemsg = await member.send({files: [captchaAttachment], content: `Solve the captcha to be verified in ${member.guild.name}!`})
+
+        const filter = (m) => m.author.id === member.id
+        try{
+            const collector = responsemsg.channel.createMessageCollector({filter, time: 30000})
+            collector.on("collect", response => {
+                if(response.content === captcha.text) {
+                    member.roles.add(gp.captchaRole)
+                    member.send(`You've been verified in ${member.guild.name}! 🎉`)
+                    return
+                } else {
+                    member.send(`You failed to verify, so you have been kicked. Simply rejoin to try again!`)
+                    if(member.kickable) member.kick()
+                    return
+                }
+            }) 
+            collector.on("end", response => {
+                if(!member.roles.cache.has(gp.captchaRole) && response.size === 0){
+                    member.send(`You failed to verify, so you have been kicked. Simply rejoin to try again!`)
+                    if(member.kickable) member.kick()
+                    return
+                }
+            })
+        } catch(err) {
+            member.send(`An error may have occoured, so you have been kicked. Simply rejoin to try again!`)
+            if(member.kickable) member.kick()
+            return
+        }
 }

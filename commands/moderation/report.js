@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const guildData = require("../../models/guildData")
 
 module.exports = {
     name: "report",
@@ -32,7 +33,8 @@ module.exports = {
                     { name: "**Message**", value: `${fetchContent}`}
                 )
                 sendChannel.send({embeds: [reportEmbed]})
-                message.channel.send("Report sent, thank you!")
+                msg = message.channel.send("Report sent, thank you!")
+                setTimeout(() => {message.delete()})
 
             }).catch((err) => message.channel.send("Looks like something went wrong!\nPlease verify the ID is correct, and try again!"))
 
