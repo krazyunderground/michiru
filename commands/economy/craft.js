@@ -255,7 +255,7 @@ module.exports = {
           };
           if(!args[3]) args[3] = ""
           const query =`${args[2]}${args[3]}`
-          if(!args[1]) return cmessage.channel.send("Include which category of item you want to craft")
+          if(!args[1]) return message.channel.send("Include which category of item you want to craft")
           let category;
           if(args[1] === "armour") {
               category = "armor"
@@ -269,6 +269,89 @@ module.exports = {
           console.log(request)
           const alloy = request.alloy
           const cost = request.cost
+		if (userecon.alloyInv === "") {
+			alloyInv = ["magnite@0", "steel@0", "elgiloy@0", "shakudo@0", "stellite@0", "codium@0", "dymalloy@0", "vitallium@0"]
+		} else {
+			alloyInv = userecon.alloyInv.split(" ");
+        }
+
+		const magnite = alloyInv[0].split("@");
+		const steel = alloyInv[1].split("@");
+		const elgiloy = alloyInv[2].split("@");
+		const shakudo = alloyInv[3].split("@");
+		const stellite = alloyInv[4].split("@");
+		const codium = alloyInv[5].split("@");
+		const dymalloy = alloyInv[6].split("@");
+		const vitallium = alloyInv[7].split("@");
+
+		//make sure they request an item
+		if (!args[1])return message.channel.send("please enter an item to craft. '!m recipes to view the recipe book'");
+		//set the request
+
+		//set price and amount after give
+        newmagn=parseInt(magnite[1])
+        newstel=parseInt(steel[1])
+        newelgi=parseInt(elgiloy[1])
+        newshak=parseInt(shakudo[1])
+        newstet=parseInt(stellite[1])
+        newcodi=parseInt(codium[1])
+        newdyma=parseInt(dymalloy[1])
+        newvita=parseInt(vitallium[1])
+		switch (request.alloy) {
+			case "magnite":
+				newmagn = parseInt(magnite[1]) - request.cost
+				break;
+			case "steel":
+				newstel = parseInt(steel[1]) - request.cost
+				break;
+			case "elgiloy":
+				newelgi = parseInt(elgiloy[1]) - request.cost
+				break;
+			case "shakudo":
+				newshak = parseInt(shakudo[1]) - request.cost
+				break;
+			case "stellite":
+				newstet = parseInt(stellite[1]) - request.cost
+				break;
+			case "codium":
+				newcodi = parseInt(codium[1]) - request.cost
+				break;
+			case "dymalloy":
+				newdyma = parseInt(dymalloy[1]) - request.cost
+				break;
+			case "vitallium":
+				newvita = parseInt(vitallium[1]) - request.cost
+				break;
+		}
+		//verify they can afford the item
+		if (newmagn < 0) return message.reply("You don't have enough magnite!");
+
+		if (newstel < 0) return message.reply("You don't have enough steel!");
+
+		if (newelgi < 0) return message.reply("You don't have enough eligoy!");
+
+		if (newshak < 0) return message.reply("You don't have enough shakudo!");
+
+		if (newstel < 0) return message.reply("You don't have enough stellite!");
+
+		if (newcodi < 0) return message.reply("You don't have enough codium!");
+
+        if (newdyma < 0) return message.reply("You don't have enough dymalloy!");
+
+        if (newvita < 0) return message.reply("You don't have enough vitallium!");
+		//set new ore inventory from switch case prices
+		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} codium@${newcodi} dymalloy@${newdyma} vitallium@${newvita}`
+		//update econ
+		await userEcon.findOneAndUpdate(
+            {
+                userID: message.author.id
+            },
+            {
+                $set:{
+                    alloyInv: newalloyInv,
+                }
+            }
+        )
           message.channel.send(`Purchase: ${args[2]} ${args[3]}, Alloy: ${alloy}, Cost: ${cost}`)
 
 
