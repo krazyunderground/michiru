@@ -114,6 +114,7 @@ module.exports = async (Discord, client, member) => {
         
     }
     //Create userEcon in DB
+    if(member.bot) return
     const userEcon = require("../../models/userEcon");
     try {
         const econ = await userEcon.findOne({

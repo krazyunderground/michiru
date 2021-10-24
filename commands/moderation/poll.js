@@ -1,6 +1,6 @@
 module.exports = {
     name: "poll",
-    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/poll.js",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/moderation/poll.js",
     category: "admin",
     use: "!m poll",
     description: "creates a poll in the specified channel",

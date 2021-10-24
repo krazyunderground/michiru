@@ -3,7 +3,7 @@ const guildData = require("../../models/guildData")
 
 module.exports = {
     name: "report",
-    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/report.js",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/moderation/report.js",
     aliases: ['rep'],
     category: "admin",
     use: "!m report",

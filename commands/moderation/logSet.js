@@ -3,7 +3,7 @@ const guildData = require("../../models/guildData")
 
 module.exports = {
     name: "logset",
-    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/logSet.js",
+    gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/moderation/logSet.js",
     category: "admin",
     use: "!m logset",
     description: "sets the logs channel",
