@@ -266,7 +266,6 @@ module.exports = {
           if(!categories[category]) return message.channel.send("That category doesnt exist!")
           if(!categories[category][query]) return message.channel.send("That item doesnt exist!")
           const request = categories[category][query]
-          console.log(request)
           const alloy = request.alloy
           const cost = request.cost
 		if (userecon.alloyInv === "") {
@@ -342,6 +341,7 @@ module.exports = {
 		//set new ore inventory from switch case prices
 		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} codium@${newcodi} dymalloy@${newdyma} vitallium@${newvita}`
 		//update econ
+        console.log(`owns - ${userecon.owns} db - ${request.db}`)
 		await userEcon.findOneAndUpdate(
             {
                 userID: message.author.id
@@ -355,7 +355,7 @@ module.exports = {
           message.channel.send(`Purchase: ${args[2]} ${args[3]}, Alloy: ${alloy}, Cost: ${cost}`)
 
 
-          userEcon.findOneAndUpdate(
+          await userEcon.findOneAndUpdate(
             {
               userID: message.author.id
             },
