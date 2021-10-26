@@ -352,7 +352,7 @@ module.exports = {
                 }
             }
         )
-          message.channel.send(`Purchase: ${args[2]} ${args[3]}, Alloy: ${alloy}, Cost: ${cost}`)
+          message.channel.send(`${message.author.username} crafted a ${args[2]} ${args[3]}`)
 
 
           await userEcon.findOneAndUpdate(
@@ -365,7 +365,6 @@ module.exports = {
                 }
             }
           )
-          //take alloy and give item
       },
   };
   
