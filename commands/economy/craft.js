@@ -266,6 +266,9 @@ module.exports = {
           if(!categories[category]) return message.channel.send("That category doesnt exist!")
           if(!categories[category][query]) return message.channel.send("That item doesnt exist!")
           const request = categories[category][query]
+
+          if(userecon.owns.includes(request.db))return message.reply("You already have that item!")
+
           const alloy = request.alloy
           const cost = request.cost
 		if (userecon.alloyInv === "") {
@@ -352,10 +355,15 @@ module.exports = {
                 }
             }
         )
-          message.channel.send(`${message.author.username} crafted a ${args[2]} ${args[3]}`)
 
+        const embed = new Discord.MessageEmbed()
+                .setTitle("New item crafted!")
+                .setDescription(`**Purchase:** \`${args[2]} ${args[3]}\`\n**Alloy:** \`${alloy}\`\n**Cost:** \`${cost}\``)
+                .setColor(userutil.colour)
 
-          await userEcon.findOneAndUpdate(
+        message.channel.send({embeds: [embed]})
+
+        await userEcon.findOneAndUpdate(
             {
               userID: message.author.id
             },
