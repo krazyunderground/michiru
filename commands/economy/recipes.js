@@ -113,7 +113,7 @@ module.exports = {
             .setFooter("page 1/2")
             for (alloy of aH) {
                 alloyEmbed1.addField(`${alloy.name}`, `${alloy.characteristics} \n\`Cost:\` ${alloy.recipe}\n\`Extras:\` ${alloy.extras}\n\`Debuff:\` ${alloy.debuffs}`)
-            }bala
+            }
             //second half
             const alloyEmbed2 = new Discord.MessageEmbed()
             .setTitle("Alloys")
@@ -202,11 +202,7 @@ module.exports = {
             });
         
             collector2.on("end", (i) => {
-                const disabledRow = new MessageActionRow().addComponents(
-                    buttons[0].setDisabled(true),
-                    buttons[1].setDisabled(true)
-                )
-                    i.editReply( {embeds: [pages[page]], components: [disabledRow]} )
+                return
             })
     }
 }
