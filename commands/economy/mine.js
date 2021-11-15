@@ -6,7 +6,7 @@ module.exports = {
     category: "eco",
     use: "!m mine",
     aliases: ['work', 'm', 'w'],
-    cooldown: 20,
+    cooldown: 1,
     description: "allows the user to get more materials",
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
@@ -20,27 +20,27 @@ module.exports = {
 
         switch(pick){
             case 1:
-                var ores = [["iron", 900, 40, 60],["tungsten", 750, 20, 30],["gold", 300, 5, 10],["copper", 100, 3, 7],["cobalt", 50, 1, 4],["diamond", 5, 0, 1]] // ID, chance/1000, min quant, max quant
+                var ores = [["iron", 900, 20, 40],["tungsten", 500, 10, 30],["gold", 100, 5, 15],["copper", 10, 3, 7],["cobalt", 0, 0, 0],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "iron"
             break
             case 2:
-                var ores = [["iron", 500, 20, 30],["tungsten", 800, 30, 50],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var ores = [["iron", 500, 10, 30],["tungsten", 900, 20, 40],["gold", 500, 10, 30],["copper", 100, 0, 15],["cobalt", 25, 1, 3],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "tungsten"
             break
             case 3:
-                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var ores = [["iron", 250, 1, 15],["tungsten", 500, 10, 30],["gold", 900, 20, 40],["copper", 500, 10, 30],["cobalt", 50, 1, 15],["diamond", 10, 1, 3]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "gold"
             break
             case 4:
-                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var ores = [["iron", 100, 1, 15],["tungsten", 300, 20, 30],["gold", 500, 20, 40],["copper", 900, 30, 50],["cobalt", 250, 10, 30],["diamond", 100, 1, 15]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "copper"
             break
             case 5:
-                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var ores = [["iron", 50, 1, 15],["tungsten", 250, 20, 40],["gold", 300, 30, 50],["copper", 500, 35, 60],["cobalt", 900, 20, 40],["diamond", 250, 10, 30]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "cobalt"
             break
             case 6:
-                var ores = [["iron", 500, 1, 10],["tungsten", 300, 20, 30],["gold", 700, 100, 200],["copper", 100, 4, 16],["cobalt", 15, 0, 100],["diamond", 15, 0, 100]] // ID, chance/1000, min quant, max quant
+                var ores = [["iron", 50, 1, 20],["tungsten", 300, 20, 40],["gold", 700, 30, 50],["copper", 100, 35, 60],["cobalt", 15, 25, 50],["diamond", 500, 20, 50]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "diamond"
             break
         }

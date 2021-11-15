@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const { MessageSelectMenu, MessageActionRow, MessageButton } = require(`discord.js`)
 const userEcon = require("../../models/userEcon")
 
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
     category: "eco",
     use: "!m sellore iron@140",
     aliases: ['so','os','oresell'],
-    cooldown: 20,
+    cooldown: 1,
     description: "allows the user to get more materials",
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
@@ -36,29 +37,27 @@ module.exports = {
         var colbsub = 0
         var diamsub = 0
 
-        await args.forEach(arg => {
-            var ore = arg.split("@")
-            switch(ore[0]){
+        const value = args.slice(2).join(" ");
+            switch(args[1]){
                 case "iron":
-                    ironsub = parseInt(ore[1])
+                    ironsub = value
                 break
                 case "tungsten":
-                    tungsub = parseInt(ore[1])
+                    tungsub = value
                 break
                 case "gold":
-                    goldsub = parseInt(ore[1])
+                    goldsub = value
                 break
                 case "copper":
-                    coppsub = parseInt(ore[1])
+                    coppsub = value
                 break
                 case "cobalt":
-                    colbsub = parseInt(ore[1])
+                    colbsub = value
                 break
                 case "diamond":
-                    diamsub = parseInt(ore[1])
+                    diamsub = value
                 break
             }
-        })
 
         if(parseInt(iron[1]) < ironsub) return message.reply("You don't have enough iron!")
         if(parseInt(tung[1]) < tungsub) return message.reply("You don't have enough tungsten!")
@@ -105,6 +104,6 @@ module.exports = {
             }
         )
 
-        message.reply(`sold minerals for \`${addprof} ==> ${totprof}\``)
+        message.reply(`sold minerals for \`${addprof}\` coins`)
     }
-} 
+}  

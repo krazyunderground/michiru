@@ -14,7 +14,7 @@ module.exports = {
           db: "magnitep",
           alloy: "magnite",
           rank: 1,
-          cost: 1,
+          cost: 10000,
         },
         steelpickaxe: {
           db: "steelp",
@@ -72,7 +72,7 @@ module.exports = {
     const query = `${args[2]}${args[3]}`;
     //check for category
     if (!args[1])
-      return cmessage.channel.send(
+      return message.channel.send(
         "Include which category of item you want to craft"
       );
     //pickaxe aliases for category
@@ -92,9 +92,28 @@ module.exports = {
       return message.channel.send("That item doesnt exist!");
     //set request to item from category
     const request = categories[category][query];
-    //check inventory pickaxe rank against requested rank
-    //update inventory and send success message
-    //take currency (coins)
-    console.log(request);
+    const userecon = await client.functions.get("getAuthorEcon").execute(message);
+    const userutil = await client.functions.get("getUtil").execute(message)
+    console.log(request)
+    console.log(request.rank)
+    if (request.rank < userecon.pick) return message.channel.send("Your pickaxe is already better!")
+    const newBal = userecon.coins - request.cost
+    await userEcon.findOneAndUpdate(
+      {
+          userID: message.author.id
+      },
+      {
+          $set:{
+              pick: request.rank,
+              coins: newBal
+          }
+      }
+  )
+  const embed = new Discord.MessageEmbed()
+                .setTitle("New item crafted!")
+                .setDescription(`**Purchase:** \`${args[2]} ${args[3]}\`\n**Cost:** \`${request.cost}\`\n**New Balance:** \`${newBal}\``)
+                .setColor(userutil.colour)
+
+        message.channel.send({embeds: [embed]})
   },
 };
