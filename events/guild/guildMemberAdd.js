@@ -181,9 +181,11 @@ module.exports = async (Discord, client, member) => {
                     member.send(`You've been verified in ${member.guild.name}! 🎉`)
                     return
                 } else {
-                    member.send(`You failed to verify, so you have been kicked. Simply rejoin to try again!`)
-                    if(member.kickable) member.kick()
-                    return
+                    if(!member.roles.cache.has(gp.captchaRole)){
+                      member.send(`You failed to verify, so you have been kicked. Simply rejoin to try again!`)
+                      if(member.kickable) member.kick()
+                      return
+                    }
                 }
             }) 
             collector.on("end", response => {

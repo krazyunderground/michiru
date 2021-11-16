@@ -34,9 +34,12 @@ module.exports = {
                     message.member.send(`You've been verified in ${message.member.guild.name}! 🎉`)
                     return
                 } else {
-                    message.member.send(`You failed to verify, so you have been kicked. Simply rejoin to try again!`)
-                    if(message.member.kickable) message.member.kick()
-                    return
+                    if(!message.member.roles.cache.has(gp.captchaRole)){
+                        message.member.send(`You failed to verify, so you have been kicked. Simply rejoin to try again!`)
+                        if(message.member.kickable) message.member.kick()
+                        return
+                    }
+                    
                 }
             }) 
             collector.on("end", response => {
