@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const userEcon = require("../../models/userEcon");
-
+//test
 module.exports = {
   name: "alloyinv",
   gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/alloyinv.js",
