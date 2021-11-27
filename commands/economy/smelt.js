@@ -5,8 +5,11 @@ module.exports = {
 	gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/smelt.js",
 	category: "eco",
 	use: "!m smelt",
+	example: "!m smelt steel 5",
 	cooldown: 1,
 	description: "allows the user to smelt alloys from basic ores",
+	minArgs: 2,
+	maxArgs: 2,
 	async execute(client, message, args, Discord, economy, util) {
 		if (message.guild === null) return message.reply("You can't use this command in a DM!");
 
@@ -15,18 +18,18 @@ module.exports = {
 
 		const alloys = [
 			{
-				name: "magnite",
-				mat1: "iron",
-				mat1am: 1000,
-				mat2: "gold",
-				mat2am: 200,
-			},
-			{
 				name: "steel",
 				mat1: "iron",
 				mat1am: 1000,
 				mat2: "tungsten",
 				mat2am: 350,
+			},
+			{
+				name: "magnite",
+				mat1: "iron",
+				mat1am: 1000,
+				mat2: "gold",
+				mat2am: 200,
 			},
 			{
 				name: "elgiloy",
@@ -50,7 +53,7 @@ module.exports = {
 				mat2am: 800,
 			},
 			{
-				name: "codium",
+				name: "cobium",
 				mat1: "cobalt",
 				mat1am: 2250,
 				mat2: "copper",
@@ -80,7 +83,7 @@ module.exports = {
 			oreInv = userecon.oreInv.split(" ");
 		}
 		if (userecon.alloyInv === "") {
-			alloyInv = `magnite@0 steel@0 elgiloy@0 shakudo@0 stellite@0 codium@0 dymalloy@0 vitallium@0`;
+			alloyInv = `magnite@0 steel@0 elgiloy@0 shakudo@0 stellite@0 cobium@0 dymalloy@0 vitallium@0`;
 		} else {
 			alloyInv = userecon.alloyInv.split(" ");
 		}
@@ -97,7 +100,7 @@ module.exports = {
 		const elgiloy = alloyInv[2].split("@");
 		const shakudo = alloyInv[3].split("@");
 		const stellite = alloyInv[4].split("@");
-		const codium = alloyInv[5].split("@");
+		const cobium = alloyInv[5].split("@");
 		const dymalloy = alloyInv[6].split("@");
 		const vitallium = alloyInv[7].split("@");
 
@@ -115,13 +118,12 @@ module.exports = {
 		if(!args[2]) {amount = 1} else {amount = parseInt(args[2]);}
 		//verify item exists
 		if (!alloys.some(e => e.name === request)) return message.channel.send("this item does not exist! '!m recipes to view the recipe book'");
-		console.log(amount)
 		var newmagn = 0
 		var newstel = 0
 		var newelgi = 0
 		var newshak = 0
 		var newstet = 0
-		var newcodi = 0
+		var newcobi = 0
 		var newdyma = 0
 		var newvita = 0
 		//set price and amount after give
@@ -151,10 +153,10 @@ module.exports = {
 				tungsub = 800 * amount;
 				newstet = parseInt(stellite[1]) + amount
 				break;
-			case "codium":
+			case "cobium":
 				colbsub = 2250 * amount;
 				coppsub = 1500 * amount;
-				newcodi = parseInt(codium[1]) + amount
+				newcobi = parseInt(cobium[1]) + amount
 				break;
 			case "dymalloy":
 				colbsub = 1500 * amount;
@@ -188,7 +190,7 @@ module.exports = {
         var newdiam = parseInt(diam[1]) - diamsub
 
 		const neworeInv = `iron@${newiron} tungsten@${newtung} gold@${newgold} copper@${newcopp} cobalt@${newcolb} diamond@${newdiam}`
-		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} codium@${newcodi} dymalloy@${newdyma} vitallium@${newvita}`
+		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} cobium@${newcobi} dymalloy@${newdyma} vitallium@${newvita}`
 		//update econ
 		await userEcon.findOneAndUpdate(
             {

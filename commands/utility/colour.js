@@ -29,7 +29,6 @@ module.exports = {
                     colour: colour,
                   },
                 })
-            message.reply(`${await client.functions.get("getUtil").execute(message)}`)
         } else{
             message.reply("Use a valid hex code! ||E.G:`FF9CA9`||")
         }

@@ -15,13 +15,13 @@ module.exports = {
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
 
             if(!args[1]) return message.channel.send("Add what you want to change the prefix to!")
-            if(args[1].length > 15) return message.channel.send("Prefixes are character limited to 15")
+            if(args.slice(1).join(" ").length > 15) return message.channel.send("Prefixes are character limited to 15")
 
             const filter = response => {
                 return "y" === response.content.toLowerCase();
             };
             
-            message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.prefix}\`\nNew: \`${args[1]}\`\n\n**Y** to continue`, { fetchReply: true })
+            message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.prefix}\`\nNew: \`${args.slice(1).join(" ")}\`\n\n**Y** to continue`, { fetchReply: true })
             .then(() => {
                 message.channel.awaitMessages({ filter, max: 1, time: 30000, errors: ['time'] })
                 .then(async collected => {
@@ -31,7 +31,7 @@ module.exports = {
                         },
                         {
                             $set: {
-                            prefix: args[1].toLowerCase(),
+                            prefix: args.slice(1).join(" ").toLowerCase(),
                             },
                         })
                     message.reply("Prefix successfully changed!");

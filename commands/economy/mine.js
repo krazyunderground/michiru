@@ -7,41 +7,52 @@ module.exports = {
     use: "!m mine",
     aliases: ['work', 'm', 'w'],
     cooldown: 1,
-    description: "allows the user to get more materials",
+    description: "go on a mining expedition for some ores",
+    maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
 
         const userecon = await client.functions.get("getAuthorEcon").execute(message);
         const userutil = await client.functions.get("getUtil").execute(message);
-
         const pick = userecon.pick
-
         //sets parameters for the algorithm
 
         switch(pick){
             case 1:
-                var ores = [["iron", 900, 20, 40],["tungsten", 500, 10, 30],["gold", 100, 5, 15],["copper", 10, 3, 7],["cobalt", 0, 0, 0],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
-                var pickaxe = "iron"
+                var ores = [["iron", 900, 10, 30],["tungsten", 500, 5, 30],["gold", 100, 3, 10],["copper", 10, 1, 5],["cobalt", 0, 0, 0],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "starter"
             break
             case 2:
-                var ores = [["iron", 500, 10, 30],["tungsten", 900, 20, 40],["gold", 500, 10, 30],["copper", 100, 0, 15],["cobalt", 25, 1, 3],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
-                var pickaxe = "tungsten"
+                var ores = [["iron", 500, 10, 30],["tungsten", 900, 10, 30],["gold", 500, 5, 25],["copper", 100, 1, 10],["cobalt", 25, 1, 3],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "steel"
             break
             case 3:
-                var ores = [["iron", 250, 1, 15],["tungsten", 500, 10, 30],["gold", 900, 20, 40],["copper", 500, 10, 30],["cobalt", 50, 1, 15],["diamond", 10, 1, 3]] // ID, chance * 10, min quant, max quant
-                var pickaxe = "gold"
+                var ores = [["iron", 250, 5, 25],["tungsten", 500, 5, 25],["gold", 900, 10, 30],["copper", 500, 5, 25],["cobalt", 50, 1, 5],["diamond", 10, 1, 3]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "magnite"
             break
             case 4:
-                var ores = [["iron", 100, 1, 15],["tungsten", 300, 20, 30],["gold", 500, 20, 40],["copper", 900, 30, 50],["cobalt", 250, 10, 30],["diamond", 100, 1, 15]] // ID, chance * 10, min quant, max quant
-                var pickaxe = "copper"
+                var ores = [["iron", 100, 1, 15],["tungsten", 300, 5, 25],["gold", 500, 10, 30],["copper", 900, 10, 30],["cobalt", 250, 5, 15],["diamond", 50, 1, 15]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "elgiloy"
             break
             case 5:
-                var ores = [["iron", 50, 1, 15],["tungsten", 250, 20, 40],["gold", 300, 30, 50],["copper", 500, 35, 60],["cobalt", 900, 20, 40],["diamond", 250, 10, 30]] // ID, chance * 10, min quant, max quant
-                var pickaxe = "cobalt"
+                var ores = [["iron", 50, 1, 20],["tungsten", 250, 10, 25],["gold", 300, 10, 25],["copper", 500, 10, 30],["cobalt", 900, 5, 25],["diamond", 100, 5, 15]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "shakudo"
             break
             case 6:
-                var ores = [["iron", 50, 1, 20],["tungsten", 300, 20, 40],["gold", 700, 30, 50],["copper", 100, 35, 60],["cobalt", 15, 25, 50],["diamond", 500, 20, 50]] // ID, chance * 10, min quant, max quant
-                var pickaxe = "diamond"
+                var ores = [["iron", 50, 1, 25],["tungsten", 300, 10, 35],["gold", 700, 15, 35],["copper", 100, 20, 40],["cobalt", 15, 10, 30],["diamond", 150, 5, 30]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "stellite"
+            break
+            case 7:
+                var ores = [["iron", 100, 1, 25],["tungsten", 300, 10, 35],["gold", 700, 15, 35],["copper", 100, 20, 40],["cobalt", 15, 10, 30],["diamond", 200, 5, 30]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "cobium"
+            break
+            case 8:
+                var ores = [["iron", 200, 1, 25],["tungsten", 300, 10, 35],["gold", 700, 15, 35],["copper", 100, 20, 40],["cobalt", 15, 10, 30],["diamond", 250, 5, 30]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "dymalloy"
+            break
+            case 9:
+                var ores = [["iron", 250, 1, 25],["tungsten", 250, 10, 35],["gold", 250, 15, 35],["copper", 300, 20, 40],["cobalt", 250, 10, 30],["diamond", 500, 10, 30]] // ID, chance * 10, min quant, max quant
+                var pickaxe = "vitallium"
             break
         }
 
@@ -156,29 +167,32 @@ module.exports = {
         )
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(`${message.member.displayName}'s Mining Expedition!`)
+            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+            .setTitle(`${message.author.username}'s Mining Expedition!`)
             .setColor(userutil.colour)
+            .setTimestamp()
+            .setFooter("💸", client.user.displayAvatarURL())
 
         if(addIron > 0){
-            embed.addField("Iron", `<:iron:872597984989290537> \`${addIron}\` Gained!\nTotal: \`${oldIron} ==> ${newIron}\``)
+            embed.addField("Iron", `<:iron:872597984989290537> \`${addIron}\` Gained!\nTotal: \`${oldIron} ➞ ${newIron}\``)
         }
         if(addTung > 0){
-            embed.addField("Tungsten", `<:tungsten:872598339005337672> \`${addTung}\` Gained!\nTotal: \`${oldTung} ==> ${newTung}\``)
+            embed.addField("Tungsten", `<:tungsten:872598339005337672> \`${addTung}\` Gained!\nTotal: \`${oldTung} ➞ ${newTung}\``)
         }
         if(addGold > 0){
-            embed.addField("Gold", `<:gold:872600131025911819> \`${addGold}\` Gained!\nTotal: \`${oldGold} ==> ${newGold}\``)
+            embed.addField("Gold", `<:gold:872600131025911819> \`${addGold}\` Gained!\nTotal: \`${oldGold} ➞ ${newGold}\``)
         }
         if(addCopp > 0){
-            embed.addField("Copper", `<:copper:872600271849680927> \`${addCopp}\` Gained!\nTotal: \`${oldCopp} ==> ${newCopp}\``)
+            embed.addField("Copper", `<:copper:872600271849680927> \`${addCopp}\` Gained!\nTotal: \`${oldCopp} ➞ ${newCopp}\``)
         }
         if(addColb > 0){
-            embed.addField("Cobalt", `<:cobalt:872604058010124318> \`${addColb}\` Gained!\nTotal: \`${oldColb} ==> ${newColb}\``)
+            embed.addField("Cobalt", `<:cobalt:872604058010124318> \`${addColb}\` Gained!\nTotal: \`${oldColb} ➞ ${newColb}\``)
         }
         if(addDiam > 0){
-            embed.addField("Diamond", `<:diamond:872606034307448912> \`${addDiam}\` Gained!\nTotal: \`${oldDiam} ==> ${newDiam}\``)
+            embed.addField("Diamond", `<:diamond:872606034307448912> \`${addDiam}\` Gained!\nTotal: \`${oldDiam} ➞ ${newDiam}\``)
         }
 
-        if(addIron == 0 && addTung == 0 && addGold == 0 && addCopp == 0 && addColb == 0 && addDiam == 0) embed.setDescription(`No ores found :^(`)
+        if(addIron == 0 && addTung == 0 && addGold == 0 && addCopp == 0 && addColb == 0 && addDiam == 0) embed.setDescription(`No ores found!`)
 
         message.channel.send({embeds: [embed]})
     }

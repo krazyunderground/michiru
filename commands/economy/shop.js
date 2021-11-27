@@ -7,48 +7,70 @@ module.exports = {
     category: "eco",
     use: "!m shop",
     cooldown: 2,
-    description: "allows the user to buy a new pick",
+    description: "displays the item shop",
+    maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message);
 
         const pickaxes = [
             {
-                name: "Reinforced Pickaxe",
-                cost: 300,
-                description: "<:reinforcedpick:856587877239488512> Extra 10% when mining",
-                id: "`reinforced`"
-            },
-            {
-                name: "Elite Pickaxe",
-                cost: 800,
-                description: "<:elitepick:856587945230336010> Extra 20% when mining",
-                id: "`elite`"
-            },
-            {
-                name: "Pro Pickaxe",
-                cost: 1500,
-                description: "<:propick:856588067556556841> Extra 50% when mining",
-                id: "`pro`"
-            },
-            {
-                name: "Epic Pickaxe",
-                cost: 2700,
-                description: "<:epicpick:856588001844920331> Extra 100% when mining",
-                id: "`epic`"
-            },
-            {
-                name: "God Pickaxe",
-                cost: 4600,
-                description: "<:godpick:856588141497679899> Extra 200% when mining",
-                id: "`god`"
-            }
+                name: "Steel Pickaxe",
+                emoji: "<:SteelPickaxe:914215803971309618>",
+                rank: 2,
+                cost: 1000
+              },
+              {
+                name: "Magnite Pickaxe",
+                emoji: "<:MagnitePickaxe:914215849227866135> ",
+                rank: 3,
+                cost: 1
+              },
+              {
+                name: "Elgiloy Pickaxe",
+                emoji: "<:ElgiloyPickaxe:914215888742383727> ",  
+                rank: 4,
+                cost: 1,
+              },
+              {
+                name: "Shakudo Pickaxe",
+                emoji: "<:ShakudoPickaxe:914215943335477309>",
+                rank: 5,
+                cost: 1,
+              },
+              {
+                name: "Stellite Pickaxe",
+                emoji: "<:StellitePickaxe:914216018635796520> ",
+                rank: 6,
+                cost: 1,
+              },
+              {
+                name: "Cobium Pickaxe",
+                emoji: "<:CobiumPickaxe:914216084482170891> ",
+                rank: 7,
+                cost: 1,
+              },
+              {
+                name: "Dymalloy Pickaxe",
+                emoji: "<:DymalloyPickaxe:914216124093186108> ",
+                rank: 8,
+                cost: 1,
+              },
+              {
+                name: "Vitallium Pickaxe",
+                emoji: "<:VitalliumPickaxe:914216162777264138>",
+                rank: 9,
+                cost: 1,
+              },
         ]
         const shopEmbed = new Discord.MessageEmbed()
-            .setTitle("Shop")
-            .setDescription("Use `!m buy [item]` to buy an item!")
+            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+            .setTitle('Item Shop!')
+            .setDescription("Use `!m buy <item>` to buy an item!")
             .setColor(userutil.colour)
+            .setTimestamp()
+            .setFooter("💸", client.user.displayAvatarURL())
             for (pick of pickaxes) {
-                shopEmbed.addField(`${pick.name}`, `${pick.description} \nCost: ${pick.cost} \nID: ${pick.id}`)
+                shopEmbed.addField(`${pick.emoji} ${pick.name}`, `Cost: ${pick.cost} coins \nRank: ${pick.rank}`)
             }
         message.channel.send({embeds: [shopEmbed]})
     }
