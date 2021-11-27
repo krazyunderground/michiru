@@ -4,9 +4,12 @@ module.exports = {
     name: "craft",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/craft.js",
     category: "eco",
-    use: "!m craft",
+    use: "!m craft <category> <item>",
+    example: "!m craft armor steel helmet",
     cooldown: 1,
     description: "allows the user to craft items.",
+    minArgs: 2,
+    maxArgs: 3,
     async execute(client, message, args, Discord, economy, util) {
           if (message.guild === null) return message.reply(`You can't use this command in a DM!`);
   
@@ -16,53 +19,53 @@ module.exports = {
           const categories = { 
               //armor category
               armor: {
+                steelhelmet: {
+                    name: "steel helmet",
+                    db: "steelh",
+                    alloy: "steel",
+                    cost: 5,
+                },
+                steelchestplate: {
+                    name: "steel chestplate",
+                    db: "steelc",
+                    alloy: "steel",
+                    cost: 5,
+                },
+                steelleggings: {
+                  name: "steel leggings",
+                    db: "steell",
+                    alloy: "steel",
+                    cost: 5,
+                },
+                steelboots: {
+                  name: "steel boots",
+                    db: "steelb",
+                    alloy: "steel",
+                    cost: 5,
+                },
                   magnitehelmet: {
                       name: "magnite helmet",
                       db: "magniteh",
                       alloy: "magnite",
-                      cost: 1,
+                      cost: 5,
                   },
                   magnitechestplate: {
                       name: "magnite",
                       db: "magnitec",
                       alloy: "magnite",
-                      cost: 1,
+                      cost: 5,
                   },
                   magniteleggings: {
                     name: "magnite",
                       db: "magnitel",
                       alloy: "magnite",
-                      cost: 1,
+                      cost: 5,
                   },
                   magniteboots: {
                       name: "magnite",
                       db: "magniteb",
                       alloy: "magnite",
-                      cost: 1,
-                  },
-                  steelhelmet: {
-                      name: "",
-                      db: "steelh",
-                      alloy: "steel",
-                      cost: 1,
-                  },
-                  steelchestplate: {
-                      name: "",
-                      db: "steelc",
-                      alloy: "steel",
-                      cost: 1,
-                  },
-                  steelleggings: {
-                    name: "",
-                      db: "steell",
-                      alloy: "steel",
-                      cost: 1,
-                  },
-                  steelboots: {
-                    name: "",
-                      db: "steelb",
-                      alloy: "steel",
-                      cost: 1,
+                      cost: 5,
                   },
                   elgiloyhelmet: {
                     name: "",
@@ -136,28 +139,28 @@ module.exports = {
                       alloy: "stellite",
                       cost: 1,
                   },
-                  codiumhelmet: {
+                  cobiumhelmet: {
                       name: "",
-                      db: "codiumh",
-                      alloy: "codium",
+                      db: "cobiumh",
+                      alloy: "cobium",
                       cost: 1,
                   },
-                  codiumchestplate: {
+                  cobiumchestplate: {
                       name: "",
-                      db: "codiumc",
-                      alloy: "codium",
+                      db: "cobiumc",
+                      alloy: "cobium",
                       cost: 1,
                   },
-                  codiumleggings: {
+                  cobiumleggings: {
                       name: "",
-                      db: "codiuml",
-                      alloy: "codium",
+                      db: "cobiuml",
+                      alloy: "cobium",
                       cost: 1,
                   },
-                  codiumboots: {
+                  cobiumboots: {
                       name: "",
-                      db: "codiumb",
-                      alloy: "codium",
+                      db: "cobiumb",
+                      alloy: "cobium",
                       cost: 1,
                   },
                   dymalloyhelmet: {
@@ -211,14 +214,14 @@ module.exports = {
               },
               //weapons category
               weapons: {
+                steelsword: {
+                    db: "steels",
+                    alloy: "steel",
+                    cost: 5,
+                },
                   magnitesword: {
                       db: "magnites",
                       alloy: "magnite",
-                      cost: 1,
-                  },
-                  steelsword: {
-                      db: "steels",
-                      alloy: "steel",
                       cost: 1,
                   },
                   elgiloysword: {
@@ -236,9 +239,9 @@ module.exports = {
                       alloy: "stellite",
                       cost: 1,
                   },
-                  codiumsword: {
-                      db: "codiums",
-                      alloy: "codium",
+                  cobiumsword: {
+                      db: "cobiums",
+                      alloy: "cobium",
                       cost: 1,
                   },
                   dymalloysword: {
@@ -272,17 +275,17 @@ module.exports = {
           const alloy = request.alloy
           const cost = request.cost
 		if (userecon.alloyInv === "") {
-			alloyInv = ["magnite@0", "steel@0", "elgiloy@0", "shakudo@0", "stellite@0", "codium@0", "dymalloy@0", "vitallium@0"]
+			alloyInv = ["steel@0", "magnite@0", "elgiloy@0", "shakudo@0", "stellite@0", "cobium@0", "dymalloy@0", "vitallium@0"]
 		} else {
 			alloyInv = userecon.alloyInv.split(" ");
         }
 
-		const magnite = alloyInv[0].split("@");
-		const steel = alloyInv[1].split("@");
+        const steel = alloyInv[0].split("@");
+		const magnite = alloyInv[1].split("@");
 		const elgiloy = alloyInv[2].split("@");
 		const shakudo = alloyInv[3].split("@");
 		const stellite = alloyInv[4].split("@");
-		const codium = alloyInv[5].split("@");
+		const cobium = alloyInv[5].split("@");
 		const dymalloy = alloyInv[6].split("@");
 		const vitallium = alloyInv[7].split("@");
 
@@ -296,7 +299,7 @@ module.exports = {
         newelgi=parseInt(elgiloy[1])
         newshak=parseInt(shakudo[1])
         newstet=parseInt(stellite[1])
-        newcodi=parseInt(codium[1])
+        newcobi=parseInt(cobium[1])
         newdyma=parseInt(dymalloy[1])
         newvita=parseInt(vitallium[1])
 		switch (request.alloy) {
@@ -315,8 +318,8 @@ module.exports = {
 			case "stellite":
 				newstet = parseInt(stellite[1]) - request.cost
 				break;
-			case "codium":
-				newcodi = parseInt(codium[1]) - request.cost
+			case "cobium":
+				newcobi = parseInt(cobium[1]) - request.cost
 				break;
 			case "dymalloy":
 				newdyma = parseInt(dymalloy[1]) - request.cost
@@ -336,15 +339,14 @@ module.exports = {
 
 		if (newstel < 0) return message.reply("You don't have enough stellite!");
 
-		if (newcodi < 0) return message.reply("You don't have enough codium!");
+		if (newcobi < 0) return message.reply("You don't have enough cobium!");
 
         if (newdyma < 0) return message.reply("You don't have enough dymalloy!");
 
         if (newvita < 0) return message.reply("You don't have enough vitallium!");
 		//set new ore inventory from switch case prices
-		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} codium@${newcodi} dymalloy@${newdyma} vitallium@${newvita}`
+		const newalloyInv = `steel@${newstel} magnite@${newmagn} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} cobium@${newcobi} dymalloy@${newdyma} vitallium@${newvita}`
 		//update econ
-        console.log(`owns - ${userecon.owns} db - ${request.db}`)
 		await userEcon.findOneAndUpdate(
             {
                 userID: message.author.id
@@ -357,9 +359,12 @@ module.exports = {
         )
 
         const embed = new Discord.MessageEmbed()
-                .setTitle("New item crafted!")
-                .setDescription(`**Purchase:** \`${args[2]} ${args[3]}\`\n**Alloy:** \`${alloy}\`\n**Cost:** \`${cost}\``)
-                .setColor(userutil.colour)
+            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+            .setTitle(`${message.author.username} Crafted an Item!`)
+            .setDescription(`**Purchase:** \`${args[2]} ${args[3]}\`\n**Alloy:** \`${alloy}\`\n**Cost:** \`${cost}\``)
+            .setColor(userutil.colour)
+            .setTimestamp()
+            .setFooter("💸", client.user.displayAvatarURL())
 
         message.channel.send({embeds: [embed]})
 

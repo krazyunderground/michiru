@@ -106,12 +106,14 @@ module.exports = {
             description: "Display CC Commands",
             emoji: "🖌️"
         }
-        let row = new MessageActionRow().addComponents(
-            new MessageSelectMenu()
-                .setCustomId("Selection")
-                .setMaxValues(1)
-                .addOptions([option1, option2, option3, option4, option5])
-        )
+        MSM = new MessageSelectMenu()
+            .setCustomId("Selection")
+            .setMaxValues(1)
+            .addOptions([option1, option2, option3, option4])
+        if(message.member.permissions.has("ADMINISTRATOR") || !client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("868656454054342677")){
+            MSM.addOptions([option5])
+        }
+        let row = new MessageActionRow().addComponents(MSM)
         let embed2 = new Discord.MessageEmbed()
         .setColor(userutil.colour).setTitle("Please select help page you'd like to visit")
 

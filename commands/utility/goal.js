@@ -1,10 +1,10 @@
 const Discord = require("discord.js")
 
 module.exports = {
-    name: "target",
+    name: "goal",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/target.js",
-    aliases: ['goal'],
-    use: "!m target",
+    aliases: ['target'],
+    use: "!m goal",
     category: "basic",
     description: "allows people to see the current progress/publicity of the bot",
     cooldown: 0,

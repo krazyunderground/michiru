@@ -6,10 +6,13 @@ module.exports = {
     name: "sellore",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/sell.js",
     category: "eco",
-    use: "!m sellore iron@140",
-    aliases: ['so','os','oresell'],
+    use: "!m sellore <ore> <amount> iron 40, tungsten 5, ...",
+    example: "!m sellore iron 40, tungsten 5, ...",
+    aliases: ['so','oresell', 'sell'],
     cooldown: 1,
     description: "allows the user to get more materials",
+    minArgs: 0,
+    maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
         const userecon = await client.functions.get("getTargetEcon").execute(message);
@@ -37,41 +40,49 @@ module.exports = {
         var colbsub = 0
         var diamsub = 0
 
-        const value = args.slice(2).join(" ");
-            switch(args[1]){
+        const statement = args.join(" ").slice(8).split(",")
+        statement.forEach(state => {
+            valore = state.split(" ")
+            if(!valore[0].length) valore.shift()
+            switch(valore[0]){
                 case "iron":
-                    ironsub = value
+                    ironsub = valore[1]
                 break
                 case "tungsten":
-                    tungsub = value
+                    tungsub = valore[1]
                 break
                 case "gold":
-                    goldsub = value
+                    goldsub = valore[1]
                 break
                 case "copper":
-                    coppsub = value
+                    coppsub = valore[1]
                 break
                 case "cobalt":
-                    colbsub = value
+                    colbsub = valore[1]
                 break
                 case "diamond":
-                    diamsub = value
+                    diamsub = valore[1]
                 break
             }
+        })
+        
+        var lacking = new Array()
 
-        if(parseInt(iron[1]) < ironsub) return message.reply("You don't have enough iron!")
-        if(parseInt(tung[1]) < tungsub) return message.reply("You don't have enough tungsten!")
-        if(parseInt(gold[1]) < goldsub) return message.reply("You don't have enough gold!")
-        if(parseInt(copp[1]) < coppsub) return message.reply("You don't have enough copper!")
-        if(parseInt(colb[1]) < colbsub) return message.reply("You don't have enough cobalt!")
-        if(parseInt(diam[1]) < diamsub) return message.reply("You don't have enough diamonds!")
+        if(parseInt(iron[1]) < ironsub) lacking.push("iron")
+        if(parseInt(tung[1]) < tungsub) lacking.push("tungsten")
+        if(parseInt(gold[1]) < goldsub) lacking.push("gold")
+        if(parseInt(copp[1]) < coppsub) lacking.push("copper")
+        if(parseInt(colb[1]) < colbsub) lacking.push("cobalt")
+        if(parseInt(diam[1]) < diamsub) lacking.push("diamond")
+        
+        if(lacking.length > 0) return message.reply(`You don't have enough \`${lacking.join(", ")}\`!`)
 
-        const ironprice = 10
-        const tungprice = 30
-        const goldprice = 50
-        const coppprice = 100
-        const colbprice = 200
-        const diamprice = 500
+        const ironprice = 1
+        const tungprice = 3
+        const goldprice = 5
+        const coppprice = 10
+        const colbprice = 15
+        const diamprice = 25
 
         var ironprof = ironsub * ironprice
         var tungprof = tungsub * tungprice
@@ -103,7 +114,14 @@ module.exports = {
                 }
             }
         )
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+            .setTitle(`${message.author.username}'s Profits!`)
+            .setDescription(`sold ores for \`${addprof}\` coins`)
+            .setColor(userutil.colour)
+            .setTimestamp()
+            .setFooter("💸", client.user.displayAvatarURL())
 
-        message.reply(`sold minerals for \`${addprof}\` coins`)
+        message.channel.send({embeds: [embed]})    
     }
 }  

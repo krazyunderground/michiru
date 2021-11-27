@@ -8,7 +8,8 @@ module.exports = {
     use: "!m oreinv",
     aliases: ['oi','oinv'],
     cooldown: 20,
-    description: "allows the user to check their inventory of ores",
+    description: "allows the user to check their ore inventory",
+    maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
         const userecon = await client.functions.get("getTargetEcon").execute(message);
@@ -31,8 +32,11 @@ module.exports = {
         const diam = oreInv[5].split("@")
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(`${message.member.displayName}'s Ore Inventory!`)
+            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+            .setTitle(`${message.author.username}'s Ore Inventory!`)
             .setColor(userutil.colour)
+            .setTimestamp()
+            .setFooter("💸", client.user.displayAvatarURL())
 
             embed.addField("Iron", `<:iron:872597984989290537> \`${iron[1]}\``)
 
