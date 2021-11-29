@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 var os = require('os');
 const osu = require('node-os-utils')
+const si = require('systeminformation')
 const cpu = osu.cpu
 const count = cpu.count()
 
@@ -13,6 +14,7 @@ module.exports = {
     use: "!m ping",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
+        message.channel.send('Calculating current ping...').then(async(resultMessage) => {
         const mongodate1 = Date.now()
         const userutil = await client.functions.get("getUtil").execute(message)
         const mongodate2 = Date.now()
@@ -21,13 +23,14 @@ module.exports = {
         const usedram = (((os.totalmem() - os.freemem()) / 10**6 + " ").split('.')[0]);
         const prctfreeram = (((os.freemem() * 100) / os.totalmem + " ").split('.')[0]);
         const usage = await cpu.usage()
-        message.channel.send('Calculating current ping...').then((resultMessage) => {
+	const freq = await si.cpuCurrentSpeed()
+	const temp = await si.cpuTemperature()
         const pingEmbed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setDescription(`🏓 Latency is ${(message.createdTimestamp - Date.now()) * -1}ms \n⌛ API Latency is ${secondsToDhms(Math.round(client.ws.ping))}ms\n🆙 Uptime: ${Math.floor(process.uptime())}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
+            .setDescription(`🏓 Latency is ${(resultMessage.createdTimestamp - message.createdTimestamp)}ms \n⌛ API Latency is ${Math.round(client.ws.ping)}ms\n🆙 Uptime: ${secondsToDhms(Math.floor(process.uptime()))}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
             .addFields(
                 { name: '🧠 Memory', value: `Total Memory: ${totalram}MB\nUsed Memory: ${usedram}MB\nFree Memory: ${freeram}MB\nPercentage Of Free Memory: ${prctfreeram}%`, inline: false},
-                { name: '🔥 CPU', value: `Cores: ${count}\nUsage: ${usage}%`}
+                { name: '🔥 CPU', value: `Cores: ${count}\nUsage: ${usage}%\nTemp: ${temp.main}°C\nFrequency:${freq.avg}GHz`}
             )
             .setFooter("Pong!", client.user.displayAvatarURL())
             .setTimestamp()
