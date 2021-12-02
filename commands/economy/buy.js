@@ -26,27 +26,27 @@ module.exports = {
         elgiloypickaxe: {
           emoji: "<:ElgiloyPickaxe:914215888742383727> ",
           rank: 4,
-          cost: 12500,
+          cost: 10000,
         },
         shakudopickaxe: {
           emoji: "<:ShakudoPickaxe:914215943335477309>",
           rank: 5,
-          cost: 1,
+          cost: 25000,
         },
         stellitepickaxe: {
           emoji: "<:StellitePickaxe:914216018635796520> ",
           rank: 6,
-          cost: 1,
+          cost: 50000,
         },
         cobiumpickaxe: {
           emoji: "<:CobiumPickaxe:914216084482170891> ",
           rank: 7,
-          cost: 1,
+          cost: 100000,
         },
         dymalloypickaxe: {
           emoji: "<:DymalloyPickaxe:914216124093186108> ",
           rank: 8,
-          cost: 1,
+          cost: 250000,
         },
         vitalliumpickaxe: {
           emoji: "<:VitalliumPickaxe:914216162777264138>",

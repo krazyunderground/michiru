@@ -6,7 +6,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/prefix.js",
     aliases: ['setprefix'],
     category: "admin",
-    use: "prefix",
+    use: "prefix <\"prefix\">",
     description: "allows the user to choose a new guild prefix",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
@@ -15,13 +15,13 @@ module.exports = {
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
 
             if(!args[1]) return message.channel.send("Add what you want to change the prefix to!")
-            if(args.slice(1).join(" ").length > 15) return message.channel.send("Prefixes are character limited to 15")
+            if(message.content.slice(guildProfile.prefix.length + args[0].length).length > 15) return message.channel.send("Prefixes are character limited to 15")
 
             const filter = response => {
                 return "y" === response.content.toLowerCase();
             };
             
-            message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.prefix}\`\nNew: \`${args.slice(1).join(" ")}\`\n\n**Y** to continue`, { fetchReply: true })
+            message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.prefix}\`\nNew: \`${message.content.slice(guildProfile.prefix.length + args[0].length)}\`\n\n**Y** to continue`, { fetchReply: true })
             .then(() => {
                 message.channel.awaitMessages({ filter, max: 1, time: 30000, errors: ['time'] })
                 .then(async collected => {
@@ -31,10 +31,10 @@ module.exports = {
                         },
                         {
                             $set: {
-                            prefix: args.slice(1).join(" ").toLowerCase(),
+                            prefix: message.content.slice(guildProfile.prefix.length + args[0].length).toLowerCase(),
                             },
                         })
-                    message.reply("Prefix successfully changed!");
+                    message.reply(`Prefix successfully changed to \`${message.content.slice(guildProfile.prefix.length + args[0].length).toLowerCase()}\`!`);
                 })
                 .catch(collected => {
                     message.reply('Action canceled!');

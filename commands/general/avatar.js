@@ -12,14 +12,12 @@ module.exports = {
         
         let member = message.mentions.members.first() || message.member;
         let user = member.user
-        const joinDiscord = user.createdAt
-        const joinServer = member.joinedAt
         let embed = new Discord.MessageEmbed()
-            .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL({dynamic: true}))
-            .setDescription(`${user}`)
+            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+            .setTitle(`${user}'s Avatar!`)
             .setColor(userutil.colour)
             .setImage(user.displayAvatarURL({dynamic: true, size: 4096}))
-            .setFooter(`ID: ${user.id}`)
+            .setFooter("🌐",`ID: ${user.id}`, client.user.displayAvatarURL())
             .setTimestamp();
     
         message.channel.send({ embeds: [embed] });

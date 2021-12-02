@@ -15,9 +15,11 @@ module.exports = {
         const botCount = guild.members.cache.filter(member => member.user.bot).size
 
         const embed = new Discord.MessageEmbed()
-        .setTitle(message.guild.name)
+        .setTitle(`${message.guild.name} Info`)
         .setThumbnail(message.guild.iconURL({dynamic: true}))
         .setColor(userutil.colour)
+        .setTimestamp()
+        .setFooter("🌐", client.user.displayAvatarURL())
         .addField('Genaral Info', `
             ID: ${guild.id},
             Name: ${guild.name},

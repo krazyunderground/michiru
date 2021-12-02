@@ -35,8 +35,9 @@ module.exports = {
                     {name: "From:", value: `\`${new Date(result.result[0].from * 1000).toISOString().substr(11, 8)}\``, inline: true},
                     {name: "To:", value: `\`${new Date(result.result[0].to * 1000).toISOString().substr(11, 8)}\``, inline: true},
                     {name: "Synonyms:", value: `\`${result.result[0].anilist.synonyms.join(", ")}\``, inline: true},
-                )
-            .setColor(userutil.colour)
+                    )
+                .setColor(userutil.colour)
+                .setFooter("🎲", client.user.displayAvatarURL())
             message.channel.send({embeds: [embed]})
         });
     }

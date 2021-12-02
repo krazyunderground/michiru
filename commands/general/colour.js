@@ -17,8 +17,12 @@ module.exports = {
         if(re.test(args[1])){
             var colour = args[1].replace("#", "").toUpperCase()
             var colourEmbed = new Discord.MessageEmbed()
-                .setTitle("New colour")
-                .setColor(args[1])
+              .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+              .setTitle(`${message.author.username}'s New Colour!`)
+              .setDescription('Want your own custom color? Boost the support server! [Join Here](https://discord.gg/t9yebSe7jg)')
+              .setColor(args[1])
+              .setTimestamp()
+              .setFooter("🌐", client.user.displayAvatarURL())
             message.channel.send({embeds: [colourEmbed]})
             await userUtil.findOneAndUpdate(
                 {

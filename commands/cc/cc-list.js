@@ -18,7 +18,10 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setColor(userutil.colour)
-        .setTitle(`${message.guild.name}'s custom commands!`)
+        .setTitle(`${message.guild.name}'s Custom Commands!`)
+        .setThumbnail(message.guild.iconURL({dynamic: true}))
+        .setFooter("🖌️", client.user.displayAvatarURL())
+        .setTimestamp()
         if(names.length == 0) return message.channel.send("This server has no commands!")
         embed.setDescription(names.join(" , "))
         message.channel.send({embeds: [embed]})

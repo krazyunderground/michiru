@@ -36,33 +36,32 @@ module.exports = {
                 var pickaxe = "magnite"
             break
             case 4:
-                var ores = [["iron", 100, 1, 15],["tungsten", 300, 5, 25],["gold", 500, 10, 30],["copper", 900, 10, 30],["cobalt", 250, 5, 15],["diamond", 50, 1, 15]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 100, 3, 15],["tungsten", 300, 5, 15],["gold", 400, 8, 20],["copper", 900, 10, 25],["cobalt", 100, 3, 8],["diamond", 10, 1, 5]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "elgiloy"
             break
             case 5:
-                var ores = [["iron", 50, 1, 20],["tungsten", 250, 10, 25],["gold", 300, 10, 25],["copper", 500, 10, 30],["cobalt", 900, 5, 25],["diamond", 100, 5, 15]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 100, 3, 10],["tungsten", 250, 8, 15],["gold", 400, 18, 22],["copper", 600, 20, 25],["cobalt", 350, 8, 12],["diamond", 100, 3, 8]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "shakudo"
             break
             case 6:
-                var ores = [["iron", 50, 1, 25],["tungsten", 300, 10, 35],["gold", 700, 15, 35],["copper", 100, 20, 40],["cobalt", 15, 10, 30],["diamond", 150, 5, 30]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 100, 3, 10],["tungsten", 150, 8, 15],["gold", 300, 15, 18],["copper", 450, 18, 20],["cobalt", 400, 8, 12],["diamond", 100, 5, 8]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "stellite"
             break
             case 7:
-                var ores = [["iron", 100, 1, 25],["tungsten", 300, 10, 35],["gold", 700, 15, 35],["copper", 100, 20, 40],["cobalt", 15, 10, 30],["diamond", 200, 5, 30]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 50, 1, 8],["tungsten", 150, 3, 8],["gold", 250, 5, 8],["copper", 350, 8, 15],["cobalt", 500, 12, 18],["diamond", 230, 3, 12]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "cobium"
             break
             case 8:
-                var ores = [["iron", 200, 1, 25],["tungsten", 300, 10, 35],["gold", 700, 15, 35],["copper", 100, 20, 40],["cobalt", 15, 10, 30],["diamond", 250, 5, 30]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 50, 1, 8],["tungsten", 150, 3, 10],["gold", 250, 5, 12],["copper", 380, 10, 20],["cobalt", 750, 15, 20],["diamond", 380, 12, 15]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "dymalloy"
             break
             case 9:
-                var ores = [["iron", 250, 1, 25],["tungsten", 250, 10, 35],["gold", 250, 15, 35],["copper", 300, 20, 40],["cobalt", 250, 10, 30],["diamond", 500, 10, 30]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 50, 1, 8],["tungsten", 150, 5, 10],["gold", 280, 8, 12],["copper", 400, 20, 25],["cobalt", 900, 22, 25],["diamond", 450, 18, 22]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "vitallium"
             break
         }
 
         //algorithm decides how much of what based on the parameters
-        for (var i = 0; i < 100; i++) {
         var mined = new Array()
         ores.forEach(ore =>{
             function randomInt(min, max) {
@@ -198,7 +197,7 @@ module.exports = {
         }
 
         if(addIron == 0 && addTung == 0 && addGold == 0 && addCopp == 0 && addColb == 0 && addDiam == 0) embed.setDescription(`No ores found!`)
-        /* message.channel.send({embeds: [embed]}) */
-        }
+        message.channel.send({embeds: [embed]})
+
     }
 }
