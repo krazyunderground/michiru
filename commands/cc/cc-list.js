@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/cc/cc-list.js",
     aliases: ['cc-list', 'custom-commands'],
     category: "cc",
-    use: "!m cc-list",
+    use: "cc-list",
     cooldown: 2,
     description: "list the server's custom commands",
     async execute(client, message, args, Discord, economy, util){

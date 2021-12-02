@@ -4,7 +4,7 @@ module.exports = {
     name: "mine",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/mine.js",
     category: "eco",
-    use: "!m mine",
+    use: "mine",
     aliases: ['work', 'm', 'w'],
     cooldown: 1,
     description: "go on a mining expedition for some ores",

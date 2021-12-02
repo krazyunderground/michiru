@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/sell.js",
     aliases: ['s'],
     category: "eco",
-    use: "!m shop",
+    use: "shop",
     cooldown: 2,
     description: "displays the item shop",
     maxArgs: 0,

@@ -9,10 +9,11 @@ module.exports = {
     name: "ping",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/ping.js",
     description: "shows latencies of the bot",
-    category: "basic",
-    use: "!m ping",
+    category: "dev",
+    use: "ping",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
+    if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("854061604258054214")) return message.reply("This command is for devs only! *If you're having issues, please let us know in the support server. https://discord.com/invite/E9BnSJHWSK*")
         const mongodate1 = Date.now()
         const userutil = await client.functions.get("getUtil").execute(message)
         const mongodate2 = Date.now()

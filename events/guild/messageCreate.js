@@ -10,7 +10,7 @@ module.exports = async (Discord, client, message) => {
   if(message.guild === null) return
   if(!message.guild.me.permissions.has("EMBED_LINKS")) message.channel.send("It appears the bot is missing the embed permission! \n(This is crucial to the bot's functionality, meaning some features wont work)")
   const guildProfile = await client.functions
-    .get("checkGuild")
+    .get("guildCheck")
     .execute(message);
 
   let prefix = guildProfile.prefix;

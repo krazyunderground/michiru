@@ -4,8 +4,8 @@ module.exports = {
     aliases: ["si"],
     description: 'this show the server info!',
     cooldown: 0,
-    category: "basic",
-    use: "!m serverinfo",
+    category: "general",
+    use: "serverinfo",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
         

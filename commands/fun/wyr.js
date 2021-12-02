@@ -5,8 +5,8 @@ module.exports = {
     name: "wyr",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/wyr.js",
     aliases: ['would-you-rather'],
-    category: "basic",
-    use: "!m wyr",
+    category: "fun",
+    use: "wyr",
     cooldown: 2,
     description: "searches google using the query provided",
     async execute(client, message, args, Discord, economy, util){

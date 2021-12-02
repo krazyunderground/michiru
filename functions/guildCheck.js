@@ -1,7 +1,7 @@
 const guildData = require('../models/guildData')
 
 module.exports = {
-    name: "checkGuild",
+    name: "guildCheck",
     async execute(message) {
     const guildid = message.guild.id;
     try {

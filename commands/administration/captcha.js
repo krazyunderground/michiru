@@ -4,12 +4,12 @@ module.exports = {
     name: "captcha",
     category: "admin",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/moderation/captcha.js",
-    use: "!m captcha",
+    use: "captcha",
     aliases: ["verify"],
     cooldown: 60,
     description: "captcha command used only to test the system",
     async execute(client, message, args, Discord, economy, util){
-        const gp = await client.functions.get("checkGuild").execute(message)
+        const gp = await client.functions.get("guildCheck").execute(message)
         if(!gp.captchaRole) return 
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.delete()
 

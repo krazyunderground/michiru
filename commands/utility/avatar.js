@@ -5,8 +5,8 @@ module.exports = {
     aliases: ["av"],
     description: 'display a user\'s avatar!',
     cooldown: 0,
-    category: "basic",
-    use: "!m avatar",
+    category: "general",
+    use: "avatar",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
         

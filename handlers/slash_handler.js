@@ -19,14 +19,15 @@ module.exports = async (client, Discord) => {
 
     (async () => {
         try {
-            console.log('Started refreshing application (/) commands!');
+            const start = Date.now()
 
             await rest.put(
                 Routes.applicationCommands(process.env.ID),
                 { body: commands },
             );
-
-            console.log('Successfully reloaded application (/) commands!');
+            const end = Date.now()
+            const total = end - start
+            console.log(`Successfully reloaded application (/) commands! (${total}ms)`);
         } catch (error) {
             console.error(error);
         }

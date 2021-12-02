@@ -9,8 +9,8 @@ module.exports = {
     aliases: ['anime', 'wa'],
     cooldown: 2,
     description: "uses trace.moe to find the anime of an image provided",
-    category: "basic",
-    use: "!m whatanime",
+    category: "fun",
+    use: "whatanime",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message);
         

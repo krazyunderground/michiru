@@ -1,8 +1,8 @@
 const userEcon = require('../../models/userEcon')
 module.exports = {
     name: "roll",
-    category: "basic",
-    use: "!m roll <amount>",
+    category: "fun",
+    use: "roll <amount>",
     cooldown: 1,
     description: "Try to roll a higher number than me.",
     async execute(client, message, args, Discord, economy, util){

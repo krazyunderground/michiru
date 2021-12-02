@@ -6,13 +6,13 @@ module.exports = {
     gitlink: `https://github.com/krazyunderground/michiru/tree/main/commands/moderation/captchaSet.js`,
     aliases: ['captcharole'],
     category: `admin`,
-    use: `!m captchasetrole`,
+    use: `captchasetrole`,
     description: `sets the captcha channel`,
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === `576470929874616330`){
             if(!message.mentions.roles.first()) return message.channel.send(`Please mention a role to give the new members!`)
-            client.functions.get(`checkGuild`).execute(message)
+            client.functions.get(`guildCheck`).execute(message)
             await guildData.findOneAndUpdate(
                 {
                     guildID: message.guild.id

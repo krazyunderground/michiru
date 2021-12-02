@@ -5,7 +5,7 @@ module.exports = {
     name: "oreinv",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/oreInv.js",
     category: "eco",
-    use: "!m oreinv",
+    use: "oreinv",
     aliases: ['oi','oinv'],
     cooldown: 20,
     description: "allows the user to check their ore inventory",

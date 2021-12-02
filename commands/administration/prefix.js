@@ -6,11 +6,11 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/prefix.js",
     aliases: ['setprefix'],
     category: "admin",
-    use: "!m prefix",
+    use: "prefix",
     description: "allows the user to choose a new guild prefix",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
-        const guildProfile = await client.functions.get("checkGuild").execute(message)
+        const guildProfile = await client.functions.get("guildCheck").execute(message)
 
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
 

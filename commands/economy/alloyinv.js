@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
 const userEcon = require("../../models/userEcon");
-//test
+
 module.exports = {
   name: "alloyinv",
   gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/alloyinv.js",
   category: "eco",
-  use: "!m alloyinv",
+  use: "alloyinv",
   description: "shows the alloy inventory of the user",
   aliases: ['ainv', 'alloys'],
   cooldown: 2,

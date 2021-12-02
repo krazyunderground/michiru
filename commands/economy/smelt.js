@@ -4,11 +4,11 @@ module.exports = {
 	name: "smelt",
 	gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/smelt.js",
 	category: "eco",
-	use: "!m smelt",
+	use: "smelt <alloy> [amount]",
 	example: "!m smelt steel 5",
 	cooldown: 1,
 	description: "allows the user to smelt alloys from basic ores",
-	minArgs: 2,
+	minArgs: 1,
 	maxArgs: 2,
 	async execute(client, message, args, Discord, economy, util) {
 		if (message.guild === null) return message.reply("You can't use this command in a DM!");

@@ -3,7 +3,7 @@ module.exports = {
     name: "recipes",
     category: "eco",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/recipes.js",
-    use: "!m recipes",
+    use: "recipes",
     aliases: ['recipe', 'rec', 'recipebook'],
     cooldown: 2,
     description: "displays the recipe book",

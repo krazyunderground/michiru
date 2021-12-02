@@ -12,8 +12,8 @@ module.exports = {
     name: 'image',
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/image.js",
     aliases: ['im'],
-    category: "basic",
-    use: "!m image",
+    category: "fun",
+    use: "image",
     description: "gets image of google images using the query provided",
     async execute(client, message, args, Discord, economy, util) {
         const userutil = await client.functions.get("getUtil").execute(message);

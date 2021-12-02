@@ -5,8 +5,8 @@ module.exports = {
     aliases: ["whois"],
     description: 'this show a user\'s info!',
     cooldown: 0,
-    category: "basic",
-    use: "!m userinfo",
+    category: "general",
+    use: "userinfo",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
         

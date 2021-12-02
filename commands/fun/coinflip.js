@@ -2,8 +2,8 @@ const userEcon = require('../../models/userEcon')
 module.exports = {
     name: "coinflip",
     aliases: ["cf"],
-    category: "basic",
-    use: "!m coinflip <amount>",
+    category: "fun",
+    use: "coinflip <amount>",
     cooldown: 1,
     description: "flip a coin.",
     async execute(client, message, args, Discord, economy, util){

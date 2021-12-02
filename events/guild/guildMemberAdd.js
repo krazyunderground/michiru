@@ -4,7 +4,7 @@ const { Image } = require('canvas')
 const {Captcha} = require("captcha-canvas")
 
 module.exports = async (Discord, client, member) => {
-    const welcomeChannelProfile = await client.functions.get("checkGuild").execute(member)
+    const welcomeChannelProfile = await client.functions.get("guildCheck").execute(member)
     if(welcomeChannelProfile.welcomeChannel){
         let uid = member.id
         let receive = ''
@@ -159,7 +159,7 @@ module.exports = async (Discord, client, member) => {
         console.log(err);
       }
       
-      const gp = await client.functions.get("checkGuild").execute(member)
+      const gp = await client.functions.get("guildCheck").execute(member)
         if(!gp.captchaRole) return 
 
         const captcha = new Captcha()

@@ -5,10 +5,10 @@ module.exports = {
     name: "eval",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/eval.js",
     description: "evaluates code sent by a dev",
-    category: "admin",
+    category: "dev",
     cooldown: 0,
     async execute(client, message, args, Discord){
-        if(message.author.id !== "576470929874616330") return message.reply("You can't use this!")
+        if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("858502490022084648")) return message.reply("This command is for devs only!")
         try {
             const code = args.slice(1).join(" ");
             let evaled = eval(code);

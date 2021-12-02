@@ -4,7 +4,7 @@ module.exports = {
   name: "buy",
   gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/buy.js",
   category: "eco",
-  use: "!m buy <category> <item>",
+  use: "buy <category> <item>",
   example: "!m buy pickaxes steel pickaxe",
   description: "buy items from the shop",
   cooldown: 2,

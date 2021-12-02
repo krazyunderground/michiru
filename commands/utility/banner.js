@@ -3,8 +3,8 @@ const fetch = require('node-fetch')
 module.exports = {
     name: "banner",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/banner.js",
-    category: "basic",
-    use: "!m banner",
+    category: "general",
+    use: "banner",
     cooldown: 0,
     description: "if the user has a banner, it will display it here",
     async execute(client, message, args, Discord, economy, util){

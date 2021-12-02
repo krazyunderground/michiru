@@ -4,7 +4,7 @@ module.exports = {
     name: "craft",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/craft.js",
     category: "eco",
-    use: "!m craft <category> <item>",
+    use: "craft <category> <item>",
     example: "!m craft armor steel helmet",
     cooldown: 1,
     description: "allows the user to craft items.",

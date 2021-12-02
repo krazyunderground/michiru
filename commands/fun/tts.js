@@ -9,8 +9,8 @@ module.exports = {
   gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/tts.js",
   description: "talks for a user in a VC",
   cooldown: 0,
-  category: "music",
-  use: "!m tts",
+  category: "fun",
+  use: "tts",
   async execute(client, message, argsold, Discord, economy, util) {
     let vc = message.member.voice.channel;
     if (!vc) return message.channel.send('Your\'re not in a vc!');

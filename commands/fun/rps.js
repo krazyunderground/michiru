@@ -1,8 +1,8 @@
 module.exports = {
     name: "rps",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/rps.js",
-    category: "basic",
-    use: "!m rps",
+    category: "fun",
+    use: "rps",
     cooldown: 5,
     description: "play rock paper scissors against the bot",
     async execute(client, message, args, Discord, economy, util){

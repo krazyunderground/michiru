@@ -4,8 +4,8 @@ module.exports = {
     name: "goal",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/target.js",
     aliases: ['target'],
-    use: "!m goal",
-    category: "basic",
+    use: "goal",
+    category: "general",
     description: "allows people to see the current progress/publicity of the bot",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
