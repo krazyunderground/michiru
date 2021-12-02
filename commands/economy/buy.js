@@ -21,12 +21,12 @@ module.exports = {
         magnitepickaxe: {
           emoji: "<:MagnitePickaxe:914215849227866135> ",
           rank: 3,
-          cost: 1,
+          cost: 5000,
         },
         elgiloypickaxe: {
           emoji: "<:ElgiloyPickaxe:914215888742383727> ",
           rank: 4,
-          cost: 1,
+          cost: 12500,
         },
         shakudopickaxe: {
           emoji: "<:ShakudoPickaxe:914215943335477309>",

@@ -12,9 +12,14 @@ module.exports = {
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
 
-        const userecon = await client.functions.get("getAuthorEcon").execute(message);
+        async function refresh(message){
+            return await client.functions.get("getAuthorEcon").execute(message)
+        }
+        
+        const userpick = await refresh(message)
+        /* const userecon = await client.functions.get("getAuthorEcon").execute(message); */
         const userutil = await client.functions.get("getUtil").execute(message);
-        const pick = userecon.pick
+        const pick = userpick.pick
         //sets parameters for the algorithm
 
         switch(pick){
@@ -23,11 +28,11 @@ module.exports = {
                 var pickaxe = "starter"
             break
             case 2:
-                var ores = [["iron", 500, 10, 30],["tungsten", 900, 10, 30],["gold", 500, 5, 25],["copper", 100, 1, 10],["cobalt", 25, 1, 3],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 500, 10, 30],["tungsten", 900, 15, 35],["gold", 600, 5, 20],["copper", 300, 3, 10],["cobalt", 25, 1, 3],["diamond", 0, 0, 0]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "steel"
             break
             case 3:
-                var ores = [["iron", 250, 5, 25],["tungsten", 500, 5, 25],["gold", 900, 10, 30],["copper", 500, 5, 25],["cobalt", 50, 1, 5],["diamond", 10, 1, 3]] // ID, chance * 10, min quant, max quant
+                var ores = [["iron", 250, 5, 25],["tungsten", 400, 10, 20],["gold", 900, 10, 25],["copper", 400, 5, 20],["cobalt", 50, 1, 8],["diamond", 5, 1, 2]] // ID, chance * 10, min quant, max quant
                 var pickaxe = "magnite"
             break
             case 4:
@@ -57,7 +62,7 @@ module.exports = {
         }
 
         //algorithm decides how much of what based on the parameters
-
+        for (var i = 0; i < 100; i++) {
         var mined = new Array()
         ores.forEach(ore =>{
             function randomInt(min, max) {
@@ -122,7 +127,7 @@ module.exports = {
         var oldOre
 
         //gets the old balance, or makes one
-
+        const userecon = await refresh(message)
         if(userecon.oreInv === ""){
             oldOre = `iron@0 tungsten@0 gold@0 copper@0 cobalt@0 diamond@0`
         } else {
@@ -193,7 +198,7 @@ module.exports = {
         }
 
         if(addIron == 0 && addTung == 0 && addGold == 0 && addCopp == 0 && addColb == 0 && addDiam == 0) embed.setDescription(`No ores found!`)
-
-        message.channel.send({embeds: [embed]})
+        /* message.channel.send({embeds: [embed]}) */
+        }
     }
 }

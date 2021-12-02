@@ -23,13 +23,13 @@ module.exports = {
                 name: "Magnite Pickaxe",
                 emoji: "<:MagnitePickaxe:914215849227866135> ",
                 rank: 3,
-                cost: 1
+                cost: 5000
               },
               {
                 name: "Elgiloy Pickaxe",
                 emoji: "<:ElgiloyPickaxe:914215888742383727> ",  
                 rank: 4,
-                cost: 1,
+                cost: 12500,
               },
               {
                 name: "Shakudo Pickaxe",
