@@ -198,6 +198,5 @@ module.exports = {
 
         if(addIron == 0 && addTung == 0 && addGold == 0 && addCopp == 0 && addColb == 0 && addDiam == 0) embed.setDescription(`No ores found!`)
         message.channel.send({embeds: [embed]})
-
     }
 }

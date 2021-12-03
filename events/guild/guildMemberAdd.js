@@ -126,7 +126,6 @@ module.exports = async (Discord, client, member) => {
             userID: member.id,
             quartz: 0,
             pick: 1,
-            pickIMG: "https://cdn.discordapp.com/attachments/853961222520045598/856605265277091840/basic_pick.png"
           });
   
           profile.save();

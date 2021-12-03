@@ -28,7 +28,7 @@ module.exports = {
         .setDescription(bar)
         .setTimestamp()
 
-        client.guilds.cache.get("848707853350862858").channels.cache.get('853961166347042827').messages.fetch('916040859005370370').then(message => message.edit({ embeds: [embed] }))
+        client.guilds.cache.get("848707853350862858").channels.cache.get('853961166347042827').messages.fetch('916040859005370370').then(message => message.edit({ content: "||@here|| well this is going much faster than I though it would...",embeds: [embed] }))
         
     }
 }

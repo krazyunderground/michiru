@@ -59,7 +59,7 @@ module.exports = {
                 name: "Vitallium Pickaxe",
                 emoji: "<:VitalliumPickaxe:914216162777264138>",
                 rank: 9,
-                cost: 1,
+                cost: 500000,
               },
         ]
         const shopEmbed = new Discord.MessageEmbed()
