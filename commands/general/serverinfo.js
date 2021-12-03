@@ -4,8 +4,8 @@ module.exports = {
     aliases: ["si"],
     description: 'this show the server info!',
     cooldown: 0,
-    category: "basic",
-    use: "!m serverinfo",
+    category: "general",
+    use: "serverinfo",
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
         
@@ -15,9 +15,11 @@ module.exports = {
         const botCount = guild.members.cache.filter(member => member.user.bot).size
 
         const embed = new Discord.MessageEmbed()
-        .setTitle(message.guild.name)
+        .setTitle(`${message.guild.name} Info`)
         .setThumbnail(message.guild.iconURL({dynamic: true}))
         .setColor(userutil.colour)
+        .setTimestamp()
+        .setFooter("🌐", client.user.displayAvatarURL())
         .addField('Genaral Info', `
             ID: ${guild.id},
             Name: ${guild.name},

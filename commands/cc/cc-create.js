@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/cc/cc-create.js",
     aliases: ['cc'],
     category: "cc",
-    use: "!m cc-create",
+    use: "cc-create",
     cooldown: 2,
     description: "create a custom command",
     async execute(client, message, args, Discord, economy, util){

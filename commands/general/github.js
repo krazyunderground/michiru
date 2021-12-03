@@ -5,14 +5,14 @@ module.exports = {
     name: "git",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/git.js",
     description: "allows faster access to the source code for each command",
-    category: "basic",
-    use: "!m git",
+    category: "general",
+    use: "git",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)
 
         const embed = new Discord.MessageEmbed().setColor(userutil.colour);
-        let prefix = await client.functions.get("checkGuild").prefix
+        let prefix = await client.functions.get("guildCheck").prefix
 
             const basic = new Discord.MessageEmbed().setColor(userutil.colour)
                 .setTitle("Git List: Basic")

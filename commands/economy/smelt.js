@@ -4,11 +4,11 @@ module.exports = {
 	name: "smelt",
 	gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/smelt.js",
 	category: "eco",
-	use: "!m smelt",
+	use: "smelt <alloy> [amount]",
 	example: "!m smelt steel 5",
 	cooldown: 1,
 	description: "allows the user to smelt alloys from basic ores",
-	minArgs: 2,
+	minArgs: 1,
 	maxArgs: 2,
 	async execute(client, message, args, Discord, economy, util) {
 		if (message.guild === null) return message.reply("You can't use this command in a DM!");
@@ -20,58 +20,58 @@ module.exports = {
 			{
 				name: "steel",
 				mat1: "iron",
-				mat1am: 1000,
+				mat1am: 50,
 				mat2: "tungsten",
-				mat2am: 350,
+				mat2am: 35,
 			},
 			{
 				name: "magnite",
 				mat1: "iron",
-				mat1am: 1000,
+				mat1am: 100,
 				mat2: "gold",
-				mat2am: 200,
+				mat2am: 50,
 			},
 			{
 				name: "elgiloy",
 				mat1: "iron",
-				mat1am: 800,
+				mat1am: 250,
 				mat2: "cobalt",
-				mat2am: 400,
+				mat2am: 10,
 			},
 			{
 				name: "shakudo",
 				mat1: "gold",
-				mat1am: 800,
+				mat1am: 250,
 				mat2: "copper",
-				mat2am: 800,
+				mat2am: 100,
 			},
 			{
 				name: "stellite",
 				mat1: "cobalt",
-				mat1am: 2400,
+				mat1am: 100,
 				mat2: "tungsten",
-				mat2am: 800,
+				mat2am: 250,
 			},
 			{
 				name: "cobium",
 				mat1: "cobalt",
-				mat1am: 2250,
+				mat1am: 150,
 				mat2: "copper",
-				mat2am: 1500,
+				mat2am: 250,
 			},
 			{
 				name: "dymalloy",
 				mat1: "cobalt",
-				mat1am: 1500,
+				mat1am: 250,
 				mat2: "diamond",
-				mat2am: 1000,
+				mat2am: 100,
 			},
 			{
 				name: "vitallium",
 				mat1: "diamond",
-				mat1am: 5000,
+				mat1am: 250,
 				mat2: "cobalt",
-				mat2am: 3000,
+				mat2am: 500,
 			},
 		];
 
@@ -83,7 +83,7 @@ module.exports = {
 			oreInv = userecon.oreInv.split(" ");
 		}
 		if (userecon.alloyInv === "") {
-			alloyInv = `magnite@0 steel@0 elgiloy@0 shakudo@0 stellite@0 cobium@0 dymalloy@0 vitallium@0`;
+			alloyInv = `steel@0 magnite@0 elgiloy@0 shakudo@0 stellite@0 cobium@0 dymalloy@0 vitallium@0`;
 		} else {
 			alloyInv = userecon.alloyInv.split(" ");
 		}
@@ -95,15 +95,14 @@ module.exports = {
 		const colb = oreInv[4].split("@");
 		const diam = oreInv[5].split("@");
 
-		const magnite = alloyInv[0].split("@");
-		const steel = alloyInv[1].split("@");
+		const steel = alloyInv[0].split("@");
+		const magnite = alloyInv[1].split("@");
 		const elgiloy = alloyInv[2].split("@");
 		const shakudo = alloyInv[3].split("@");
 		const stellite = alloyInv[4].split("@");
 		const cobium = alloyInv[5].split("@");
 		const dymalloy = alloyInv[6].split("@");
 		const vitallium = alloyInv[7].split("@");
-
 		var ironsub = 0;
 		var tungsub = 0;
 		var goldsub = 0;
@@ -118,54 +117,54 @@ module.exports = {
 		if(!args[2]) {amount = 1} else {amount = parseInt(args[2]);}
 		//verify item exists
 		if (!alloys.some(e => e.name === request)) return message.channel.send("this item does not exist! '!m recipes to view the recipe book'");
-		var newmagn = 0
-		var newstel = 0
-		var newelgi = 0
-		var newshak = 0
-		var newstet = 0
-		var newcobi = 0
-		var newdyma = 0
-		var newvita = 0
+		var newstel = parseInt(steel[1])
+		var newmagn = parseInt(magnite[1])
+		var newelgi = parseInt(elgiloy[1])
+		var newshak = parseInt(shakudo[1])
+		var newstet = parseInt(stellite[1])
+		var newcobi = parseInt(cobium[1])
+		var newdyma = parseInt(dymalloy[1])
+		var newvita = parseInt(vitallium[1])
 		//set price and amount after give
 		switch (request) {
-			case "magnite":
-				ironsub = 1000 * amount;
-				goldsub = 200 * amount;
-				newmagn = parseInt(magnite[1]) + amount
-				break;
 			case "steel":
-				ironsub = 1000 * amount;
-				tungsub = 350 * amount;
+				ironsub = 50 * amount;
+				tungsub = 35 * amount;
 				newstel = parseInt(steel[1]) + amount
 				break;
+			case "magnite":
+				ironsub = 100 * amount;
+				goldsub = 50 * amount;
+				newmagn = parseInt(magnite[1]) + amount
+				break;
 			case "elgiloy":
-				ironsub = 800 * amount;
-				colbsub = 400 * amount;
+				ironsub = 250 * amount;
+				colbsub = 10 * amount;
 				newelgi = parseInt(elgiloy[1]) + amount
 				break;
 			case "shakudo":
-				goldsub = 800 * amount;
-				coppsub = 800 * amount;
+				goldsub = 250 * amount;
+				coppsub = 100 * amount;
 				newshak = parseInt(shakudo[1]) + amount
 				break;
 			case "stellite":
-				colbsub = 2400 * amount;
-				tungsub = 800 * amount;
+				colbsub = 100 * amount;
+				tungsub = 250 * amount;
 				newstet = parseInt(stellite[1]) + amount
 				break;
 			case "cobium":
-				colbsub = 2250 * amount;
-				coppsub = 1500 * amount;
+				colbsub = 250 * amount;
+				coppsub = 100 * amount;
 				newcobi = parseInt(cobium[1]) + amount
 				break;
 			case "dymalloy":
-				colbsub = 1500 * amount;
-				diamsub = 1000 * amount;
+				colbsub = 250 * amount;
+				diamsub = 100 * amount;
 				newdyma = parseInt(dymalloy[1]) + amount
 				break;
 			case "vitallium":
-				diamsub = 5000 * amount;
-				colbsub = 3000 * amount;
+				diamsub = 250 * amount;
+				colbsub = 500 * amount;
 				newvita = parseInt(vitallium[1]) + amount
 				break;
 		}
@@ -190,7 +189,7 @@ module.exports = {
         var newdiam = parseInt(diam[1]) - diamsub
 
 		const neworeInv = `iron@${newiron} tungsten@${newtung} gold@${newgold} copper@${newcopp} cobalt@${newcolb} diamond@${newdiam}`
-		const newalloyInv = `magnite@${newmagn} steel@${newstel} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} cobium@${newcobi} dymalloy@${newdyma} vitallium@${newvita}`
+		const newalloyInv = `steel@${newstel} magnite@${newmagn} elgiloy@${newelgi} shakudo@${newshak} stellite@${newstet} cobium@${newcobi} dymalloy@${newdyma} vitallium@${newvita}`
 		//update econ
 		await userEcon.findOneAndUpdate(
             {
@@ -203,5 +202,6 @@ module.exports = {
                 }
             }
         )
+		message.channel.send(`Successfully smelted ${amount} ${request}.`)
 	},
 };

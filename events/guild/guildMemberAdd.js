@@ -4,7 +4,7 @@ const { Image } = require('canvas')
 const {Captcha} = require("captcha-canvas")
 
 module.exports = async (Discord, client, member) => {
-    const welcomeChannelProfile = await client.functions.get("checkGuild").execute(member)
+    const welcomeChannelProfile = await client.functions.get("guildCheck").execute(member)
     if(welcomeChannelProfile.welcomeChannel){
         let uid = member.id
         let receive = ''
@@ -99,17 +99,8 @@ module.exports = async (Discord, client, member) => {
 
             path = `./assets/${member.id}-${member.guild.name}.png`
 
-            // await fs.writeFileSync(
-            //     path, canvas.toBuffer('image/png')
-            // )
-
-            message = await channel.send({content: `Welcome to the server, ${member}`, files: [{attachment: /*`./assets/${member.id}-${member.guild.name}.png`*/canvas.toBuffer(), name: `welcome-image.png`}]})
-            //channel.send()
+            message = await channel.send({content: `Welcome to the server, ${member}`, files: [{attachment: canvas.toBuffer(), name: `welcome-image.png`}]})
             console.log(avatar.width, avatar.height)
-            // fs.unlinkSync(`./assets/${member.id}-${member.guild.name}.png`, (err) => {
-            //     if (err) throw err;
-            //     console.log('asset was deleted');
-            // })
         }, 1000)
         
     }
@@ -126,7 +117,6 @@ module.exports = async (Discord, client, member) => {
             userID: member.id,
             quartz: 0,
             pick: 1,
-            pickIMG: "https://cdn.discordapp.com/attachments/853961222520045598/856605265277091840/basic_pick.png"
           });
   
           profile.save();
@@ -159,7 +149,7 @@ module.exports = async (Discord, client, member) => {
         console.log(err);
       }
       
-      const gp = await client.functions.get("checkGuild").execute(member)
+      const gp = await client.functions.get("guildCheck").execute(member)
         if(!gp.captchaRole) return 
 
         const captcha = new Captcha()

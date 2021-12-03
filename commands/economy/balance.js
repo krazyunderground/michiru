@@ -4,7 +4,7 @@ module.exports = {
     name: "balance",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/balance.js",
     category: "eco",
-    use: "!m bal [@member]",
+    use: "bal [@member]",
     description: "shows the balance of the user",
     aliases: ['b', 'bal'],
     cooldown: 2,

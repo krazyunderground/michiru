@@ -5,8 +5,8 @@ module.exports = {
     name: "ubdict",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/ubdict.js",
     aliases: ['define'],
-    category: "basic",
-    use: "!m ubdict",
+    category: "fun",
+    use: "ubdict",
     cooldown: 2,
     description: "gets word defenition using urban dictionary",
     async execute(client, message, args, Discord, economy, util) {

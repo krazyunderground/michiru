@@ -10,7 +10,7 @@ module.exports = async (Discord, client, message) => {
   if(message.guild === null) return
   if(!message.guild.me.permissions.has("EMBED_LINKS")) message.channel.send("It appears the bot is missing the embed permission! \n(This is crucial to the bot's functionality, meaning some features wont work)")
   const guildProfile = await client.functions
-    .get("checkGuild")
+    .get("guildCheck")
     .execute(message);
 
   let prefix = guildProfile.prefix;
@@ -99,27 +99,6 @@ module.exports = async (Discord, client, message) => {
   }
 
   time_stamps.set(message.author.id, current_time);
-
-  if(message.guild.id !== "859775203328262144"){
-    if (cmd.category === "eco") {
-      if (client.guilds.cache.get("848707853350862858")) {
-        if (
-          !client.guilds.cache
-            .get("848707853350862858")
-            .members.cache.get(message.author.id)
-            .roles.cache.has("854061604258054214")
-        ) {
-          return message.channel.send(
-            "Economy overhaul in progress! stay tuned in the support server for when it drops!"
-          );
-        }
-      } else {
-        return message.channel.send(
-          "Economy overhaul in progress! stay tuned in the support server for when it drops!"
-        );
-      }
-    }
-  }
 
   const min = cmd.minArgs + 1
   if (args.length < min && typeof cmd.minArgs !== 'undefined') return message.channel.send(`looks like you're missing something! correct usage: ${cmd.use}`)

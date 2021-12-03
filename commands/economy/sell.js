@@ -6,13 +6,13 @@ module.exports = {
     name: "sellore",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/sell.js",
     category: "eco",
-    use: "!m sellore <ore> <amount> iron 40, tungsten 5, ...",
-    example: "!m sellore iron 40, tungsten 5, ...",
+    use: "sellore <ore> <amount> *or* sellore all",
+    example: "!m sellore iron 40, tungsten 5. Can also use !m sellore all.",
     aliases: ['so','oresell', 'sell'],
-    cooldown: 1,
-    description: "allows the user to get more materials",
-    minArgs: 0,
-    maxArgs: 0,
+    cooldown: 0,
+    description: "allows the user to sell ores",
+    minArgs: 1,
+    maxArgs: -1,
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
         const userecon = await client.functions.get("getTargetEcon").execute(message);
@@ -39,8 +39,16 @@ module.exports = {
         var coppsub = 0
         var colbsub = 0
         var diamsub = 0
-
-        const statement = args.join(" ").slice(8).split(",")
+        if (args[1] === "all") {
+            var ironsub = parseInt(iron[1])
+            var tungsub = parseInt(tung[1])
+            var goldsub = parseInt(gold[1])
+            var coppsub = parseInt(copp[1])
+            var colbsub = parseInt(colb[1])
+            var diamsub = parseInt(diam[1])
+        }
+        else
+        {const statement = args.join(" ").slice(8).split(",")
         statement.forEach(state => {
             valore = state.split(" ")
             if(!valore[0].length) valore.shift()
@@ -64,7 +72,7 @@ module.exports = {
                     diamsub = valore[1]
                 break
             }
-        })
+        })}
         
         var lacking = new Array()
 

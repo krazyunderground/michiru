@@ -5,8 +5,8 @@ module.exports = {
     name: "google",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/google.js",
     aliases: ['search', 'find', 'g'],
-    category: "basic",
-    use: "!m google",
+    category: "fun",
+    use: "google",
     cooldown: 2,
     description: "searches google using the query provided",
     execute(client, message, args, Discord, economy, util){

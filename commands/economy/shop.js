@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/sell.js",
     aliases: ['s'],
     category: "eco",
-    use: "!m shop",
+    use: "shop",
     cooldown: 2,
     description: "displays the item shop",
     maxArgs: 0,
@@ -23,43 +23,43 @@ module.exports = {
                 name: "Magnite Pickaxe",
                 emoji: "<:MagnitePickaxe:914215849227866135> ",
                 rank: 3,
-                cost: 1
+                cost: 5000
               },
               {
                 name: "Elgiloy Pickaxe",
                 emoji: "<:ElgiloyPickaxe:914215888742383727> ",  
                 rank: 4,
-                cost: 1,
+                cost: 10000,
               },
               {
                 name: "Shakudo Pickaxe",
                 emoji: "<:ShakudoPickaxe:914215943335477309>",
                 rank: 5,
-                cost: 1,
+                cost: 25000,
               },
               {
                 name: "Stellite Pickaxe",
                 emoji: "<:StellitePickaxe:914216018635796520> ",
                 rank: 6,
-                cost: 1,
+                cost: 50000,
               },
               {
                 name: "Cobium Pickaxe",
                 emoji: "<:CobiumPickaxe:914216084482170891> ",
                 rank: 7,
-                cost: 1,
+                cost: 100000,
               },
               {
                 name: "Dymalloy Pickaxe",
                 emoji: "<:DymalloyPickaxe:914216124093186108> ",
                 rank: 8,
-                cost: 1,
+                cost: 250000,
               },
               {
                 name: "Vitallium Pickaxe",
                 emoji: "<:VitalliumPickaxe:914216162777264138>",
                 rank: 9,
-                cost: 1,
+                cost: 500000,
               },
         ]
         const shopEmbed = new Discord.MessageEmbed()

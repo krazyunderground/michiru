@@ -13,11 +13,14 @@ handlers.forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 })
 const mongoose = require('mongoose')
+const start = Date.now()
 mongoose.connect(process.env.MONGO_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    console.log("connected to database");
+    const end = Date.now()
+    const total = end - start
+    console.log(`Connected to database (${total}ms)`);
 }).catch((err) => {
     console.log(err);
 });

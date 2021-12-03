@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["inv"],
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/inventory.js",
     category: "eco",
-    use: "!m inventory",
+    use: "inventory",
     cooldown: 1,
     maxArgs: 0,
     description: "allows the user to check their item inventory.",

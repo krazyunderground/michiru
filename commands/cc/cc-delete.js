@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/cc/cc-delete.js",
     aliases: ['cc-delete', 'cc-remove'],
     category: "cc",
-    use: "!m cc-delete",
+    use: "cc-delete",
     cooldown: 2,
     description: "delete a custom command",
     async execute(client, message, args, Discord, economy, util){
