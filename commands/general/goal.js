@@ -13,7 +13,7 @@ module.exports = {
 
         const number = client.guilds.cache.size
 
-        const value = 58
+        const value = number
         const max = 100
         const size = 20
 

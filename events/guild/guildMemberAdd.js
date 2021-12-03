@@ -99,17 +99,8 @@ module.exports = async (Discord, client, member) => {
 
             path = `./assets/${member.id}-${member.guild.name}.png`
 
-            // await fs.writeFileSync(
-            //     path, canvas.toBuffer('image/png')
-            // )
-
-            message = await channel.send({content: `Welcome to the server, ${member}`, files: [{attachment: /*`./assets/${member.id}-${member.guild.name}.png`*/canvas.toBuffer(), name: `welcome-image.png`}]})
-            //channel.send()
+            message = await channel.send({content: `Welcome to the server, ${member}`, files: [{attachment: canvas.toBuffer(), name: `welcome-image.png`}]})
             console.log(avatar.width, avatar.height)
-            // fs.unlinkSync(`./assets/${member.id}-${member.guild.name}.png`, (err) => {
-            //     if (err) throw err;
-            //     console.log('asset was deleted');
-            // })
         }, 1000)
         
     }
