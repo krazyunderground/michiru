@@ -7,7 +7,7 @@ module.exports = {
     use: "bal [@member]",
     description: "shows the balance of the user",
     aliases: ['b', 'bal'],
-    cooldown: 2,
+    cooldown: 5,
     maxArgs: 1,
     async execute(client, message, args, Discord, economy){
 

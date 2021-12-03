@@ -7,7 +7,7 @@ module.exports = {
     category: "eco",
     use: "oreinv",
     aliases: ['oi','oinv'],
-    cooldown: 1,
+    cooldown: 5,
     description: "allows the user to check their ore inventory",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){

@@ -8,7 +8,7 @@ module.exports = {
   use: "alloyinv",
   description: "shows the alloy inventory of the user",
   aliases: ['ainv', 'alloys'],
-  cooldown: 2,
+  cooldown: 5,
   maxArgs: 0,
   async execute(client, message, args, Discord, economy){
     if (message.guild === null)

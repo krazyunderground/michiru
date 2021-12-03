@@ -6,7 +6,7 @@ module.exports = {
     category: "eco",
     use: "mine",
     aliases: ['work', 'm', 'w'],
-    cooldown: 1,
+    cooldown: 10,
     description: "go on a mining expedition for some ores",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){

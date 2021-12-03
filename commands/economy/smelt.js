@@ -6,7 +6,7 @@ module.exports = {
 	category: "eco",
 	use: "smelt <alloy> [amount]",
 	example: "!m smelt steel 5",
-	cooldown: 1,
+	cooldown: 5,
 	description: "allows the user to smelt alloys from basic ores",
 	minArgs: 1,
 	maxArgs: 2,

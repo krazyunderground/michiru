@@ -6,7 +6,7 @@ module.exports = {
     category: "eco",
     use: "craft <category> <item>",
     example: "!m craft armor steel helmet",
-    cooldown: 1,
+    cooldown: 5,
     description: "allows the user to craft items.",
     minArgs: 2,
     maxArgs: 3,
