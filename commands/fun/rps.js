@@ -3,7 +3,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/rps.js",
     category: "fun",
     use: "rps",
-    cooldown: 5,
+    cooldown: 120,
     description: "play rock paper scissors against the bot",
     async execute(client, message, args, Discord, economy, util){
         const responses = ["rock", "paper", "scissors"]

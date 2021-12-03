@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['s'],
     category: "eco",
     use: "shop",
-    cooldown: 2,
+    cooldown: 5,
     description: "displays the item shop",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){

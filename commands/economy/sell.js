@@ -9,7 +9,7 @@ module.exports = {
     use: "sellore <ore> <amount> *or* sellore all",
     example: "!m sellore iron 40, tungsten 5. Can also use !m sellore all.",
     aliases: ['so','oresell', 'sell'],
-    cooldown: 0,
+    cooldown: 5,
     description: "allows the user to sell ores",
     minArgs: 1,
     maxArgs: -1,

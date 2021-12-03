@@ -4,7 +4,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/inventory.js",
     category: "eco",
     use: "inventory",
-    cooldown: 1,
+    cooldown: 5,
     maxArgs: 0,
     description: "allows the user to check their item inventory.",
     async execute(client, message, args, Discord, economy, util) {

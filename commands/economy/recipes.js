@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/recipes.js",
     use: "recipes",
     aliases: ['recipe', 'rec', 'recipebook'],
-    cooldown: 2,
+    cooldown: 5,
     description: "displays the recipe book",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){

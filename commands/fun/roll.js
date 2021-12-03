@@ -3,11 +3,12 @@ module.exports = {
     name: "roll",
     category: "fun",
     use: "roll <amount>",
-    cooldown: 1,
+    cooldown: 120,
     description: "Try to roll a higher number than me.",
     async execute(client, message, args, Discord, economy, util){
         let amount = args[1];
         if (isNaN(args[1]) || amount % 1 != 0) return message.channel.send("Please make sure the amount is a whole number!")
+        if (args[1] > 1000) return message.channel.send("I'm sorry, the max bet is 1000 coins!")
         const memberBal = await client.functions.get("getAuthorEcon").execute(message);
         if (memberBal.coins < amount) return message.channel.send("You don't have enough coins!")
         let userRoll = Math.floor(Math.random() * 6) + 1;

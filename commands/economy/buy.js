@@ -7,7 +7,7 @@ module.exports = {
   use: "buy <category> <item>",
   example: "!m buy pickaxes steel pickaxe",
   description: "buy items from the shop",
-  cooldown: 2,
+  cooldown: 5,
   minArgs: 2,
   maxArgs: 3,
   async execute(client, message, args, Discord, economy) {
