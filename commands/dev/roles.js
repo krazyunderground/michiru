@@ -17,7 +17,7 @@ module.exports = {
         const embed2 = new Discord.MessageEmbed()
         .setColor(userutil.colour)
         .setTitle('Ping Roles')
-        .setDescription('<:TorchRed:916400654241648660> - Torch Red\n<:BlazeOrange:916400635472125952> - Blaze Orange\n<:BitterLemon:916400635241447425> - Bitter Lemon\n<:SkyBlue:916400654266810408> - Sky Blue\n<:ClassicRose:916400643390971935>  - Classic Role')
+        .setDescription('<:TorchRed:916400654241648660> - Torch Red\n<:BlazeOrange:916400635472125952> - Blaze Orange\n<:BitterLemon:916400635241447425> - Bitter Lemon\n<:SkyBlue:916400654266810408> - Sky Blue\n<:ClassicRose:916400643390971935>  - Classic Rose')
         .setTimestamp()
         const embed3 = new Discord.MessageEmbed()
         .setColor(userutil.colour)
