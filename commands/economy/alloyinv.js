@@ -23,8 +23,8 @@ module.exports = {
     } else {
       alloyInv = userecon.alloyInv.split(" ");
     }
-    const mag = alloyInv[0].split("@");
-    const stee = alloyInv[1].split("@");
+    const stee = alloyInv[0].split("@");
+    const mag = alloyInv[1].split("@");
     const elg = alloyInv[2].split("@");
     const sha = alloyInv[3].split("@");
     const stel = alloyInv[4].split("@");
@@ -39,9 +39,9 @@ module.exports = {
       .setTimestamp()
       .setFooter("💸", client.user.displayAvatarURL())
 
-    embed.addField("Steel", `<:Steel:914215785851920394> \`${mag[1]}\``);
+    embed.addField("Steel", `<:Steel:914215785851920394> \`${stee[1]}\``);
 
-    embed.addField("Magnite", `<:Magnite:914215828415737936> \`${stee[1]}\``);
+    embed.addField("Magnite", `<:Magnite:914215828415737936> \`${mag[1]}\``);
 
     embed.addField("Elgiloy", `<:Elgiloy:914215874955714601> \`${elg[1]}\``);
 

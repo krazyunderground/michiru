@@ -114,7 +114,17 @@ module.exports = {
 		//set the request
 		const request = args[1].toLowerCase();
 		let amount;
-		if(!args[2]) {amount = 1} else {amount = parseInt(args[2]);}
+		if(!args[2]) {amount = 1}
+		if(args[2] = 0){
+			return message.channel.send("please make sure amount is a \`number greater than 0\`!")}
+		else if(isNaN(args[2])){
+			if(args[2].toLowerCase() !== "all"){
+				return message.channel.send("please make sure amount is a \`number\`!")
+			} else {
+				amount = "all"
+			}
+		}
+		else amount = parseInt(args[2]);
 		//verify item exists
 		if (!alloys.some(e => e.name === request)) return message.channel.send("this item does not exist! '!m recipes to view the recipe book'");
 		var newstel = parseInt(steel[1])
@@ -128,24 +138,80 @@ module.exports = {
 		//set price and amount after give
 		switch (request) {
 			case "steel":
-				ironsub = 50 * amount;
-				tungsub = 35 * amount;
-				newstel = parseInt(steel[1]) + amount
+				if(amount === "all"){
+					amnt1 = Math.floor((tung[1]) / 35)
+					amnt2 = Math.floor(parseInt(iron[1]) / 50)
+					if(amnt1>=amnt2){
+						tungsub = amnt2 * 35
+						ironsub = amnt2 * 50
+						newstel = parseInt(steel[1]) + amnt2
+					} else {
+						tungsub = amnt1 * 35
+						ironsub = amnt1 * 50
+						newstel = parseInt(steel[1]) + amnt1
+					}
+				} else {
+					ironsub = 50 * amount;
+					tungsub = 35 * amount;
+					newstel = parseInt(steel[1]) + amount
+				}
 				break;
 			case "magnite":
-				ironsub = 100 * amount;
-				goldsub = 50 * amount;
-				newmagn = parseInt(magnite[1]) + amount
+				if(amount === "all"){
+					amnt1 = Math.floor((iron[1]) / 100)
+					amnt2 = Math.floor(parseInt(gold[1]) / 50)
+					if(amnt1>=amnt2){
+						ironsub = amnt2 * 100
+						goldsub = amnt2 * 50
+						newstel = parseInt(magnite[1]) + amnt2
+					} else {
+						ironsub = amnt1 * 100
+						goldsub = amnt1 * 50
+						newstel = parseInt(magnite[1]) + amnt1
+					}
+				} else {
+					ironsub = 100 * amount;
+					goldsub = 50 * amount;
+					newmagn = parseInt(magnite[1]) + amount
+				}
 				break;
 			case "elgiloy":
-				ironsub = 250 * amount;
-				colbsub = 10 * amount;
-				newelgi = parseInt(elgiloy[1]) + amount
+				if(amount === "all"){
+					amnt1 = Math.floor((gold[1]) / 250)
+					amnt2 = Math.floor(parseInt(copp[1]) / 100)
+					if(amnt1>=amnt2){
+						goldsub = amnt2 * 250
+						coppsub = amnt2 * 100
+						newstel = parseInt(elgiloy[1]) + amnt2
+					} else {
+						goldsub = amnt1 * 250
+						coppsub = amnt1 * 100
+						newstel = parseInt(elgiloy[1]) + amnt1
+					}
+				} else {
+					ironsub = 250 * amount;
+					colbsub = 10 * amount;
+					newelgi = parseInt(elgiloy[1]) + amount
+				}
 				break;
 			case "shakudo":
-				goldsub = 250 * amount;
-				coppsub = 100 * amount;
-				newshak = parseInt(shakudo[1]) + amount
+				if(amount === "all"){
+					amnt1 = Math.floor((iron[1]) / 100)
+					amnt2 = Math.floor(parseInt(gold[1]) / 50)
+					if(amnt1>=amnt2){
+						ironsub = amnt2 * 100
+						goldsub = amnt2 * 50
+						newstel = parseInt(magnite[1]) + amnt2
+					} else {
+						ironsub = amnt1 * 100
+						goldsub = amnt1 * 50
+						newstel = parseInt(magnite[1]) + amnt1
+					}
+				} else {
+					goldsub = 250 * amount;
+					coppsub = 100 * amount;
+					newshak = parseInt(shakudo[1]) + amount
+				}
 				break;
 			case "stellite":
 				colbsub = 100 * amount;
@@ -153,8 +219,8 @@ module.exports = {
 				newstet = parseInt(stellite[1]) + amount
 				break;
 			case "cobium":
-				colbsub = 250 * amount;
-				coppsub = 100 * amount;
+				colbsub = 150 * amount;
+				coppsub = 250 * amount;
 				newcobi = parseInt(cobium[1]) + amount
 				break;
 			case "dymalloy":

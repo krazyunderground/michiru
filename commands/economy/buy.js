@@ -91,6 +91,7 @@ module.exports = {
     const userecon = await client.functions.get("getAuthorEcon").execute(message);
     const userutil = await client.functions.get("getUtil").execute(message)
     if (request.rank <= userecon.pick) return message.channel.send("Your pickaxe is already the same or better!")
+    if (userecon.coins - request.cost < 0) return message.channel.send("You can't afford this pickaxe yet!")
     const newBal = userecon.coins - request.cost
     await userEcon.findOneAndUpdate(
       {

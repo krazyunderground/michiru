@@ -337,7 +337,7 @@ module.exports = {
 
 		if (newshak < 0) return message.reply("You don't have enough shakudo!");
 
-		if (newstel < 0) return message.reply("You don't have enough stellite!");
+		if (newstet < 0) return message.reply("You don't have enough stellite!");
 
 		if (newcobi < 0) return message.reply("You don't have enough cobium!");
 

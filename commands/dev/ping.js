@@ -26,7 +26,7 @@ module.exports = {
         const pingEmbed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
             .setTitle(`${message.author.username}'s Ping Request!`)
-            .setDescription(`🏓 Latency is ${(resultMessage.createdTimestamp - Date.now()) * -1}ms \n🖥️ API Latency is ${secondsToDhms(Math.round(client.ws.ping))}\n🆙 Uptime: ${Math.floor(process.uptime())}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
+            .setDescription(`🏓 Latency is ${(resultMessage.createdTimestamp - Date.now()) * -1}ms \n🖥️ API Latency is ${Math.round(client.ws.ping)}\n🆙 Uptime: ${secondsToDhms(Math.floor(process.uptime()))}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
             .addFields(
                 { name: '🧠 Memory', value: `Total Memory: ${totalram}MB\nUsed Memory: ${usedram}MB\nFree Memory: ${freeram}MB\nPercentage Of Free Memory: ${prctfreeram}%`, inline: false},
                 { name: '🔥 CPU', value: `Cores: ${count}\nUsage: ${usage}%`}

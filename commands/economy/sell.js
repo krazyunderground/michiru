@@ -122,10 +122,11 @@ module.exports = {
                 }
             }
         )
+
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
             .setTitle(`${message.author.username}'s Profits!`)
-            .setDescription(`sold ores for \`${addprof}\` coins`)
+            .setDescription(`sold ores for \`${addprof}\` coins\n\n**New Balance:** ${totprof} coins`)
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
