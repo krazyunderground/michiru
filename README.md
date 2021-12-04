@@ -11,7 +11,7 @@
 
 ## About
 
-Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, and slight moderation bot. The source code is <em>mostly</em> available here to use as a reference if you want to make your own bot. Please see [Usage](##-Usage) for more information before copying/using the source code.
+Michiru is a bot created by Krazyunderground and Saoul. It is a fun, economy, and slight moderation bot. The source code is <em>mostly</em> available here to use as a reference if you want to make your own bot. Please see [Usage](#-Usage) for more information before copying/using the source code.
 
 Push notes work as follows,  
 \- for removed  
