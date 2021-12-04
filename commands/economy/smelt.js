@@ -201,11 +201,11 @@ module.exports = {
 					if(amnt1>=amnt2){
 						ironsub = amnt2 * 100
 						goldsub = amnt2 * 50
-						newstel = parseInt(magnite[1]) + amnt2
+						newstel = parseInt(shakudo[1]) + amnt2
 					} else {
 						ironsub = amnt1 * 100
 						goldsub = amnt1 * 50
-						newstel = parseInt(magnite[1]) + amnt1
+						newstel = parseInt(shakudo[1]) + amnt1
 					}
 				} else {
 					goldsub = 250 * amount;
@@ -214,24 +214,80 @@ module.exports = {
 				}
 				break;
 			case "stellite":
+				if(amount === "all"){
+					amnt1 = Math.floor((colb[1]) / 100)
+					amnt2 = Math.floor(parseInt(tung[1]) / 250)
+					if(amnt1>=amnt2){
+						colbsub = amnt2 * 100
+						tungsub = amnt2 * 250
+						newstet = parseInt(stellite[1]) + amnt2
+					} else {
+						colbsub = amnt1 * 100
+						tungsub = amnt1 * 350
+						newstet = parseInt(stellite[1]) + amnt1
+					}
+				} else {
 				colbsub = 100 * amount;
 				tungsub = 250 * amount;
 				newstet = parseInt(stellite[1]) + amount
+				}
 				break;
 			case "cobium":
+				if(amount === "all"){
+					amnt1 = Math.floor((colb[1]) / 150)
+					amnt2 = Math.floor(parseInt(copp[1]) / 250)
+					if(amnt1>=amnt2){
+						colbsub = amnt2 * 150
+						coppsub = amnt2 * 250
+						newcobi = parseInt(cobium[1]) + amnt2
+					} else {
+						colbsub = amnt1 * 150
+						coppsub = amnt1 * 250
+						newcobi = parseInt(cobium[1]) + amnt1
+					}
+				} else {
 				colbsub = 150 * amount;
 				coppsub = 250 * amount;
 				newcobi = parseInt(cobium[1]) + amount
+				}
 				break;
 			case "dymalloy":
+				if(amount === "all"){
+					amnt1 = Math.floor((colb[1]) / 250)
+					amnt2 = Math.floor(parseInt(diam[1]) / 100)
+					if(amnt1>=amnt2){
+						colbsub = amnt2 * 250
+						diamsub = amnt2 * 100
+						newdyma = parseInt(dymalloy[1]) + amnt2
+					} else {
+						colbsub = amnt1 * 250
+						diamsub = amnt1 * 100
+						newdyma = parseInt(dymalloy[1]) + amnt1
+					}
+				} else {
 				colbsub = 250 * amount;
 				diamsub = 100 * amount;
 				newdyma = parseInt(dymalloy[1]) + amount
+				}
 				break;
 			case "vitallium":
+				if(amount === "all"){
+					amnt1 = Math.floor((diam[1]) / 250)
+					amnt2 = Math.floor(parseInt(colb[1]) / 500)
+					if(amnt1>=amnt2){
+						diamsub = amnt2 * 250
+						colbsub = amnt2 * 500
+						newstel = parseInt(vitallium[1]) + amnt2
+					} else {
+						diamsub = amnt1 * 250
+						colbsub = amnt1 * 500
+						newstel = parseInt(vitallium[1]) + amnt1
+					}
+				} else {
 				diamsub = 250 * amount;
 				colbsub = 500 * amount;
 				newvita = parseInt(vitallium[1]) + amount
+				}
 				break;
 		}
 		//verify they can afford the item
