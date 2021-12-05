@@ -2,7 +2,7 @@ module.exports = async (Discord, client, reaction, user) => {
     if(reaction.message.partial) reaction.message.fetch()
     if(reaction.partial) reaction.fetch()
 
-    if(reaction.message.channel.id === "903782506459967508"){
+    if(reaction.message.channel.id === "916435092300255302"){
         //announcements
         if(reaction.emoji.id === "916398514156752916"){
             if (!reaction.message.guild.members.cache.get(user.id).roles.cache.has("916391610718257162")) {

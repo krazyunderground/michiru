@@ -17,6 +17,8 @@ const start = Date.now()
 mongoose.connect(process.env.MONGO_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: true,
+    useCreateIndex: true
 }).then(() => {
     const end = Date.now()
     const total = end - start
