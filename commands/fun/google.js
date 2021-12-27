@@ -4,11 +4,11 @@ const fetch = require("node-fetch")
 module.exports = {
     name: "google",
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/google.js",
-    aliases: ['search', 'find', 'g'],
+    aliases: ['search', 'g'],
     category: "fun",
     use: "google",
     cooldown: 2,
-    description: "searches google using the query provided",
+    description: "searches google using the query provided.",
     execute(client, message, args, Discord, economy, util){
         if(!args[1]) return message.reply("Add what you want to search on google!")
         fetch(

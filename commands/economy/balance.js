@@ -5,7 +5,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/balance.js",
     category: "eco",
     use: "bal [@member]",
-    description: "shows the balance of the user",
+    description: "shows the balance of the target user.",
     aliases: ['b', 'bal'],
     cooldown: 5,
     maxArgs: 1,
@@ -16,7 +16,7 @@ module.exports = {
         const member = message.mentions.members.first() || message.member
 
         const memberBal = await client.functions.get("getTargetEcon").execute(message);
-        const util = await client.functions.get("getUtil").execute(message)
+        const util = await client.functions.get("getUtil").execute(message);
 
         if(member === client.user) return message.reply("Dont use the command on me! Use it on somebody else!")
 

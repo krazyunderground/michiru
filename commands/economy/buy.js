@@ -6,7 +6,7 @@ module.exports = {
   category: "eco",
   use: "buy <category> <item>",
   example: "!m buy pickaxes steel pickaxe",
-  description: "buy items from the shop",
+  description: "buy items from the shop.",
   cooldown: 5,
   minArgs: 2,
   maxArgs: 3,

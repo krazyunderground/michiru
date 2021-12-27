@@ -5,9 +5,9 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/mine.js",
     category: "eco",
     use: "mine",
-    aliases: ['work', 'm', 'w'],
+    aliases: ['work', 'm'],
     cooldown: 10,
-    description: "go on a mining expedition for some ores",
+    description: "go on a mining expedition for some ores.",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")

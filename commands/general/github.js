@@ -2,11 +2,12 @@ const Discord = require("discord.js")
 const { MessageSelectMenu, MessageActionRow } = require(`discord.js`)
 
 module.exports = {
-    name: "git",
+    name: "github",
+    aliases: ["git"],
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/utility/git.js",
     description: "allows faster access to the source code for each command",
     category: "general",
-    use: "git",
+    use: "github <command>",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message)

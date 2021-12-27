@@ -333,6 +333,7 @@ module.exports = {
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
 
+
         message.channel.send({embeds: [embed]})
 
         await userEcon.findOneAndUpdate(

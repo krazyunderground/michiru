@@ -4,7 +4,7 @@ module.exports = {
     category: "fun",
     use: "rps",
     cooldown: 120,
-    description: "play rock paper scissors against the bot",
+    description: "play rock paper scissors against me.",
     async execute(client, message, args, Discord, economy, util){
         const responses = ["rock", "paper", "scissors"]
         const random = Math.floor(Math.random() * responses.length);

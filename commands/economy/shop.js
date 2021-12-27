@@ -7,7 +7,7 @@ module.exports = {
     category: "eco",
     use: "shop",
     cooldown: 5,
-    description: "displays the item shop",
+    description: "displays the item shop.",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         const userutil = await client.functions.get("getUtil").execute(message);
