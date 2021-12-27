@@ -4,7 +4,7 @@ module.exports = {
     category: "fun",
     use: "roll <amount>",
     cooldown: 120,
-    description: "Try to roll a higher number than me.",
+    description: "roll a dice and try to beat my roll.",
     async execute(client, message, args, Discord, economy, util){
         let amount = args[1];
         if (isNaN(args[1]) || amount % 1 != 0) return message.channel.send("Please make sure the amount is a whole number!")

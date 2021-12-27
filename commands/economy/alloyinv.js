@@ -6,7 +6,7 @@ module.exports = {
   gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/alloyinv.js",
   category: "eco",
   use: "alloyinv",
-  description: "shows the alloy inventory of the user",
+  description: "shows the alloy inventory of the command user.",
   aliases: ['ainv', 'alloys'],
   cooldown: 5,
   maxArgs: 0,

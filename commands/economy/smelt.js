@@ -7,7 +7,7 @@ module.exports = {
 	use: "smelt <alloy> [amount]",
 	example: "!m smelt steel 5",
 	cooldown: 5,
-	description: "allows the user to smelt alloys from basic ores",
+	description: "smelt alloys from basic ores.",
 	minArgs: 1,
 	maxArgs: 2,
 	async execute(client, message, args, Discord, economy, util) {

@@ -3,7 +3,7 @@ module.exports = {
     name: 'owoify',
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/owoify.js",
     aliases: ["owo"],
-    description: 'owoifies text',
+    description: 'owoifies text... just try it.',
     cooldown: 0,
     category: "fun",
     use: "owoify",

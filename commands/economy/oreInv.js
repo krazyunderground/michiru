@@ -6,9 +6,9 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/oreInv.js",
     category: "eco",
     use: "oreinv",
-    aliases: ['oi','oinv'],
+    aliases: ['oinv','ores'],
     cooldown: 5,
-    description: "allows the user to check their ore inventory",
+    description: "shows the ore inventory of the command user.",
     maxArgs: 0,
     async execute(client, message, args, Discord, economy, util){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
