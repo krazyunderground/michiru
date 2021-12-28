@@ -1,8 +1,4 @@
 const meant = require("meant");
-const fs = require("fs");
-
-const util = null
-const economy = null
 
 const cooldowns = new Map();
 
@@ -104,5 +100,5 @@ module.exports = async (Discord, client, message) => {
   if (args.length < min && typeof cmd.minArgs !== 'undefined') return message.channel.send(`looks like you're missing something! correct usage: ${cmd.use}`)
   if (args.length > (cmd.maxArgs + 1) && !typeof cmd.minArgs !== 'undefined' && cmd.maxArgs !== -1) return message.channel.send(`looks like you're adding something! correct usage: ${cmd.use}`)
   
-  if (cmd) cmd.execute(client, message, args, Discord, economy, util);
+  if (cmd) cmd.execute(client, message, args, Discord);
 };

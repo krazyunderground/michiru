@@ -14,14 +14,14 @@ module.exports = {
 
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
 
-            if(!args[1]) return message.channel.send("Add what you want to change the prefix to!")
-            if(!args[1].startsWith('"') || !message.content.endsWith('"')) return message.channel.send("You need to use the speechmarks around the new prefix")
+            if(!args[1]) return message.reply("Add what you want to change the prefix to!")
+            if(!args[1].startsWith('"') || !message.content.endsWith('"')) return message.reply("You need to use the speechmarks around the new prefix")
             const prefix = message.content.split('"').slice(1)[0]
             if(!prefix.length < 1) message.reply("You can't have a prefix less than 1!")
-            if(prefix.length > 15) return message.channel.send("Prefixes are character limited to 15")
+            if(prefix.length > 15) return message.reply("Prefixes are character limited to 15")
 
             const filter = response => {
-                return response.author.id === message.author.id
+                return response.author.id === message.member.user.id
             };
             
             message.reply(`Are you sure you want to change the guild prefix?\nOld: \`${guildProfile.prefix}\`\nNew: \`${prefix}\`\n\n**Y** to continue`, { fetchReply: true })

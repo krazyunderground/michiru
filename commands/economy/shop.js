@@ -9,8 +9,8 @@ module.exports = {
     cooldown: 5,
     description: "displays the item shop.",
     maxArgs: 0,
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message);
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member);
 
         const pickaxes = [
             {
@@ -80,6 +80,6 @@ module.exports = {
             for (pick of pickaxes) {
                 shopEmbed.addField(`${pick.emoji} ${pick.name}`, `Cost: ${pick.cost} coins \nRank: ${pick.rank} \nID: ${pick.id}`)
             }
-        message.channel.send({embeds: [shopEmbed]})
+        message.reply({embeds: [shopEmbed]})
     }
 }

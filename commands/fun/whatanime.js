@@ -11,12 +11,15 @@ module.exports = {
     description: "uses trace.moe to find the anime of an image provided",
     category: "fun",
     use: "whatanime",
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message);
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member);
         
         var Attachment = message.attachments.first()
         
-        if(!Attachment) return message.channel.send("Upload the image in the same message as the command!")
+        if(!Attachment){
+            if(!message.options) return message.reply("Upload the image in the same message as the command!")
+            else return message.reply("This command isnt currently availible for interactions")
+        } 
         
         var url = Attachment.url
         
@@ -38,7 +41,7 @@ module.exports = {
                     )
                 .setColor(userutil.colour)
                 .setFooter("🎲", client.user.displayAvatarURL())
-            message.channel.send({embeds: [embed]})
+            message.reply({embeds: [embed]})
         });
     }
 }

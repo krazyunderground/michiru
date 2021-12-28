@@ -6,8 +6,8 @@ module.exports = {
     cooldown: 0,
     category: "general",
     use: "serverinfo",
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message)
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
         
         const guild = message.guild;
 
@@ -41,6 +41,6 @@ module.exports = {
             Boost Count: ${guild.premiumSubscriptionCount}
         `);
 
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
     },
 };

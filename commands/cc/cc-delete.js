@@ -8,9 +8,9 @@ module.exports = {
     use: "cc-delete",
     cooldown: 2,
     description: "delete a custom command",
-    async execute(client, message, args, Discord, economy, util){
-        if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send("You can't use this command!")
-        if(!args[1]) return message.channel.send(`Please specify the name of the command`)
+    async execute(client, message, args, Discord){
+        if (!message.member.permissions.has('ADMINISTRATOR')) return message.reply("You can't use this command!")
+        if(!args[1]) return message.reply(`Please specify the name of the command`)
         const ccCheck = await client.functions.get("ccCheck").execute(message, args[1])
         if(!ccCheck) return message.reply("A custom command with that input doesn't exists!")
 
@@ -19,6 +19,6 @@ module.exports = {
             input: args[1]        
         })
         
-        message.channel.send(`Custom command \`${args[1]}\` deleted!`)
+        message.reply(`Custom command \`${args[1]}\` deleted!`)
     }
 };

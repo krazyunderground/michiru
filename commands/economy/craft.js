@@ -1,6 +1,7 @@
 const userEcon = require("../../models/userEcon")
 
 module.exports = {
+    name: "craft",
     gitlink: "https://github.com/krazyunderground/michiru/blob/main/commands/economy/craft.js",
     category: "eco",
     use: "craft <category> <item>",
@@ -9,11 +10,11 @@ module.exports = {
     description: "craft items from alloys.",
     minArgs: 2,
     maxArgs: 3,
-    async execute(client, message, args, Discord, economy, util) {
+    async execute(client, message, args, Discord) {
           if (message.guild === null) return message.reply(`You can't use this command in a DM!`);
   
-          const userecon = await client.functions.get("getTargetEcon").execute(message);
-          const userutil = await client.functions.get("getUtil").execute(message);
+          const userecon = await client.functions.get("getUserEcon").execute(message.member);
+          const userutil = await client.functions.get("getUserUtil").execute(message.member);
 
           const categories = { 
               //armor category
@@ -225,16 +226,16 @@ module.exports = {
           };
           if(!args[3]) args[3] = ""
           const query =`${args[2]}${args[3]}`
-          if(!args[1]) return message.channel.send("Include which category of item you want to craft")
+          if(!args[1]) return message.reply("Include which category of item you want to craft")
           let category;
           if(args[1] === "armour") {
               category = "armor"
           } else {
               category = args[1]
           }
-          if(!args[2]) return message.channel.send("Include what you want to craft!")
-          if(!categories[category]) return message.channel.send("That category doesnt exist!")
-          if(!categories[category][query]) return message.channel.send("That item doesnt exist!")
+          if(!args[2]) return message.reply("Include what you want to craft!")
+          if(!categories[category]) return message.reply("That category doesnt exist!")
+          if(!categories[category][query]) return message.reply("That item doesnt exist!")
           const request = categories[category][query]
 
           if(userecon.owns.includes(request.db))return message.reply("You already have that item!")
@@ -257,7 +258,7 @@ module.exports = {
 		const vitallium = alloyInv[7].split("@");
 
 		//make sure they request an item
-		if (!args[1])return message.channel.send("please enter an item to craft. '!m recipes to view the recipe book'");
+		if (!args[1])return message.reply("please enter an item to craft. '!m recipes to view the recipe book'");
 		//set the request
 
 		//set price and amount after give
@@ -316,7 +317,7 @@ module.exports = {
 		//update econ
 		await userEcon.findOneAndUpdate(
             {
-                userID: message.author.id
+                userID: message.member.user.id
             },
             {
                 $set:{
@@ -327,18 +328,18 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username} Crafted an Item!`)
+            .setTitle(`${message.member.user.username} Crafted an Item!`)
             .setDescription(`**Purchase:** \`${args[2]} ${args[3]}\`\n**Alloy:** \`${alloy}\`\n**Cost:** \`${cost}\``)
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
 
 
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
 
         await userEcon.findOneAndUpdate(
             {
-              userID: message.author.id
+              userID: message.member.user.id
             },
             {
                 $set: {

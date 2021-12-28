@@ -11,16 +11,16 @@ module.exports = {
   cooldown: 0,
   category: "fun",
   use: "tts",
-  async execute(client, message, argsold, Discord, economy, util) {
+  async execute(client, message, argsold, Discord) {
     let vc = message.member.voice.channel;
-    if (!vc) return message.channel.send('Your\'re not in a vc!');
+    if (!vc) return message.reply('Your\'re not in a vc!');
     let connection = await joinVoiceChannel({
       channelId: vc.id,
       guildId: message.guild.id,
       adapterCreator: message.guild.voiceAdapterCreator
   })
 
-    if(!argsold[2]) return message.channel.send(`Include the language you want to use! <https://cloud.google.com/speech/docs/languages>\n||note: some of the languages won't work||`)
+    if(!argsold[2]) return message.reply(`Include the language you want to use! <https://cloud.google.com/speech/docs/languages>\n||note: some of the languages won't work||`)
 
     const args = argsold.slice(1)
 

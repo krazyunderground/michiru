@@ -8,7 +8,7 @@ module.exports = {
     aliases: ["verify"],
     cooldown: 60,
     description: "captcha command used only to test the system",
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         const gp = await client.functions.get("guildCheck").execute(message)
         if(!gp.captchaRole) return 
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.delete()
@@ -25,7 +25,7 @@ module.exports = {
 
         const responsemsg = await message.member.send({files: [captchaAttachment], content: `Solve the captcha to be verified in ${message.member.guild.name}!`})
 
-        const filter = (m) => m.author.id === message.author.id
+        const filter = (m) => m.author.id === message.member.user.id
         try{
             const collector = responsemsg.channel.createMessageCollector({filter, time: 30000})
             collector.on("collect", response => {

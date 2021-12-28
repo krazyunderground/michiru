@@ -7,8 +7,8 @@ module.exports = {
     cooldown: 0,
     category: "general",
     use: "userinfo",
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message)
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
         
         let member = message.mentions.members.first() || message.member;
         let user = member.user
@@ -27,7 +27,7 @@ module.exports = {
             .setFooter("🌐", client.user.displayAvatarURL())
             .setTimestamp();
     
-        message.channel.send({ embeds: [embed] });
+        message.reply({ embeds: [embed] });
         return;
     }
 }

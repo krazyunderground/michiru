@@ -8,8 +8,8 @@ module.exports = {
     use: "cc-list",
     cooldown: 2,
     description: "list the server's custom commands",
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message)
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
         var cclist = await customCommands.find({ guildID: message.guild.id})
         var names = new Array()
         for (const cc of cclist) {
@@ -22,8 +22,8 @@ module.exports = {
         .setThumbnail(message.guild.iconURL({dynamic: true}))
         .setFooter("🖌️", client.user.displayAvatarURL())
         .setTimestamp()
-        if(names.length == 0) return message.channel.send("This server has no commands!")
+        if(names.length == 0) return message.reply("This server has no commands!")
         embed.setDescription(names.join(" , "))
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
     }
 };

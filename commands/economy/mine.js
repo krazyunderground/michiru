@@ -9,16 +9,16 @@ module.exports = {
     cooldown: 10,
     description: "go on a mining expedition for some ores.",
     maxArgs: 0,
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
 
         async function refresh(message){
-            return await client.functions.get("getAuthorEcon").execute(message)
+            return await client.functions.get("getUserEcon").execute(message.member)
         }
         
         const userpick = await refresh(message)
-        /* const userecon = await client.functions.get("getAuthorEcon").execute(message); */
-        const userutil = await client.functions.get("getUtil").execute(message);
+        /* const userecon = await client.functions.get("getUserEcon").execute(message); */
+        const userutil = await client.functions.get("getUserUtil").execute(message.member);
         const pick = userpick.pick
         //sets parameters for the algorithm
 
@@ -161,7 +161,7 @@ module.exports = {
 
         await userEcon.findOneAndUpdate(
             {
-                userID: message.author.id
+                userID: message.member.user.id
             },
             {
                 $set: {
@@ -172,7 +172,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username}'s Mining Expedition!`)
+            .setTitle(`${message.member.user.username}'s Mining Expedition!`)
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
@@ -197,6 +197,6 @@ module.exports = {
         }
 
         if(addIron == 0 && addTung == 0 && addGold == 0 && addCopp == 0 && addColb == 0 && addDiam == 0) embed.setDescription(`No ores found!`)
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
     }
 }

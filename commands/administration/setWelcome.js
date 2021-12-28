@@ -9,7 +9,7 @@ module.exports = {
     use: "welcomeset",
     description: "sets the welcome channel",
     cooldown: 0,
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){
             const gpold = await client.functions.get("guildCheck").execute(message)
             if(!message.mentions.channels.first()){ 
@@ -24,12 +24,12 @@ module.exports = {
                             }
                         }
                     )
-                    return message.channel.send("Setting deleted!") 
+                    return message.reply("Setting deleted!") 
                 }
-                else return message.channel.send("Please specify a channel for the welcomes to be logged to!")
+                else return message.reply("Please specify a channel for the welcomes to be logged to!")
             }
             client.functions.get("guildCheck").execute(message)
-            if(!message.mentions.channels.first().isText()) return message.channel.send("Please specify a *text* channel for the reports to be logged to!")
+            if(!message.mentions.channels.first().isText()) return message.reply("Please specify a *text* channel for the reports to be logged to!")
             await guildData.findOneAndUpdate(
                 {
                     guildID: message.guild.id
@@ -45,6 +45,6 @@ module.exports = {
             
             message.reply("Done!, I have sent a mesage to the welcome channel, please make sure it's there to verify its correct!\n\n(If you should *ever* want to remove this feature from your guild, simply run the command again without mentioning a channel!)")
             client.channels.cache.get(gp.welcomeChannel).send("Hello! I'm Michiru!")
-        } else return message.channel.send("You cannot use this command!\nPlease refer to an admin for more info!")
+        } else return message.reply("You cannot use this command!\nPlease refer to an admin for more info!")
     },
 };

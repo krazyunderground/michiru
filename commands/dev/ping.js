@@ -12,10 +12,10 @@ module.exports = {
     category: "dev",
     use: "ping",
     cooldown: 0,
-    async execute(client, message, args, Discord, economy, util){
-    if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.author.id).roles.cache.has("854061604258054214")) return message.reply("This command is for devs only! *If you're having issues, please let us know in the support server. https://discord.com/invite/E9BnSJHWSK*")
+    async execute(client, message, args, Discord){
+    if(!client.guilds.cache.get("848707853350862858").members.cache.get(message.member.user.id).roles.cache.has("854061604258054214")) return message.reply("This command is for devs only! *If you're having issues, please let us know in the support server. https://discord.com/invite/E9BnSJHWSK*")
         const mongodate1 = Date.now()
-        const userutil = await client.functions.get("getUtil").execute(message)
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
         const mongodate2 = Date.now()
         const totalram = ((os.totalmem() / 10**6 + " ").split('.')[0]);
         const freeram = ((os.freemem() / 10**6 + " ").split('.')[0]);
@@ -25,7 +25,7 @@ module.exports = {
         message.channel.send('Calculating current ping...').then((resultMessage) => {
         const pingEmbed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username}'s Ping Request!`)
+            .setTitle(`${message.member.user.username}'s Ping Request!`)
             .setDescription(`🏓 Latency is ${(resultMessage.createdTimestamp - Date.now()) * -1}ms \n🖥️ API Latency is ${Math.round(client.ws.ping)}\n🆙 Uptime: ${secondsToDhms(Math.floor(process.uptime()))}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
             .addFields(
                 { name: '🧠 Memory', value: `Total Memory: ${totalram}MB\nUsed Memory: ${usedram}MB\nFree Memory: ${freeram}MB\nPercentage Of Free Memory: ${prctfreeram}%`, inline: false},
@@ -36,7 +36,7 @@ module.exports = {
             .setFooter("⚙️ Pong!", client.user.displayAvatarURL())
         
         resultMessage.delete();    
-        message.channel.send({embeds: [pingEmbed]})
+        message.reply({embeds: [pingEmbed]})
         })
     }
 }

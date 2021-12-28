@@ -9,8 +9,8 @@ module.exports = {
     category: "general",
     use: "github <command>",
     cooldown: 0,
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message)
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
 
         const embed = new Discord.MessageEmbed().setColor(userutil.colour);
         let prefix = await client.functions.get("guildCheck").prefix
@@ -111,7 +111,7 @@ module.exports = {
         let embed2 = new Discord.MessageEmbed()
         .setColor(userutil.colour).setTitle("Please select help page you'd like to visit")
 
-        let menumsg = await message.channel.send({ embeds: [embed2], components: [row]})
+        let menumsg = await message.reply({ embeds: [embed2], components: [row]})
 
         function menuselection(menu) {
             switch(menu.values[0]) {
@@ -136,7 +136,7 @@ module.exports = {
         var collector = menumsg.createMessageComponentCollector({time: 60000})
         collector.on("collect", (menu) => {
             if(menu.message.id == menumsg.id) {
-                if(menu.member.id == message.author.id) menuselection(menu)
+                if(menu.member.id == message.member.user.id) menuselection(menu)
                 else menu.reply({content: ":x: Only the message author can interact with the menu", ephemeral: true})
             }
         })
