@@ -1,17 +1,17 @@
-const userEcon = require('../models/userEcon')
+const econs = require('../models/userEcon')
 
 module.exports = {
     name: "getUserEcon",
     async execute(member) {
-        const user = member.id
+        const user = member.user.id
         try {
-            const userEcon = await userEcon.findOne({
-                userID: user.id,
+            const userEcon = await econs.findOne({
+                userID: user,
             });
     
             if (!userEcon) {
-                let tp = await userEcon.create({
-                    userID: user.id,
+                let tp = await econs.create({
+                    userID: user,
                     coins: 0,
                     pick: 1,
                     oreInv: `iron@0 tungsten@0 gold@0 copper@0 cobalt@0 diamond@0`,
