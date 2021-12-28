@@ -10,7 +10,7 @@ module.exports = {
   cooldown: 5,
   minArgs: 2,
   maxArgs: 3,
-  async execute(client, message, args, Discord, economy) {
+  async execute(client, message, args, Discord) {
     const categories = {
       pickaxes: {
         steelpickaxe: {
@@ -68,7 +68,7 @@ module.exports = {
     const query = `${args[2]}${args[3]}`;
     //check for category
     if (!args[1])
-      return message.channel.send(
+      return message.reply(
         "Include which category of item you want to buy \`pickaxes\` *more categories coming soon*"
       );
     //pickaxe aliases for category
@@ -79,23 +79,23 @@ module.exports = {
       category = args[1];
     }
     //make sure they include an item to purchase
-    if (!args[2]) return message.channel.send("Include what you want to buy!");
+    if (!args[2]) return message.reply("Include what you want to buy!");
     //verify category exists
     if (!categories[category])
-      return message.channel.send("That category doesnt exist!");
+      return message.reply("That category doesnt exist!");
     //verify item exists in category
     if (!categories[category][query])
-      return message.channel.send("That item doesnt exist!");
+      return message.reply("That item doesnt exist!");
     //set request to item from category
     const request = categories[category][query];
-    const userecon = await client.functions.get("getAuthorEcon").execute(message);
-    const userutil = await client.functions.get("getUtil").execute(message)
-    if (request.rank <= userecon.pick) return message.channel.send("Your pickaxe is already the same or better!")
-    if (userecon.coins - request.cost < 0) return message.channel.send("You can't afford this pickaxe yet!")
+    const userecon = await client.functions.get("getUserEcon").execute(message.member);
+    const userutil = await client.functions.get("getUserUtil").execute(message.member)
+    if (request.rank <= userecon.pick) return message.reply("Your pickaxe is already the same or better!")
+    if (userecon.coins - request.cost < 0) return message.reply("You can't afford this pickaxe yet!")
     const newBal = userecon.coins - request.cost
     await userEcon.findOneAndUpdate(
       {
-          userID: message.author.id
+          userID: message.member.user.id
       },
       {
           $set:{
@@ -106,12 +106,12 @@ module.exports = {
   )
   const embed = new Discord.MessageEmbed()
     .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-    .setTitle(`${message.author.username}'s Purchase!`)
+    .setTitle(`${message.member.user.username}'s Purchase!`)
     .setDescription(`**Purchase:** ${request.emoji} ${args[2]} ${args[3]}\n**Cost:** ${request.cost} coins\n**New Balance:** ${newBal}`)
     .setColor(userutil.colour)
     .setTimestamp()
     .setFooter("💸", client.user.displayAvatarURL())
 
-  message.channel.send({embeds: [embed]})
+  message.reply({embeds: [embed]})
   },
 };

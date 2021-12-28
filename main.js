@@ -7,8 +7,10 @@ client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
 client.functions = new Discord.Collection()
 client.slashs = new Discord.Collection()
+client.buttons = new Discord.Collection()
+client.menus = new Discord.Collection()
 
-const handlers = ['command_handler', 'event_handler', 'function_handler', 'slash_handler']
+const handlers = ['command_handler', 'event_handler', 'function_handler', 'slash_handler', 'button_handler', 'menu_handler']
 handlers.forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord)
 })

@@ -5,9 +5,9 @@ module.exports = {
     use: "role",
     cooldown: 0,
     maxArgs: 1,
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         
-        const userutil = await client.functions.get("getUtil").execute(message)
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
 
         const embed = new Discord.MessageEmbed()
         .setColor(userutil.colour)

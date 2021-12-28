@@ -5,14 +5,14 @@ module.exports = {
     use: "rps",
     cooldown: 120,
     description: "play rock paper scissors against me.",
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         const responses = ["rock", "paper", "scissors"]
         const random = Math.floor(Math.random() * responses.length);
         const result = responses[random]
 
         const choice =  args[1]
-        if (!choice) return message.channel.send("Please select rock, paper, or scissors")
-        if (!responses.includes(choice)) return message.channel.send("Please select rock, paper, or scissors")
+        if (!choice) return message.reply("Please select rock, paper, or scissors")
+        if (!responses.includes(choice)) return message.reply("Please select rock, paper, or scissors")
         if (result === choice) return message.reply("Its a tie!")
         switch (choice) {
             case 'rock': {
@@ -28,7 +28,7 @@ module.exports = {
                 else return message.reply('You won, I chose rock!');
             }
             default: {
-                return message.channel.send("Please select rock, paper, or scissors");
+                return message.reply("Please select rock, paper, or scissors");
             }
         }
     }

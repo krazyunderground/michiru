@@ -6,7 +6,7 @@ module.exports = {
     use: "leaderboard <all / guild>",
     cooldown: 120,
     description: "show's richest players in the guild",
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         userEcon.find({}, null, {skip:0, limit:10, sort:{ coins: -1 }}, async function(err, lead){
             const ten = new Array()
             var count = 1
@@ -24,7 +24,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter("💸", client.user.displayAvatarURL())
             
-            message.channel.send({embeds: [embed]})
+            message.reply({embeds: [embed]})
         })
     }
 }

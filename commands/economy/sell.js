@@ -1,5 +1,4 @@
-const Discord = require("discord.js")
-const { MessageSelectMenu, MessageActionRow, MessageButton } = require(`discord.js`)
+
 const userEcon = require("../../models/userEcon")
 
 module.exports = {
@@ -13,10 +12,10 @@ module.exports = {
     description: "sell ores for coins.",
     minArgs: 1,
     maxArgs: -1,
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
-        const userecon = await client.functions.get("getTargetEcon").execute(message);
-        const userutil = await client.functions.get("getUtil").execute(message)
+        const userecon = await client.functions.get("getUserEcon").execute(message.member);
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
 
         var oreInv
 
@@ -113,7 +112,7 @@ module.exports = {
 
         await userEcon.findOneAndUpdate(
             {
-                userID: message.author.id
+                userID: message.member.user.id
             },
             {
                 $set:{
@@ -125,12 +124,12 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username}'s Profits!`)
+            .setTitle(`${message.member.user.username}'s Profits!`)
             .setDescription(`sold ores for \`${addprof}\` coins\n\n**New Balance:** ${totprof} coins`)
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
 
-        message.channel.send({embeds: [embed]})    
+        message.reply({embeds: [embed]})    
     }
 }  

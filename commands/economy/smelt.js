@@ -10,11 +10,11 @@ module.exports = {
 	description: "smelt alloys from basic ores.",
 	minArgs: 1,
 	maxArgs: 2,
-	async execute(client, message, args, Discord, economy, util) {
+	async execute(client, message, args, Discord) {
 		if (message.guild === null) return message.reply("You can't use this command in a DM!");
 
-		const userecon = await client.functions.get("getTargetEcon").execute(message);
-		const userutil = await client.functions.get("getUtil").execute(message);
+		const userecon = await client.functions.get("getUserEcon").execute(message.member);
+		const userutil = await client.functions.get("getUserUtil").execute(message.member);
 
 		const alloys = [
 			{
@@ -110,23 +110,23 @@ module.exports = {
 		var colbsub = 0;
 		var diamsub = 0;
 		//make sure they request an item
-		if (!args[1])return message.channel.send("please enter an item to craft. '!m recipes to view the recipe book'");
+		if (!args[1])return message.reply("please enter an item to craft. '!m recipes to view the recipe book'");
 		//set the request
 		const request = args[1].toLowerCase();
 		let amount;
 		if(!args[2]) {amount = 1}
 		if(args[2] = 0){
-			return message.channel.send("please make sure amount is a \`number greater than 0\`!")}
+			return message.reply("please make sure amount is a \`number greater than 0\`!")}
 		else if(isNaN(args[2])){
 			if(args[2].toLowerCase() !== "all"){
-				return message.channel.send("please make sure amount is a \`number\`!")
+				return message.reply("please make sure amount is a \`number\`!")
 			} else {
 				amount = "all"
 			}
 		}
 		else amount = parseInt(args[2]);
 		//verify item exists
-		if (!alloys.some(e => e.name === request)) return message.channel.send("this item does not exist! '!m recipes to view the recipe book'");
+		if (!alloys.some(e => e.name === request)) return message.reply("this item does not exist! '!m recipes to view the recipe book'");
 		var newstel = parseInt(steel[1])
 		var newmagn = parseInt(magnite[1])
 		var newelgi = parseInt(elgiloy[1])
@@ -315,7 +315,7 @@ module.exports = {
 		//update econ
 		await userEcon.findOneAndUpdate(
             {
-                userID: message.author.id
+                userID: message.member.user.id
             },
             {
                 $set:{
@@ -324,6 +324,6 @@ module.exports = {
                 }
             }
         )
-		message.channel.send(`Successfully smelted ${amount} ${request}.`)
+		message.reply(`Successfully smelted ${amount} ${request}.`)
 	},
 };

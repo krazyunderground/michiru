@@ -9,8 +9,8 @@ module.exports = {
     use: "ubdict",
     cooldown: 2,
     description: "gets word defenition using urban dictionary",
-    async execute(client, message, args, Discord, economy, util) {
-        const userutil = await client.functions.get("getUtil").execute(message);
+    async execute(client, message, args, Discord) {
+        const userutil = await client.functions.get("getUserUtil").execute(message.member);
 
         if (!args[1]) return message.reply("Add what you want to define from UD!")
         try {
@@ -32,10 +32,10 @@ module.exports = {
                         .setTimestamp()
                         .setColor(userutil.colour)
 
-                    message.channel.send({embeds: [udEmbed]})
-                }).catch((err) => message.channel.send("I couldn't find any suitable matches to your search!"))
+                    message.reply({embeds: [udEmbed]})
+                }).catch((err) => message.reply("I couldn't find any suitable matches to your search!"))
         } catch (err) {
-            message.channel.send("I couldn't find any suitable matches to your search!")
+            message.reply("I couldn't find any suitable matches to your search!")
         }
     }
 }

@@ -7,7 +7,7 @@ module.exports = {
     use: "banner",
     cooldown: 0,
     description: "if the user has a banner, it will display it here",
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         let resultMessage = await message.channel.send("Trying to find users banner")
         let uid = message.member.id
         if(message.mentions.users.first()){
@@ -52,7 +52,7 @@ module.exports = {
         
         setTimeout(() => {
             resultMessage.delete();
-            message.channel.send(banner)
+            message.reply(banner)
         }, 1000)
     }
 }

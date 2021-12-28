@@ -8,8 +8,8 @@ module.exports = {
     category: "general",
     description: "allows people to see the current progress/publicity of the bot",
     cooldown: 0,
-    async execute(client, message, args, Discord, economy, util){
-        const userutil = await client.functions.get("getUtil").execute(message)
+    async execute(client, message, args, Discord){
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
 
         const number = client.guilds.cache.size
 
@@ -28,11 +28,11 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username}'s Goal Progress Request!`)
+            .setTitle(`${message.member.user.username}'s Goal Progress Request!`)
             .setDescription(`Help Michiru get to 100 servers!\n ${bar}`)
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("🌐", client.user.displayAvatarURL())
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
     }
 }

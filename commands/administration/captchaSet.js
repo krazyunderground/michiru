@@ -9,9 +9,9 @@ module.exports = {
     use: `captchasetrole`,
     description: `sets the captcha channel`,
     cooldown: 0,
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord,){
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === `576470929874616330`){
-            if(!message.mentions.roles.first()) return message.channel.send(`Please mention a role to give the new members!`)
+            if(!message.mentions.roles.first()) return message.reply(`Please mention a role to give the new members!`)
             client.functions.get(`guildCheck`).execute(message)
             await guildData.findOneAndUpdate(
                 {
@@ -25,6 +25,6 @@ module.exports = {
             )
             
             message.reply(`Done!, test the system yourself to make sure its correct by removing the ${message.mentions.roles.first().name} role and running the command \`!m captcha\`!`)
-        } else return message.channel.send(`You cannot use this command!\nPlease refer to an admin for more info!`)
+        } else return message.reply(`You cannot use this command!\nPlease refer to an admin for more info!`)
     },
 };

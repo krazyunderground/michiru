@@ -10,10 +10,10 @@ module.exports = {
     cooldown: 5,
     description: "shows the ore inventory of the command user.",
     maxArgs: 0,
-    async execute(client, message, args, Discord, economy, util){
+    async execute(client, message, args, Discord){
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
-        const userecon = await client.functions.get("getTargetEcon").execute(message);
-        const userutil = await client.functions.get("getUtil").execute(message)
+        const userecon = await client.functions.get("getUserEcon").execute(message.member);
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
 
 
         var oreInv
@@ -33,7 +33,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username}'s Ore Inventory!`)
+            .setTitle(`${message.member.user.username}'s Ore Inventory!`)
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
@@ -52,6 +52,6 @@ module.exports = {
         
         
 
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
     }
 } 

@@ -7,9 +7,9 @@ module.exports = {
     cooldown: 5,
     maxArgs: 0,
     description: "displays the command users inventory.",
-    async execute(client, message, args, Discord, economy, util) {
-        const userecon = await client.functions.get("getAuthorEcon").execute(message)
-        const userutil = await client.functions.get("getUtil").execute(message)
+    async execute(client, message, args, Discord) {
+        const userecon = await client.functions.get("getUserEcon").execute(message.member)
+        const userutil = await client.functions.get("getUserUtil").execute(message.member)
         owns = userecon.owns.split(" ")
         ownsf = []
         owns.forEach(item => {
@@ -65,12 +65,12 @@ module.exports = {
         })
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-            .setTitle(`${message.author.username}'s Inventory!`)
+            .setTitle(`${message.member.user.username}'s Inventory!`)
             .setDescription(ownsf.join(", "))
             .setColor(userutil.colour)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
 
-        message.channel.send({embeds: [embed]})
+        message.reply({embeds: [embed]})
     }
 }

@@ -9,14 +9,14 @@ module.exports = {
     aliases: ['b', 'bal'],
     cooldown: 5,
     maxArgs: 1,
-    async execute(client, message, args, Discord, economy){
+    async execute(client, message, args, Discord){
 
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
 
         const member = message.mentions.members.first() || message.member
 
-        const memberBal = await client.functions.get("getTargetEcon").execute(message);
-        const util = await client.functions.get("getUtil").execute(message);
+        const memberBal = await client.functions.get("getUserEcon").execute(message.member);
+        const util = await client.functions.get("getUserUtil").execute(message.member);
 
         if(member === client.user) return message.reply("Dont use the command on me! Use it on somebody else!")
 
@@ -28,7 +28,7 @@ module.exports = {
             .setFooter("💸", client.user.displayAvatarURL())
             .setColor(`${util.colour}`)
 
-        message.channel.send({embeds: [balEmbed]})
+        message.reply({embeds: [balEmbed]})
 
     }
 }
