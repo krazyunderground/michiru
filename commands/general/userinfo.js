@@ -12,6 +12,7 @@ module.exports = {
         
         let member = message.mentions.members.first() || message.member;
         let user = member.user
+        if (user.bot) return message.channel.send('Sorry, I can\'t display bots info!')
 
         const joinDiscord = user.createdAt
         const joinServer = member.joinedAt

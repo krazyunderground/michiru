@@ -8,7 +8,22 @@ module.exports = {
         const id = footer.slice(7)
         const user = interaction.guild.members.cache.get(id)
 
-        const roles = user.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | ") || "No Data"
+        let objarr = []
+        for (const rolemap of user.roles.cache.values()) {
+            if (rolemap.id === interaction.guild.id) {}
+            else {objarr.push(rolemap)}
+        }
+        objarr.sort((a,b)=> (a.rawPosition < b.rawPosition ? 1 : -1))
+        let rolenames = []
+        objarr.forEach(role => {
+            rolenames.push(role.name)
+        })
+        let roles = []
+        rolenames.forEach(rolename => {
+            const role = interaction.guild.roles.cache.find(role => role.name == rolename)
+            roles.push(role)
+        })
+        const rolelist = roles.join(" | ") || "No Data"
         
         const back = new Discord.MessageActionRow()
         .addComponents(
@@ -24,7 +39,7 @@ module.exports = {
             .setDescription(`${user}`)
             .setColor(userutil.colour)
             .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
-            .addField('Roles:', `${roles}`)
+            .addField('Roles:', `${rolelist}`)
             .setFooter(`🌐 Id: ${user.id}`, client.user.displayAvatarURL())
             .setTimestamp();
 
