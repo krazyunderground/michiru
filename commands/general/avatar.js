@@ -17,7 +17,7 @@ module.exports = {
             .setTitle(`${user}'s Avatar!`)
             .setColor(userutil.colour)
             .setImage(user.displayAvatarURL({dynamic: true, size: 4096}))
-            .setFooter("🌐",`ID: ${user.id}`, client.user.displayAvatarURL())
+            .setFooter("🌐", client.user.displayAvatarURL())
             .setTimestamp();
     
         message.reply({ embeds: [embed] });

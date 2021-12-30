@@ -3,7 +3,7 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/moderation/poll.js",
     category: "admin",
     use: "poll",
-    description: "creates a poll in the specified channel",
+    description: "creates a poll in the specified channel.",
     cooldown: 0,
     async execute(client, message, args, Discord){
         const channel = message.mentions.channels.first()

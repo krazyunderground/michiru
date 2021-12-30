@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['wset'],
     category: "admin",
     use: "welcomeset",
-    description: "sets the welcome channel",
+    description: "sets the welcome channel.",
     cooldown: 0,
     async execute(client, message, args, Discord){
         if(message.member.permissions.has('ADMINISTRATOR') || message.member.id === "576470929874616330"){

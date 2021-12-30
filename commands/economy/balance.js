@@ -16,17 +16,17 @@ module.exports = {
         const member = message.mentions.members.first() || message.member
 
         const memberBal = await client.functions.get("getUserEcon").execute(message.member);
-        const util = await client.functions.get("getUserUtil").execute(message.member);
+        const userutil = await client.functions.get("getUserUtil").execute(message.member);
 
         if(member === client.user) return message.reply("Dont use the command on me! Use it on somebody else!")
 
         const balEmbed = new Discord.MessageEmbed()
             .setAuthor(member.user.tag, member.user.displayAvatarURL())
             .setTitle(`${member.user.username}'s Balance!`)
-            .setDescription(`\n**__:moneybag: ${member.user.username} has \`${memberBal.coins}\` coins! :moneybag:__**\n\nYou can earn more by using \`!m mine\`, for more detail use \`!m help\`!`)
+            .setDescription(`\n**__:moneybag: ${member.user.username} is holding \`${memberBal.coins}\` coins and has a bank balance of \`${memberBal.bank} coins\` :moneybag:__**\n\nYou can earn more by using \`!m mine\`, for more detail use \`!m help\`!`)
             .setTimestamp()
             .setFooter("💸", client.user.displayAvatarURL())
-            .setColor(`${util.colour}`)
+            .setColor(`${userutil.colour}`)
 
         message.reply({embeds: [balEmbed]})
 

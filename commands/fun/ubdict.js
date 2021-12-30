@@ -6,9 +6,9 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/ubdict.js",
     aliases: ['define'],
     category: "fun",
-    use: "ubdict",
+    use: "ubdict <word>",
     cooldown: 2,
-    description: "gets word defenition using urban dictionary",
+    description: "searches urban dictionary for the query provided.",
     async execute(client, message, args, Discord) {
         const userutil = await client.functions.get("getUserUtil").execute(message.member);
 

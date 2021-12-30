@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['setprefix'],
     category: "admin",
     use: "prefix <\"prefix\">",
-    description: "allows the user to choose a new guild prefix",
+    description: "allows the user to choose a new guild prefix.",
     cooldown: 0,
     async execute(client, message, args, Discord, economy, util){
         const guildProfile = await client.functions.get("guildCheck").execute(message)

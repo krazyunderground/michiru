@@ -7,7 +7,7 @@ module.exports = {
     category: "cc",
     use: "cc-list",
     cooldown: 2,
-    description: "list the server's custom commands",
+    description: "list the server's custom commands.",
     async execute(client, message, args, Discord){
         const userutil = await client.functions.get("getUserUtil").execute(message.member)
         var cclist = await customCommands.find({ guildID: message.guild.id})

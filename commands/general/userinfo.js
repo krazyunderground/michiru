@@ -12,22 +12,29 @@ module.exports = {
         
         let member = message.mentions.members.first() || message.member;
         let user = member.user
+
         const joinDiscord = user.createdAt
         const joinServer = member.joinedAt
-        const roles = member.roles.cache.map(r => `${r}`).join(" ").split(" ").slice(0,-1).join(" | ") || "No Data"
+        
+        const roles = new Discord.MessageActionRow()
+        .addComponents(
+        new Discord.MessageButton()
+            .setCustomId('roles')
+            .setLabel('View Roles')
+            .setStyle('PRIMARY')
+            .setEmoji('📜'))
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
             .setTitle(`${user.username}'s Info!`)
             .setDescription(`${user}`)
             .setColor(userutil.colour)
             .setThumbnail(user.displayAvatarURL({dynamic: true, size: 4096}))
-            .addField('Joined at:', `${joinServer}`, true)
-            .addField('Created at:', `${joinDiscord}`, true)
-            .addField('Roles:', roles)
-            .setFooter("🌐", client.user.displayAvatarURL())
+            .addField('Joined at:', `${joinServer}`, false)
+            .addField('Created at:', `${joinDiscord}`, false)
+            .setFooter(`🌐 Id: ${user.id}`, client.user.displayAvatarURL())
             .setTimestamp();
     
-        message.reply({ embeds: [embed] });
+        message.reply({ embeds: [embed], components: [roles]});
         return;
     }
 }
