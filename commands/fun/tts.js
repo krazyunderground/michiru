@@ -7,10 +7,10 @@ const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerSta
 module.exports = {
   name: "tts",
   gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/tts.js",
-  description: "talks for a user in a VC",
+  description: "Speaks the message in the command users VC.",
   cooldown: 0,
   category: "fun",
-  use: "tts",
+  use: "tts <message>",
   async execute(client, message, argsold, Discord) {
     let vc = message.member.voice.channel;
     if (!vc) return message.reply('Your\'re not in a vc!');

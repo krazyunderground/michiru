@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const userEcon = new mongoose.Schema({
 userID: { type: String, require: true, unique: true },
 coins: { type: Number, default: 0 },
+bank: { type: Number, default: 0 },
 pick: { type: Number, default: 1 },
 oreInv: {type: String},
 alloyInv: {type: String},

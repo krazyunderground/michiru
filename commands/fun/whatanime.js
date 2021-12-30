@@ -8,10 +8,11 @@ module.exports = {
     gitlink: "https://github.com/krazyunderground/michiru/tree/main/commands/fun/whatanime.js",
     aliases: ['anime', 'wa'],
     cooldown: 2,
-    description: "uses trace.moe to find the anime of an image provided",
+    description: "searches trace.moe for an anime image.",
     category: "fun",
     use: "whatanime",
     async execute(client, message, args, Discord){
+        if(message.user) return message.reply("This feature is not yet usable in slash commands")
         const userutil = await client.functions.get("getUserUtil").execute(message.member);
         
         var Attachment = message.attachments.first()

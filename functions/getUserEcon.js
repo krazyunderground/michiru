@@ -3,7 +3,9 @@ const econs = require('../models/userEcon')
 module.exports = {
     name: "getUserEcon",
     async execute(member) {
-        const user = member.user.id
+        if (typeof member.user === 'undefined') {userobj = member.id}
+        else {userobj = member.user.id}
+        const user = userobj
         try {
             const userEcon = await econs.findOne({
                 userID: user,

@@ -7,7 +7,7 @@ module.exports = {
     category: "cc",
     use: "cc-delete",
     cooldown: 2,
-    description: "delete a custom command",
+    description: "delete a custom command.",
     async execute(client, message, args, Discord){
         if (!message.member.permissions.has('ADMINISTRATOR')) return message.reply("You can't use this command!")
         if(!args[1]) return message.reply(`Please specify the name of the command`)

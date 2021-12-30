@@ -7,7 +7,7 @@ module.exports = {
     use: "captcha",
     aliases: ["verify"],
     cooldown: 60,
-    description: "captcha command used only to test the system",
+    description: "test the captcha system.",
     async execute(client, message, args, Discord){
         const gp = await client.functions.get("guildCheck").execute(message)
         if(!gp.captchaRole) return 
