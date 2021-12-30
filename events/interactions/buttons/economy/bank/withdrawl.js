@@ -1,4 +1,4 @@
-const userEcon = require("../../../../models/userEcon");
+const userEcon = require("../../../../../models/userEcon");
 module.exports = {
     name: 'withdrawl',
     async execute (interaction, client, Discord) {
