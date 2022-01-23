@@ -2,12 +2,15 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { SlashCommandBuilder } = require(`@discordjs/builders`);
 const fs = require('fs');
+const chalk = require('chalk')
 
 module.exports = async (client, Discord) => {
+    const start = Date.now()
+    console.log(chalk.hex('#c880ff').bold('Slash command registration started...'))
 
     const commands = new Array()
-
     const commandFolders = fs.readdirSync('./commands')
+
     for (const folder of commandFolders) {
         const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'))
         for (const file of commandFiles) {
@@ -20,7 +23,8 @@ module.exports = async (client, Discord) => {
                 .addStringOption(option => 
                     option.setName("args").setDescription("Additional arguments for the command") 
                 )
-            )    
+            )
+            console.log(chalk.hex('#c880ff').bold(`registered slash command: `) + chalk.hex('#ff80fd').bold(`${command.name} `) + chalk.hex('#c880ff').bold(`in file: `) + chalk.hex('#ff80fd').bold(`${file}`));    
         }
     }
 
@@ -36,7 +40,7 @@ module.exports = async (client, Discord) => {
             );
             const end = Date.now()
             const total = end - start
-            console.log(`Successfully reloaded application (/) commands! (${total}ms)`);
+            console.log(chalk.hex('#92fc74').bold(`Slash command registration completed! (${total}ms)`))
         } catch (error) {
             console.error(error);
         }

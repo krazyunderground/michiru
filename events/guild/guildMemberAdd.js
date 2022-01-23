@@ -58,7 +58,6 @@ module.exports = async (Discord, client, member) => {
 
             const i = ctx.getImageData(0, 0, 1, 1).data
             const rgb = i[0] + i[1] + i[2]
-            console.log(rgb)
             
             ctx.strokeStyle = '#000000'
             ctx.lineWidth = 5

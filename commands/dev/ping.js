@@ -22,11 +22,11 @@ module.exports = {
         const usedram = (((os.totalmem() - os.freemem()) / 10**6 + " ").split('.')[0]);
         const prctfreeram = (((os.freemem() * 100) / os.totalmem + " ").split('.')[0]);
         const usage = await cpu.usage()
-        message.channel.send('Calculating current ping...').then((resultMessage) => {
+        const resultMessage = await message.channel.send('Calculating current ping...')
         const pingEmbed = new Discord.MessageEmbed()
             .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
             .setTitle(`${message.member.user.username}'s Ping Request!`)
-            .setDescription(`🏓 Latency is ${(resultMessage.createdTimestamp - Date.now()) * -1}ms \n🖥️ API Latency is ${Math.round(client.ws.ping)}\n🆙 Uptime: ${secondsToDhms(Math.floor(process.uptime()))}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
+            .setDescription(`🏓 Latency is ${resultMessage.createdTimestamp - Date.now()}ms \n🖥️ API Latency is ${Math.round(client.ws.ping)}\n🆙 Uptime: ${secondsToDhms(Math.floor(process.uptime()))}\n<:mongodb:913943033395945592> MongoDB: ${mongodate2 - mongodate1}ms`)
             .addFields(
                 { name: '🧠 Memory', value: `Total Memory: ${totalram}MB\nUsed Memory: ${usedram}MB\nFree Memory: ${freeram}MB\nPercentage Of Free Memory: ${prctfreeram}%`, inline: false},
                 { name: '🔥 CPU', value: `Cores: ${count}\nUsage: ${usage}%`}
@@ -37,7 +37,6 @@ module.exports = {
         
         resultMessage.delete();    
         message.reply({embeds: [pingEmbed]})
-        })
     }
 }
 

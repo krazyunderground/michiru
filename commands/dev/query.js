@@ -11,7 +11,7 @@ module.exports = {
         if(!args[1] || args[1] === "all") {
             const start = Date.now()
             const data = await client.functions.get("guildCheck").execute(message);
-            const econ = await client.functions.get("getmember.userEcon").execute(message);
+            const econ = await client.functions.get("getUserEcon").execute(message.member);
             const util = await client.functions.get("getUserUtil").execute(message.member);
             const cc = await client.functions.get("ccCheck").execute(message);
             const end = Date.now()

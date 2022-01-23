@@ -3,34 +3,25 @@ const meant = require("meant");
 const cooldowns = new Map();
 
 module.exports = async (Discord, client, message) => {
-  if(message.guild === null) return
-  if(!message.guild.me.permissions.has("EMBED_LINKS")) message.channel.send("It appears the bot is missing the embed permission! \n(This is crucial to the bot's functionality, meaning some features wont work)")
-  const guildProfile = await client.functions
-    .get("guildCheck")
-    .execute(message);
+  if(message.guild === null || message.author.bot) return
 
-  let prefix = guildProfile.prefix;
+  const guildProfile = await client.functions.get("guildCheck").execute(message);
+
+  const prefix = guildProfile.prefix;
   const args = message.content.slice(prefix.length).split(/ +/);
 
   if (message.mentions.users.first() === client.user && !args[1])
-    return message.channel.send(
-      `Hello! This server's prefix is \`${prefix}\`!`
-    );
+    return message.channel.send(`This server's prefix is \`${prefix}\`!`);
 
-  if (
-    !message.content.toLowerCase().startsWith(prefix) ||
-    message.author === client.user
-  )
+  if (!message.content.toLowerCase().startsWith(prefix))
     return;
 
-  client.users.cache.get()
   const userutil = await client.functions.get("getUtil").execute(message);
-  const userecon = await client.functions.get("getAuthorEcon").execute(message);
   const command = args[0].toLowerCase();
 
-  const cmd =
-    (await client.commands.get(command)) ||
-    client.commands.find((a) => a.aliases && a.aliases.includes(command));
+  const cmd = client.commands.find((v) =>
+    [v.name, ...("aliases" in v ? v.aliases : [])].includes(command)
+  );
 
   if (await client.functions.get("ccCheck").execute(message, args[0])) {
     var cc = await client.functions.get("ccCheck").execute(message, args[0]);
@@ -78,17 +69,13 @@ module.exports = async (Discord, client, message) => {
 
       const embed = new Discord.MessageEmbed()
         .setTitle(responses[Math.floor(Math.random() * responses.length)])
-        .setDescription(
-          `Please wait \`${time_left.toFixed(
-            1
-          )}\` more seconds before using \`${cmd.name}\` again!`
-        )
+        .setDescription(`Please wait \`${time_left.toFixed(1)}\` more seconds before using \`${cmd.name}\` again!`)
         .setThumbnail(
           "https://static.wikia.nocookie.net/aceattorney/images/4/4d/Objection%21_%28SoJ%29.png/revision/latest/scale-to-width-down/275?cb=20210615182924"
         )
         .setColor(userutil.colour);
 
-      msg = message.channel.send({ embeds: [embed] })
+      let msg = message.channel.send({ embeds: [embed] })
       setTimeout(() => {msg.delete}, 3000)
       return
     }
