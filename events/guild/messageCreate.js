@@ -56,7 +56,7 @@ module.exports = async (Discord, client, message) => {
     const expiration_time =
       time_stamps.get(message.author.id) + cooldown_amount;
 
-    if (current_time < expiration_time && message.author.id !== "576470929874616330") {
+    if (current_time < expiration_time) {
       const time_left = (expiration_time - current_time) / 1000;
 
       const responses = [

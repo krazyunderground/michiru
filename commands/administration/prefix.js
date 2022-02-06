@@ -17,7 +17,7 @@ module.exports = {
             if(!args[1]) return message.reply("Add what you want to change the prefix to!")
             if(!args[1].startsWith('"') || !message.content.endsWith('"')) return message.reply("You need to use the speechmarks around the new prefix")
             const prefix = message.content.split('"').slice(1)[0]
-            if(!prefix.length < 1) message.reply("You can't have a prefix less than 1!")
+            if(prefix.length < 1) return message.reply("You can't have a prefix less than 1!")
             if(prefix.length > 15) return message.reply("Prefixes are character limited to 15")
 
             const filter = response => {

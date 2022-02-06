@@ -13,10 +13,12 @@ module.exports = {
 
         if(message.guild === null) return message.reply("You can't use this command in a DM!")
 
-        const member = message.mentions.members.first() || message.member
+        let member = message.mentions ? message.mentions.members.first() : message.member
+        
+        if(!member) member = message.member
 
-        const memberBal = await client.functions.get("getUserEcon").execute(message.member);
-        const userutil = await client.functions.get("getUserUtil").execute(message.member);
+        const memberBal = await client.functions.get("getUserEcon").execute(member);
+        const userutil = await client.functions.get("getUserUtil").execute(member);
 
         if(member === client.user) return message.reply("Dont use the command on me! Use it on somebody else!")
 

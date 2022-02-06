@@ -66,6 +66,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
         .setColor(userutil.colour)
         .setTitle("Please select the help page you'd like to visit")
+        .addField("Links", "<:bot:916398521278677022> [Invite Me](https://bit.ly/michiru-botv2)\n<:michiru:917507129559105606> [Website](http://michiru.mooo.com/)\n<:github:926169155449794611> [Github](https://github.com/krazyunderground/michiru)\n<:server:916398528983601162> [Discord](https://discord.gg/t9yebSe7jg)")
         if(message.member.permissions.has("ADMINISTRATOR")){embed.setDescription("*pssst, use the scroll bar to view administrator only commands!*")}
         message.reply({ embeds: [embed], components: [row]})
     }
